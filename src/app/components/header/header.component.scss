@@ -1,0 +1,284 @@
+.header-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #4A7043;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    min-height: 40px;
+    position: relative;
+    overflow: visible;
+  
+    .logo {
+      position: absolute;
+      top: -45px;
+      left: 350px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  
+      img {
+        height: 150px;
+        width: auto;
+        object-fit: contain;
+      }
+  
+      span {
+        font-size: 16px;
+        color: white;
+        margin-left: -35px;
+        white-space: nowrap;
+      }
+    }
+  
+    .search-bar {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      max-width: 900px;
+      width: 500px;
+      margin: 0 auto;
+      padding: 0;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+  
+      input {
+        width: 100%;
+        height: 30px;
+        padding: 0 10px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        font-family: 'Alexandria', sans-serif;
+        font-size: 14px;
+        color: #333;
+        outline: none;
+        flex-grow: 1;
+  
+        &::placeholder {
+          color: #666;
+          font-family: 'Alexandria', sans-serif;
+        }
+      }
+  
+      .search-button {
+        height: 30px;
+        padding: 0 10px;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        background-color: #F4BF76;
+        color: #333;
+        font-family: 'Alexandria', sans-serif;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.5s ease;
+  
+        i {
+          font-size: 16px;
+        }
+  
+        &:hover {
+          background-color: #C39A61;
+        }
+      }
+    }
+  
+    .cep-info {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateX(-335px);
+      display: flex;
+      align-items: center;
+  
+      .cep-button {
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Alexandria', sans-serif;
+        font-size: 12px;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: background-color 0.5s ease;
+  
+        i {
+          color: #333;
+          font-size: 16px;
+        }
+  
+        &:hover {
+          background-color: #C39A61;
+        }
+      }
+    }
+  
+    .user-actions {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding-right: 20px;
+  
+      .account-btn {
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Alexandria', sans-serif;
+        position: absolute;
+        left: 40%;
+        transform: translateX(470px);
+        margin: 0;
+        transition: background-color 0.5s ease;
+  
+        &:hover {
+          background-color: #C39A61;
+        }
+      }
+  
+      .account-menu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 5px 0;
+  
+        a {
+          display: block;
+          padding: 5px 20px;
+          color: #333;
+          text-decoration: none;
+          font-family: 'Alexandria', sans-serif;
+          font-size: 14px;
+  
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+      }
+  
+      .orders-btn {
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Alexandria', sans-serif;
+        position: absolute;
+        right: 415px;
+        transition: background-color 0.5s ease;
+  
+        &:hover {
+          background-color: #C39A61;
+        }
+      }
+  
+      .cart-btn {
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Alexandria', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        position: absolute;
+        right: 305px;
+        transition: background-color 0.5s ease;
+  
+        i {
+          font-size: 16px;
+        }
+  
+        &:hover {
+          background-color: #C39A61;
+        }
+      }
+    }
+  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      height: auto;
+      min-height: 40px;
+      padding: 10px 0;
+  
+      .logo {
+        position: static;
+        top: 0;
+        left: 0;
+        padding-left: 10px;
+  
+        img {
+          height: 50px;
+        }
+  
+        span {
+          display: none;
+        }
+      }
+  
+      .search-bar {
+        max-width: 100%;
+        margin: 0 10px;
+        order: -1;
+        position: static;
+        left: auto;
+        transform: none;
+        width: 100%;
+  
+        input {
+          height: 30px;
+        }
+  
+        .search-button {
+          height: 30px;
+        }
+      }
+  
+      .cep-info {
+        position: static;
+        transform: none;
+        left: auto;
+        margin: 0 0 10px 0;
+        order: 0;
+  
+        .cep-button {
+          width: 100%;
+        }
+      }
+  
+      .user-actions {
+        padding-right: 10px;
+        margin-top: 10px;
+  
+        .account-btn {
+          position: static;
+          transform: none;
+        }
+  
+        .orders-btn {
+          position: static;
+          right: auto;
+        }
+  
+        .cart-btn {
+          position: static;
+          right: auto;
+        }
+      }
+    }
+  }
