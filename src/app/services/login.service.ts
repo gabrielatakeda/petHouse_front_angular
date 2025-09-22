@@ -11,7 +11,7 @@ export class LoginService {
   // INJEÇÃO DE DEPENDENCIA DO HTTPCLIENT - INJECT É UMA FUNÇÃO QUE FAZ A INJEÇÃO DE DEPENDENCIA
   http = inject(HttpClient); 
 
-  API = 'http://localhost:8080/usuarios';
+  API = 'http://localhost:8081/usuarios';
 
 
   
