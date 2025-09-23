@@ -1,0 +1,91 @@
+.userdetails-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9f6ef; // fundo bege da página inicial
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #74a474; // verde do layout
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.user-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f9f6ef;
+
+  h2 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+}
+
+.back-button {
+  margin-bottom: 20px;
+
+  button {
+    background-color: #74a474;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #5b845b;
+    }
+  }
+}
+
+.user-data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-data-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #74a474;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  .label {
+    font-weight: bold;
+    flex: 1;
+  }
+
+  .value {
+    flex: 2;
+    text-align: left;
+  }
+
+  button {
+    background-color: #fff;
+    color: #74a474;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #eaeaea;
+    }
+  }
+}

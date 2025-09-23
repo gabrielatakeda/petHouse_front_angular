@@ -1,0 +1,60 @@
+/* Layout principal */
+.main-layout {
+  background-color: #fef6e4; // fundo bege geral
+  min-height: 100vh;
+}
+
+.content-area {
+  background-color: rgba(124, 174, 115, 0.83); // fundo verde do conteúdo
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.user {
+  border-radius: 12px;
+  border: none;
+}
+
+/* Cards gerais */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: none;
+}
+
+/* Perfil do usuário */
+.user-profile {
+  background-color: rgba(124, 174, 115, 0.83);
+}
+
+/* Promoção */
+.promo-card {
+  background-color: #fff;
+}
+
+/* Botões */
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: rgb(101, 148, 101);
+  transition: transform 0.2s, background-color 0.2s;
+
+  &[routerLink] {
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: #7d9c7d;
+  }
+
+  span.material-icons {
+    font-size: 28px;
+    color: #2f4f2f;
+  }
+
+  small {
+    color: #333;
+  }
+}
