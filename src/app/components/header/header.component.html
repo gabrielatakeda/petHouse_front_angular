@@ -1,22 +1,22 @@
 <header class="header-container">
-    <div class="logo">
-      <img src="assets/logo-pethouse.png" alt="PetHouse Logo" />
-      <span>Olá, {{ userName }}</span>  
+  <div class="logo">
+    <img src="assets/logo-pethouse.png" alt="PetHouse Logo" />
+    <span>Olá, {{ userName }}</span>  
+  </div>
+  <div class="cep-info">
+    <button class="cep-button"><i class="fas fa-map-marker-alt"></i> Informar CEP</button>
+  </div>
+  <div class="search-bar">
+    <input type="text" placeholder="O que seu pet precisa?" />
+    <button class="search-button"><i class="fas fa-search"></i></button>
+  </div>
+  <div class="user-actions">
+    <button class="account-btn" (click)="goToLogin()">Entrar | Cadastrar</button>
+    <button class="orders-btn">Meus Pedidos</button>
+    <button class="cart-btn"><i class="fas fa-shopping-cart"></i> Carrinho</button>
+    <div class="account-menu" *ngIf="isAccountMenuOpen">
+      <a href="#" (click)="closeAccountMenu()">Configurações</a>
+      <a href="#" (click)="closeAccountMenu()">Sair</a>
     </div>
-    <div class="cep-info">
-      <button class="cep-button"><i class="fas fa-map-marker-alt"></i> Informar CEP</button>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="O que seu pet precisa?" />
-      <button class="search-button"><i class="fas fa-search"></i></button>
-    </div>
-    <div class="user-actions">
-      <button class="account-btn" (click)="toggleAccountMenu()">Entrar | Cadastrar</button>
-      <button class="orders-btn">Meus Pedidos</button>
-      <button class="cart-btn"><i class="fas fa-shopping-cart"></i> Carrinho</button>
-      <div class="account-menu" *ngIf="isAccountMenuOpen">
-        <a href="#" (click)="closeAccountMenu()">Configurações</a>
-        <a href="#" (click)="closeAccountMenu()">Sair</a>
-      </div>
-    </div>
-  </header>
+  </div>
+</header>

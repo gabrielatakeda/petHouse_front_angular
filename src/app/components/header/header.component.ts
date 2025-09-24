@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importado para suportar *ngIf
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  imports: [CommonModule] // Adicionado para usar *ngIf
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  userName: string = 'João';
+  userName: string = 'Visitante'; 
   isAccountMenuOpen: boolean = false;
+
+  constructor(private router: Router) {}
 
   toggleAccountMenu() {
     this.isAccountMenuOpen = !this.isAccountMenuOpen;
   }
 
   closeAccountMenu() {
-    this.isAccountMenuOpen = false; // Fecha o menu
+    this.isAccountMenuOpen = false;
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 }
