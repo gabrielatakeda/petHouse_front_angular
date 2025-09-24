@@ -26,6 +26,8 @@ export class UsuariosComponent {
       next: result => {
         console.log(result)
         console.log(result.enderecos[0])
+        console.log(result.enderecos[1])
+
         this.usuario = result;
       },
       error: erro => {

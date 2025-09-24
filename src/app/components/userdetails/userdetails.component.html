@@ -19,20 +19,62 @@
       <div class="user-data-item">
         <span class="label">Nome:</span>
         <span class="value">{{usuario?.nome}}</span>
-        <button class="btn btn-sm btn-primary">Editar</button>
+        <button class="btn btn-sm btn-primary" (click)="editarDetails(usuario, 'nome')">Editar</button>
       </div>
 
       <div class="user-data-item">
         <span class="label">Username:</span>
         <span class="value">{{usuario?.usuario}}</span>
-        <button class="btn btn-sm btn-primary">Editar</button>
+        <button class="btn btn-sm btn-primary" (click)="editarDetails(usuario, 'usuario')">Editar</button>
       </div>
 
       <div class="user-data-item">
         <span class="label">Email:</span>
         <span class="value">{{usuario?.email}}</span>
-        <button class="btn btn-sm btn-primary">Editar</button>
+        <button class="btn btn-sm btn-primary" (click)="editarDetails(usuario, 'email')">Editar</button>
       </div>
     </div>
   </main>
 </div>
+
+<ng-template #modalEditdetails>
+  <div class="modal-header">
+    <h5 class="modal-title">Editar informações</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      @if (edit == "nome") {
+      <!-- Nome -->
+      <div class="form-group mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" id="nome" class="form-control" [(ngModel)]="usuarioEdit.nome" name="nome" placeholder="Digite seu nome" />
+      </div>
+      }
+
+      @if (edit == "usuario") {
+      <!-- Username -->
+      <div class="form-group mb-3">
+        <label for="usuario" class="form-label">Username</label>
+        <input type="text" id="usuario" class="form-control" [(ngModel)]="usuarioEdit.usuario" name="usuario"
+          placeholder="Digite seu username" />
+      </div>
+      }
+
+      @if (edit == "email") {
+      <!-- Email -->
+      <div class="form-group mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" [(ngModel)]="usuarioEdit.email" name="email" placeholder="Digite seu email" />
+      </div>
+      }
+
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modalRef.close()">Cancelar</button>
+    <button class="btn btn-success" (click)="salvarEdicaoDatails()">Salvar</button>
+  </div>
+</ng-template>
