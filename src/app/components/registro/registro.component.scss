@@ -1,0 +1,83 @@
+:root { /*Criamos variáveis para facilitar a manutenção das cores e fontes*/
+  --primary-color: #301661; /*Verde principal usado no foco e destaques*/
+  --secondary-color: #6a6a6a; /*Cinza secundário para textos*/
+  --light-gray: #f5f5f5; /*Cor de fundo bem clara*/
+  --medium-gray: #e0e0e0; /*Cinza intermediário (bordas de input)*/
+  --font-family: 'Poppins', sans-serif; /*Fonte principal do site*/
+}
+
+body { /*Estilo geral da página*/
+  font-family: var(--font-family); /*Usa a fonte definida na variável*/
+  background-color: var(--light-gray); /*Fundo da página bem claro*/
+  min-height: 100vh; /*Faz o body ocupar toda a altura da tela*/
+  display: flex;
+  justify-content: center; /*Centraliza o conteúdo na horizontal*/
+  align-items: center; /*Centraliza o conteúdo na vertical*/
+}
+
+.container { /*Container principal que segura o formulário*/
+  margin-top: 3.5rem; /*Espaçamento no topo (para não ficar colado na navbar)*/
+  margin-bottom: 2rem; /*Espaçamento inferior*/
+}
+
+.card { /*Card do formulário*/
+  border-radius: 1.5rem; /*Deixa os cantos bem arredondados*/
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /*Sombra leve para dar destaque*/
+  border: none; /*Remove a borda padrão do card*/
+  background-color: #fff; /*Fundo branco do card*/
+  padding: 1rem; 
+  max-width: 500px; /*Limita a largura máxima para não ficar muito largo em telas grandes*/
+}
+
+.titulo-form { /*Textos do formulário*/
+  font-size: 1.8rem; /*Título grande*/
+  font-weight: 600; /*Negrito*/
+  color: #333; /*Cor escura*/
+}
+
+.subtitulo-form {
+  font-size: 1rem; /*Menor que o título*/
+  color: var(--secondary-color); /*Cinza secundário*/
+}
+
+.nomeSbr {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem; /*Espaço entre o label e o input*/
+}
+
+.form-control { /*Campos de input*/
+  border-radius: 0.75rem; /*Cantos arredondados*/
+  border: 1px solid var(--medium-gray);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-control:focus { /*Quando o input recebe foco (usuário clica dentro)*/
+  border-color: var(--primary-color); /*Muda a cor da borda para verde*/
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25); /*Adiciona um brilho ao redor*/
+}
+
+.form-control::placeholder { /*Estilo do texto placeholder*/
+  color: #a0a0a0; /*Cor do texto*/
+  font-weight: 400; /*Define o tamanho da fonte*/
+}
+
+/*Botão "Salvar"*/
+.btn-musgo {
+  font-weight: 600; /*Deixa o texto do botão mais forte*/
+  color: white; /*Texto branco*/
+  font-size: 1.1rem; /*Texto um pouco maior*/
+  border-radius: 0.75rem; /*Cantos arredondados*/
+  padding: 0.75rem 1rem; /*Espaçamento interno para o botão não ficar achatado*/
+  transition: all 0.3s ease-in-out; /*Suaviza a animação no hover*/
+  box-shadow: none; /*Remove sombra padrão*/
+  background-color: #6f42c1; /*Verde musgo*/
+  border-color: #301661; /*Cor da borda do botão*/
+}
+
+.btn-musgo:hover { /*Efeito quando o mouse passa em cima do botão*/
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.5); /*Adiciona uma sombra suave*/
+  background-color: #6f42c1; /*Deixa o botão um pouco mais escuro*/
+  border-color: #301661;
+}

@@ -1,0 +1,12 @@
+.navbar {
+  height: 70px; /*Define a altura fixa da navbar*/
+  padding: 0 1rem; /*Mantém um espaço das laterais*/
+  display: flex; /*Deixa "elástico", permite que os itens se organizam lado a lado e fiquem fáceis de alinhar*/
+  align-items: center; /*Centraliza os itens verticalmente dentro da navbar*/
+  background-color: #6f42c1 !important; /*Força a cor de fundo verde musgo, sobrescrevendo qualquer cor padrão do Bootstrap*/
+}
+
+.navbar-brand img {
+  max-height: 150px; /*Limita a altura máxima da logo*/
+  width: auto; /*Mantém a proporção original da logo (não distorce a largura)*/
+}

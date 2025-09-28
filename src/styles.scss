@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+html, body { //Global
+  margin: 0; //Sem espaçamento extra
+  padding: 0;
+  overflow: hidden; //Bloqueia scroll vertical e horizontal
+  background-color: #f7f7f7; //Cinza claro para dar um destaque entre o body e o card
+}
