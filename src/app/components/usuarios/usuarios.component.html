@@ -1,0 +1,76 @@
+<div class="container-fluid main-layout" *ngIf="usuario">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 content-area py-4">
+      <div class="row">
+        <!-- Perfil do usuário -->
+        <div class="col-md-3">
+          <div class="user user-profile text-center p-3">
+            <img [src]="usuario?.enderecos ? 'https://via.placeholder.com/100' : ''" alt="Foto usuário" class="rounded-circle mb-3">
+            <h5>{{usuario?.usuario}}</h5>
+            <p class="text-muted">{{usuario?.email}}</p>
+          </div>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <div class="col-md-9">
+          <div class="card text-center mb-3 p-3 promo-card">
+            <h6><strong>SEMANA DO CLIENTE</strong></h6>
+            <p>15% OFF no Pix<br>promoção válida até o dia 28/09</p>
+            <img src="https://via.placeholder.com/200x80" alt="Produtos" class="img-fluid">
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/details']" [state]="{ usuario: usuario }">
+                <span class="material-icons">person</span>
+                <div>
+                  <strong>Seus dados</strong><br>
+                  <small>Informações de identificação de usuário</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card action-card p-3 w-100">
+                <span class="material-icons">shopping_cart</span>
+                <div>
+                  <strong>Compras</strong><br>
+                  <small>Histórico de compras do usuário</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/adress']" [state]="{ usuario: usuario }">
+                <span class="material-icons">location_on</span>
+                <div>
+                  <strong>Endereços</strong><br>
+                  <small>Endereços salvos para sua localização</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/security']" [state]="{ usuario: usuario }">
+                <span class="material-icons">security</span>
+                <div>
+                  <strong>Segurança</strong><br>
+                  <small>Preferências e dados de segurança do usuário</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card action-card p-3 w-100">
+                <span class="material-icons">inventory</span>
+                <div>
+                  <strong>Meus produtos</strong><br>
+                  <small>Sua galeria de produtos</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
