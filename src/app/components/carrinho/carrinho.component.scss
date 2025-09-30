@@ -1,0 +1,42 @@
+html, body {
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;  /* ou scroll */
+  overflow-x: hidden;
+}
+
+h3, h5, h6, th, span, div{
+  color: black;
+}
+
+.btn-purple {
+  background-color: #6f42c1; 
+  border-color: #6f42c1;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-purple:hover {
+  background-color: #5e31b0; 
+  border-color: #6f42c1;
+  color: white;
+  font-weight: 500;
+}
+
+.custom-border {
+    border-color: #6f42c1 !important;
+    color: #6f42c1 !important;
+}
+
+.payment-option {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.payment-option:hover{
+  background-color: #f8f9fa;
+}
+
+input[type="radio"]{
+  accent-color: #6f42c1; //Cor personalizada para o radio
+}

@@ -3,7 +3,6 @@ import { provideRouter } from '@angular/router';
 import { provideZoneChangeDetection } from '@angular/core';
 import { provideNoopAnimations } from '@angular/platform-browser/animations'; 
 import { routes } from './app.routes';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 <<<<<<< HEAD
 

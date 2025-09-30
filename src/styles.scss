@@ -1,12 +1,18 @@
-<<<<<<< HEAD
-/* styles.scss */
 body {
     background-color: #EEE0D3;
     margin: 0;
     padding: 0;
     font-family: 'Alexandria', sans-serif; /* Fonte padrão */
   }
-=======
-/* You can add global styles to this file, and also import other style files */
+
 @use 'mdb-angular-ui-kit/assets/scss/mdb.scss';
->>>>>>> origin/joaoM
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;  
+  overflow-y: auto;    
+  background-color: #f7f7f7;
+}
+

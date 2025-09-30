@@ -9,7 +9,7 @@
                         <h3 class="mb-4 text-center">Acesse sua conta</h3>
                         <form>
                             <!-- Email input -->
-                            <h5>Email/CPF</h5>
+                            <h5>Email ou CPF</h5>
                             <mdb-form-control class="mb-4">
                                 <input mdbInput [(ngModel)]="usuario" name="usuario" id="usuario" type="text"
                                     class="form-control" placeholder="Digite seu email ou CPF" />
@@ -21,7 +21,13 @@
                                 <input mdbInput [(ngModel)]="senha" name="senha" id="senha" type="password"
                                     class="form-control" placeholder="Digite sua Senha" />
                             </mdb-form-control>
-                
+                            <div>
+                                <a href="">Esqueceu a senha?</a>
+                                <p>
+                                    Não tem uma conta?
+                                 <a [routerLink]="['/registro']">Cadastre-se!</a>
+                                </p>
+                            </div>
                             <button mdbRipple type="button" class="btn btn-musgo w-100 fs-6" (click)="logar()">
                                 Acessar</button>
                         </form>
