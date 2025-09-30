@@ -1,10 +1,10 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideAnimations } from '@angular/platform-browser/animations'; // Para animações padrão
 import { provideZoneChangeDetection } from '@angular/core';
-import { provideNoopAnimations } from '@angular/platform-browser/animations'; // Para desativar animações
+import { provideNoopAnimations } from '@angular/platform-browser/animations'; 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+<<<<<<< HEAD
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,4 +13,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations() ] // NECESSARIO PARA FAZER REQUISIÇÕES HTTP - AGE COMO UM RESTCONTROLLER DO JAVA
 
+=======
+
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimations()]
+>>>>>>> origin/joaoM
 };

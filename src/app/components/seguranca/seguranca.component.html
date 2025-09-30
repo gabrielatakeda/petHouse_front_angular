@@ -1,0 +1,35 @@
+<div class="details-container" *ngIf="usuario">
+  <aside class="sidebar">
+    <div class="user-profile">
+      <img src="https://via.placeholder.com/100" alt="Foto usuário" class="user-photo" />
+      <h4>{{usuario?.nome}}</h4>
+      <p>{{usuario?.email}}</p>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="back-button">
+      <button class="btn btn-secondary" routerLink="">&larr; Voltar</button>
+    </div>
+
+    <h2>Segurança</h2>
+    <p>Gerencie suas preferências de segurança e login.</p>
+
+    <div class="security-list">
+      <div class="security-item">
+        <span>Senha</span>
+        <button class="btn btn-sm btn-primary">Alterar</button>
+      </div>
+
+      <div class="security-item">
+        <span>Autenticação de dois fatores</span>
+        <button class="btn btn-sm btn-primary">Ativar</button>
+      </div>
+
+      <div class="security-item">
+        <span>Dispositivos conectados</span>
+        <button class="btn btn-sm btn-primary">Gerenciar</button>
+      </div>
+    </div>
+  </main>
+</div>

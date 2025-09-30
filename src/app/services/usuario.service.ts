@@ -1,22 +1,38 @@
-//Importa as dependências necessárias do Angular
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Usuarios } from '../models/usuarios';
-
+import { Usuario } from '../models/usuario';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  constructor() { } //Construtor vazio
+  http = inject(HttpClient);
 
-  private http = inject(HttpClient); //Injeção manual do HttpClient para usar nas requisições
-  private API = 'http://localhost:8080/usuarios'; //URL base da API
+  API = "http://localhost:8080/usuarios"
 
-  save(usuario: Usuarios) { //Método para salvar um usuário
-  return this.http.post("http://localhost:8080/usuarios/save", usuario, { //Faz uma requisição POST para a API
-    headers: { 'Content-Type': 'application/json' } //Define que o conteúdo enviado é JSON
-  });
+  constructor() {}
+
+  save(usuario: Usuario): Observable<Usuario>{
+    return this.http.post<Usuario>(this.API+"/save", usuario);
+  }
+
+  findById(id: number): Observable<Usuario>{
+    return this.http.get<Usuario>(this.API+"/findById/"+id);
+  }
+
+  delete(id: number): Observable<void>{
+    return this.http.delete<void>(this.API+"/delete/"+id);
+  }
+
+  update(id:number, usuario:Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>(this.API+"/update/"+id, usuario);
+  }
+
+  findAll(): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.API+"/findAll");
+  }
+
 }
-}
+

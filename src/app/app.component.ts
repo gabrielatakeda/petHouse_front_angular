@@ -12,5 +12,5 @@ import { PromoSectionComponent } from './components/promo-section/promo-section.
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'petHouse_front';
+  title = 'front_eCommerce';
 }
