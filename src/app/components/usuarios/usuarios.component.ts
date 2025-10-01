@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
-import { Usuario } from '../../models/usuario';
+import { Usuarios } from '../../models/usuarios';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -13,27 +13,26 @@ import { NgIf } from '@angular/common';
 })
 export class UsuariosComponent {
 
-  usuario?: Usuario;  // Usuario carregado do backend
+  usuario?: Usuarios;  
   usuarioService = inject(UsuarioService);
 
   constructor() {
-    const idUsuario = 3; // temporário apenas para teste
+    const idUsuario = 3; // temporário para teste
     this.findById(idUsuario);
   }
 
   findById(id: number) {
     this.usuarioService.findById(id).subscribe({
       next: result => {
-        console.log(result)
-        console.log(result.enderecos[0])
-        console.log(result.enderecos[1])
-
+        console.log(result);
+        if (result.enderecos && result.enderecos.length > 0) {
+          console.log(result.enderecos[0]);
+        }
         this.usuario = result;
       },
-      error: erro => {
+      error: () => {
         alert("Ocorreu um erro ao buscar o usuário");
       }
     });
   }
-
 }

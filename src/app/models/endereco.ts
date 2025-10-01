@@ -1,4 +1,4 @@
-import { Usuario } from "./usuario";
+import { Usuarios } from "./usuarios";
 
 export class Endereco {
 
@@ -9,7 +9,7 @@ export class Endereco {
     cidade!: string;
     estado!: string;
     cep!: string;
-    usuario?: Usuario;
+    usuario?: Usuarios;
 
     constructor(
         logradouro: string = "",
@@ -18,7 +18,7 @@ export class Endereco {
         cidade: string = "",
         estado: string = "",
         cep: string = "",
-        usuario?: Usuario,
+        usuario?: Usuarios,
         id?: number
     ) {
         this.id = id;

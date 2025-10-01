@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { RegistroComponent } from './components/design/registro/registro.component';
-import { Routes } from '@angular/router';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { UserdetailsComponent } from './components/userdetails/userdetails.component';
 import { EnderecodetailsComponent } from './components/enderecodetails/enderecodetails.component';

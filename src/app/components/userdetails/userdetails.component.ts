@@ -1,7 +1,7 @@
 import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Router, RouterLink } from '@angular/router';
-import { Usuario } from '../../models/usuario';
+import { Usuarios } from '../../models/usuarios';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ export class UserdetailsComponent {
 
   edit!: string;
 
-  usuarioEdit: Usuario = new Usuario(0, "", "", "", "", [])
+  usuarioEdit: Usuarios = new Usuarios(0, "", "", "", "", [])
 
   modalService = inject(MdbModalService); //para cosneguir abrir a modal
   @ViewChild("modalEditdetails") modalEditdetails!: TemplateRef<any>
@@ -24,14 +24,14 @@ export class UserdetailsComponent {
 
   usuarioService = inject(UsuarioService);
 
-  usuario?: Usuario;
+  usuario?: Usuarios;
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
     this.usuario = navigation?.extras.state?.['usuario'];
   }
 
-  editarDetails(usuario: Usuario, edit: string) {
+  editarDetails(usuario: Usuarios, edit: string) {
     this.edit = edit;
     this.usuarioEdit = usuario;
     this.modalRef = this.modalService.open(this.modalEditdetails);

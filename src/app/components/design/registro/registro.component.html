@@ -21,7 +21,7 @@
                 placeholder="Digite seu nome completo"
                 class="form-control"
                 required
-                [(ngModel)]="usuario.nome" 
+                [(ngModel)]="usuarios.nome" 
                 name="nome"
               /> <!-- Nome do campo, usado pelo Angular Forms -->
             </mdb-form-control>
@@ -35,7 +35,7 @@
                 placeholder="Digite o seu e-mail"
                 class="form-control"
                 required
-                [(ngModel)]="usuario.email"
+                [(ngModel)]="usuarios.email"
                 name="email"
               />
             </mdb-form-control>
@@ -50,7 +50,7 @@
                 class="form-control"
                 required
                 minlength="8"
-                [(ngModel)]="usuario.senha"
+                [(ngModel)]="usuarios.senha"
                 name="senha"
               />
             </mdb-form-control>
@@ -64,7 +64,7 @@
                 placeholder="Digite seu usuário"
                 class="form-control"
                 required
-                [(ngModel)]="usuario.usuario"
+                [(ngModel)]="usuarios.user"
                 name="usuario"
               />
             </mdb-form-control>
