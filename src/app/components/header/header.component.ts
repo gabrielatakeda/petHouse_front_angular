@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [CommonModule, RouterLink]
+  imports: [CommonModule]
 })
 export class HeaderComponent {
   userName: string = 'Visitante'; 
