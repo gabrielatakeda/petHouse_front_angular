@@ -1,6 +1,6 @@
 import { Component, inject, Input, TemplateRef, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Usuario } from '../../models/usuario';
+import { Usuarios } from '../../models/usuarios';
 import { Endereco } from '../../models/endereco';
 import { CommonModule } from '@angular/common';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
@@ -23,7 +23,7 @@ export class EnderecodetailsComponent {
 
   modoEndereco!: string;
 
-  usuario!: Usuario;
+  usuario!: Usuarios;
 
   enderecoEdit!: Endereco;
 
@@ -31,7 +31,7 @@ export class EnderecodetailsComponent {
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
-    this.usuario = navigation?.extras.state?.['usuario'] as Usuario;
+    this.usuario = navigation?.extras.state?.['usuario'] as Usuarios;
     this.endereco = this.usuario?.enderecos || [];
 
     console.log("Usuário:", this.usuario);//teste
@@ -43,7 +43,7 @@ export class EnderecodetailsComponent {
   editarEndereco(endereco: Endereco, modoEndereco: string) {
     this.modoEndereco = modoEndereco;
     if (modoEndereco === 'novo') {
-      this.enderecoEdit = new Endereco("", 0, "", "", "", "", { id: this.usuario.id } as Usuario,);
+      this.enderecoEdit = new Endereco("", 0, "", "", "", "", { id: this.usuario.id } as Usuarios,);
     } else {
       this.enderecoEdit = { ...endereco };
     }

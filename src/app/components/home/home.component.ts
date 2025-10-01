@@ -7,7 +7,7 @@ import { NavbarComponent } from '../design/navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, NavbarComponent, PromoSectionComponent, FooterComponent, RouterOutlet],
+  imports: [HeaderComponent, PromoSectionComponent, FooterComponent, RouterOutlet],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
