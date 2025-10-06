@@ -4,12 +4,11 @@ import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
 import { Usuarios } from '../../../models/usuarios';
 import { UsuarioService } from '../../../services/usuario.service';
-import { HeaderComponent } from "../../header/header.component";
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [ MdbFormsModule, FormsModule , HeaderComponent],
+  imports: [ MdbFormsModule, FormsModule ],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })

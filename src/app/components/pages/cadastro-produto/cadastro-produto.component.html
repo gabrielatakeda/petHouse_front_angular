@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-11 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()">
+            <h4 class="text-center mb-2 titulo-form">Cadastrar Produto</h4>
+            <p class="text-center text-muted mb-4 subtitulo-form">
+              Preencha os dados abaixo para realizar o cadastro.
+            </p>
+
+            <!-- Nome -->
+            <h6 class="nomeSbr">Nome</h6>
+            <mdb-form-control class="mb-4">
+              <input mdbInput type="text" placeholder="Nome do Produto" class="form-control" required
+                [(ngModel)]="produto.nome" name="nome" />
+            </mdb-form-control>
+
+            <!-- Descrição -->
+            <h6 class="nomeSbr">Descrição</h6>
+            <mdb-form-control class="mb-4">
+              <textarea mdbInput placeholder="Descrição" class="form-control" [(ngModel)]="produto.descricao"
+                name="descricao"></textarea>
+            </mdb-form-control>
+
+            <!-- Preço -->
+            <h6 class="nomeSbr">Preço</h6>
+            <mdb-form-control class="mb-4">
+              <input mdbInput type="number" step="0.01" placeholder="Preço" class="form-control" required
+                [(ngModel)]="produto.precoVenda" name="precoVenda" />
+            </mdb-form-control>
+
+            <!-- Quantidade -->
+            <h6 class="nomeSbr">Quantidade</h6>
+            <mdb-form-control class="mb-4">
+              <input mdbInput type="text" placeholder="Quantidade" class="form-control" required
+                [(ngModel)]="produto.quantidade" name="quantidade" />
+            </mdb-form-control>
+
+            <!-- Categoria -->
+            <h6 class="nomeSbr">Categoria</h6>
+            <div class="input-group mb-3">
+              <select class="form-control" [(ngModel)]="produto.categoria" name="categoria" required>
+                <!--PLACEHOLDER-->
+                <option [ngValue]="null" disabled>Escolha uma Categoria</option>
+
+                @for (categoria of categorias; track $index) {
+                <option [ngValue]="categoria">{{ categoria.nome }}</option>
+                }
+              </select>
+            </div>
+
+            <!-- Imagem -->
+            <h6 class="nomeSbr">Imagem</h6>
+            <mdb-form-control class="mb-4">
+              <input mdbInput type="file" class="form-control" (change)="onFileSelected($event)" />
+            </mdb-form-control>
+
+            <!-- Botão Salvar -->
+            <button mdbRipple type="submit" class="btn btn-musgo w-100">
+              Salvar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h2 class="mb-4">Produtos</h2>
+
+  <hr>
+  <h3>Produtos cadastrados</h3>
+  <div class="row">
+    @for (produto of produtos; track $index) {
+    <div class="col-md-3 mb-3">
+      <div class="card h-100 card-Produto ">
+        <img [src]="produto.urlFoto" class="card-img-top" alt="{{ produto.nome }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ produto.nome }}</h5>
+          <p class="card-text">{{ produto.descricao }}</p>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="mb-0"><strong>R$ {{ produto.precoVenda }}</strong></p>
+
+            <button class="btn circular-btn">
+              <!-- <i class="bi bi-plus-circle fs-4 text-primary"></i> -->
+              <i class="bi bi-plus fs-4 text-light"></i>
+            </button>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+</div>

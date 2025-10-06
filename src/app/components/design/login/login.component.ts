@@ -20,7 +20,10 @@ export class LoginComponent {
   logar(){
      if(this.usuario == "admin" && this.senha == "admin"){
       this.router.navigate(['/home']);
-    } else{
+    }else if(this.usuario == "user" && this.senha == "user"){
+      this.router.navigate(['/carrinho']);
+    } 
+    else{
       alert("Login ou senha incorretos");
     }
   }

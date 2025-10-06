@@ -1,0 +1,126 @@
+
+body { /* Estilo geral da página */
+  font-family: var(--font-family); /* Usa a fonte definida na variável */
+  background-color: var(--light-gray); /* Fundo da página bem claro */
+  min-height: 100vh; /* Faz o body ocupar toda a altura da tela */
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo na horizontal */
+  align-items: center; /* Centraliza o conteúdo na vertical */
+}
+
+.titulo-form { /* Textos do formulário */
+  font-size: 1.8rem; /* Título grande */
+  font-weight: 600; /* Negrito */
+  color: #333; /* Cor escura */
+}
+
+
+.subtitulo-form {
+  font-size: 1rem; /* Menor que o título */
+  color: var(--secondary-color); /* Cinza secundário */
+}
+
+
+.form-container {
+  max-width: 600px; // 
+  margin: 60px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+.nome {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem; /* Espaço entre o label e o input */
+  text-align: left; /* Alinha o texto à esquerda */
+  margin-bottom: 0;
+}
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease-in-out;
+
+      &:focus {
+        border-color: #7d3cff;
+        box-shadow: 0 0 0 2px rgba(125, 60, 255, 0.2);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background: #7d3cff;
+      color: #fff;
+      font-weight: 600;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: #6a2ae0;
+      }
+    }
+  }
+}
+
+/* Botão "Salvar" */
+.btn-musgo {
+  font-weight: 600; /* Deixa o texto do botão mais forte */
+  color: white; /* Texto branco */
+  font-size: 1.1rem; /* Texto um pouco maior */
+  border-radius: 0.75rem; /* Cantos arredondados */
+  padding: 0.75rem 1rem; /* Espaçamento interno para o botão não ficar achatado */
+  transition: all 0.3s ease-in-out; /* Suaviza a animação no hover */
+  box-shadow: none; /* Remove sombra padrão */
+  background-color: #6f42c1; 
+  border-color: #301661; /* Cor da borda do botão */
+}
+
+.card-Produto {
+  transition: all 0.3s ease; /* Aplica a suavização no estado normal */
+}
+
+.card-Produto:hover {
+  transform: translateY(-5px); /* Move o card para cima */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+}
+
+.circular-btn {
+  width: 40px;          /* largura */
+  height: 40px;         /* altura igual à largura */
+  border-radius: 50%;   /* deixa circular */
+  display: flex;        
+  align-items: center;  /* centraliza ícone vertical */
+  justify-content: center; /* centraliza ícone horizontal */
+  border: none;
+  background-color: #6f42c1;
+  padding: 0;           /* remove padding interno extra */
+  cursor: pointer;
+}
