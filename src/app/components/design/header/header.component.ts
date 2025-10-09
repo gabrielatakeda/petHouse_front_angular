@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-header',
+  imports: [CommonModule, RouterLink],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [CommonModule, RouterLink] // Adicionado para usar *ngIf
- // Adicionado para usar *ngIf
 })
 export class HeaderComponent {
   userName: string = 'João';

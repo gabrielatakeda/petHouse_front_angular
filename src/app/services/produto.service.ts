@@ -22,6 +22,10 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${this.URL_API}/nome/${nome}`);
   }
 
+  findById(id: number): Observable<any> {  //RETORNA VAZIO E O ANY NAO DA ERRO
+    return this.http.get<Produto>(`${this.URL_API}/findById/${id}`);
+  }
+
   findAll(){
     return this.http.get<Produto[]>(`${this.URL_API}/findAll`);
   }

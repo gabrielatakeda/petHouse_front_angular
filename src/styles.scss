@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
-@import "bootstrap-icons/font/bootstrap-icons.css";
+@use 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+@use "bootstrap-icons/font/bootstrap-icons.css";
 
 html, body {
   margin: 0;

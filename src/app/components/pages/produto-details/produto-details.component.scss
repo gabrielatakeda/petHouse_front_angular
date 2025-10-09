@@ -1,0 +1,80 @@
+.btn-purple {
+  background-color: #6f42c1; 
+  border-color: #6f42c1;
+  color: white;
+}
+
+.btn-purple:hover {
+  background-color: #5e31b0; 
+  border-color: #6f42c1;
+  color: white;
+}
+
+.quantidade-box {
+  width: 120px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  /* sombra leve embaixo e dos lados */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.quantidade-box .btn {
+  color: #6f42c1; /* roxo */
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  box-shadow: none; /* sem sombra nos botões */
+}
+
+.quantidade-box input {
+  background-color: #ffffff;
+  border: none;
+  text-align: center;
+}
+
+.card-direita{
+  background-color: transparent;
+  border: none;
+  box-shadow: none !important;
+ 
+}
+
+.preco {
+  color: #98be31;
+  font-weight: bold;
+  margin-bottom: 1rem; // equivalente a mb-4
+}
+
+
+.botao{
+  color: white;
+  cursor: pointer;
+  border-top: 1px solid #764ea0;
+  border-right: 1px solid #764ea0;
+  border-left: 3px solid #764ea0;
+  border-bottom: 4px solid #764ea0;
+  background: #98be31;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.botao:hover{
+  background:#8daf31;
+  color: white;
+}
+
+.botao-fin{
+  color:#764ea0;
+  cursor: pointer;
+  border-top: 1px solid #764ea0;
+  border-right: 1px solid #764ea0;
+  border-left: 3px solid #764ea0;
+  border-bottom: 4px solid #764ea0;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.botao-fin:hover{
+  background:#98be31;
+  color: white;
+}

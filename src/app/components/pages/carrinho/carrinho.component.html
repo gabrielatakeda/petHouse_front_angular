@@ -62,12 +62,14 @@
                                     <span class="ms-2">Cartão de Crédito/Débito</span>
                                 </label>
                                 <!-- Mostrar detalhes da forma selecionada -->
-                                <div class="mt-3" *ngIf="pagamentoSelecionado == 'cartao'">
+                                @if (pagamentoSelecionado == 'cartao') {
+                                <div class="mt-3">
                                     <h6>Dados do Cartão</h6>
                                     <input type="text" class="form-control mb-2" placeholder="Número do Cartão">
                                     <input type="text" class="form-control mb-2" placeholder="Validade (MM/AA)">
                                     <input type="text" class="form-control mb-2" placeholder="CVV">
                                 </div>
+                                }
 
 
                                 <!-- Pix -->
@@ -78,10 +80,13 @@
                                     <span class="ms-2">Pix</span>
                                 </label>
 
-                                <div class="mt-3" *ngIf="pagamentoSelecionado == 'pix'">
+                                @if (pagamentoSelecionado == 'pix') {
+                                <div class="mt-3">
                                     <h6>Pagamento via Pix</h6>
                                     <p>O QR Code será gerado após a finalização do pedido.</p>
                                 </div>
+                                }
+
 
                                 <!-- Boleto -->
                                 <label class="d-flex align-items-center p-2 border rounded payment-option">
@@ -92,18 +97,20 @@
                                 </label>
                             </div>
 
-                            <div class="mt-3" *ngIf="pagamentoSelecionado == 'boleto'">
+                            @if (pagamentoSelecionado == 'boleto'){
+                            <div class="mt-3">
                                 <h6>Boleto Bancário</h6>
                                 <p>O boleto será enviado por e-mail após a confirmação.
                                 <p>
                             </div>
+                            }
 
                             <div class="d-grid gap-2 mt-4">
-                            <button class="btn btn-purple btn-lg">Finalizar Compra</button>
-                            <button class="btn btn-outline-primary btn-lg custom-border">
-                                <strong>Continuar Comprando </strong>
-                            </button>
-                        </div>
+                                <button class="btn btn-purple btn-lg">Finalizar Compra</button>
+                                <button class="btn btn-outline-primary btn-lg custom-border">
+                                    <strong>Continuar Comprando </strong>
+                                </button>
+                            </div>
 
                         </div>
                     </div>
@@ -120,10 +127,3 @@
     </p>
 
 </div>
-
-<footer class="bg-light text-center text-sm mt-4">
-  <div class="py-2" style="background-color: rgba(95, 95, 95, 0.1); font-size: 0.85rem;">
-    <p class="mb-1">© 2025 PetHouse - Todos os direitos reservados</p>
-    <p class="mb-0">Dúvidas? (68) 9766-5574</p>
-  </div>
-</footer>
