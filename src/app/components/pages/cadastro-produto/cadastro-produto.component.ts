@@ -14,7 +14,7 @@ import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
   templateUrl: './cadastro-produto.component.html',
   styleUrls: ['./cadastro-produto.component.scss']
 })
-export class ProductFormComponent implements OnInit {
+export class CadastroProdutoComponent implements OnInit {
   produto: Produto = {
     nome: '',
     descricao: '',

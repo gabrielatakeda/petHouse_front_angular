@@ -25,7 +25,6 @@
   width: 50%;
 }
 
-/* LOGIN (à esquerda, padrão) */
 .sign-in-container {
   left: 0;
   width: 50%;
@@ -39,7 +38,7 @@
   width: 50%;
   opacity: 0;
   z-index: 1;
-  transition: opacity 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 /* Quando ativa o modo registro */
@@ -155,16 +154,22 @@
 
 .btn-purple{
   background-color: #9541e3 ;
+  border-color: #6f42c1;
   color: white;
+  font-weight: 500;
 }
 
 .btn-purple:hover{
-  background-color: #8a2be2 ;
+ background-color: #8a2be2 ;
+  border-color: #6f42c1;
   color: white;
+  font-weight: 500;
 }
 
-a{
-color:#66A62E;
+.tag-a{
+  color:#66A62E;
+  cursor: pointer;
+
 }
 
 .overlay-img {

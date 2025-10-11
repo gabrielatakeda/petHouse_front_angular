@@ -24,7 +24,7 @@ export class ProdutoDetailsComponent {
   }
 
    findById(id: number) {
-    this.produtoService.findById(1).subscribe({
+    this.produtoService.findById(id).subscribe({
       next: produto => {
         this.produto = produto;
       },

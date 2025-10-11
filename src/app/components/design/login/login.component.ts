@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuarios } from '../../../models/usuarios';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../../services/auth.service';
 
 
 
@@ -29,6 +30,7 @@ export class LoginComponent {
   senhaLogin = '';
 
   router = inject(Router);
+  authService = inject(AuthService);
 
   constructor(private usuarioServices: UsuarioService, private snackBar: MatSnackBar) { } //Injeta o serviço de usuários no construtor para poder usá-lo
 
@@ -36,9 +38,19 @@ export class LoginComponent {
     this.isRegisterActive = !this.isRegisterActive;
   }
 
+ 
   logar() {
-    if (this.usuarioLogin === 'admin' && this.senhaLogin === 'admin') {
-      this.router.navigate(['/home']);
+    const success = this.authService.login(this.usuarioLogin, this.senhaLogin);
+
+    if(success){
+      const role = this.authService.getUserRole();
+      if(role === 'admin'){
+        this.router.navigate(['/principalAdmin/cadastroProdutos']);
+      } else if(role === 'user'){
+        this.router.navigate(['/principal/home']);
+      }
+    } else {
+      Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
     }
   }
 
@@ -59,9 +71,9 @@ export class LoginComponent {
           });
         }
       });
-
-
     });
   }
+
+  
 }
 

@@ -1,0 +1,29 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="sidebar bg-light">
+  <div class="sidebar-header">
+    <h5>PetHouse</h5>   
+  </div>
+
+  <ul class="sidebar-menu">
+    <li><a href="/principalAdmin/dashboard"><i class="bi bi-house"></i> Dashboard</a></li>
+  <li>
+      <a  (click)="toggleMenu('produtos')" class="menu-item">
+        <i class="bi bi-box-seam"></i> Produtos
+        <i class="bi" [ngClass]="{'bi-chevron-down': openMenu === 'produtos', 'bi-chevron-right': openMenu !== 'produtos'}"></i>
+      </a>
+      <ul class="submenu list-unstyled ps-4" *ngIf="openMenu === 'produtos'"> <!-- COLOCAR O @IF -->
+        <li><a  [routerLink]="['/cadastroProdutos']">Cadastrar</a></li>
+        <li><a href="#">Listar</a></li>
+      </ul>
+    </li>
+    <li><a href="/principalAdmin/cadastroCategorias"><i class="bi bi-tags"></i> Categorias</a></li>
+    <li><a href="/principalAdmin/clientes"><i class="bi bi-people"></i> Clientes</a></li>
+    <li><a href="/principalAdmin/pedidos"><i class="bi bi-receipt"></i> Pedidos</a></li>
+    <li><a href="#"><i class="bi bi-gear"></i> Configurações</a></li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <a href="#"><i class="bi bi-box-arrow-right"></i> Sair</a>
+  </div>
+</div>

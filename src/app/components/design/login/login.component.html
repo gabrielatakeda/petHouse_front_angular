@@ -14,12 +14,12 @@
           placeholder="Digite sua senha" />
 
         <div class="text-center mb-3">
-          <a href="#">Esqueceu a senha?</a><br />
+          <a class="tag-a" [routerLink]="['/forgot']">Esqueceu a senha?</a><br />
           <span class="text-black">Não tem uma conta? </span>
-          <a href="#" (click)="togglePanel()">Cadastre-se!</a>
+          <a class="tag-a" (click)="togglePanel()">Cadastre-se!</a>
         </div>
 
-        <button type="button" class="btn btn-purple w-100" (click)="logar()">Acessar</button>
+        <button type="button" class="btn btn-purple w-100 btn-lg" (click)="logar()">Acessar</button>
       </form>
     </div>
   </div>
@@ -60,10 +60,10 @@
 
         <p class="text-center text-black">
           Já tem uma conta?
-          <a href="#" (click)="togglePanel()">Acesse!</a>
+          <a class="tag-a" (click)="togglePanel()">Acesse!</a>
         </p>
 
-        <button mdbRipple type="button" class="btn btn-purple w-100" (click)="save()">
+        <button mdbRipple type="button" class="btn btn-purple w-100 btn-lg" (click)="save()">
           Salvar
         </button>
       </form>
