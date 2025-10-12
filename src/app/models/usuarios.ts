@@ -3,6 +3,7 @@ export class Usuarios { //Define uma classe e ela é usada como molde para repre
   //O operador ! significa que as propriedades serão inicializadas em algum momento
   nome!: string; 
   email!: string;
+  cpf!: string;
   senha!: string;
   usuario!: string;
 }

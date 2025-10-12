@@ -41,6 +41,10 @@
   transition: all 0.6s ease-in-out;
 }
 
+.sign-up-container .nomeSbr {
+  margin-bottom: 1px !important;
+}
+
 /* Quando ativa o modo registro */
 .container.right-panel-active .sign-in-container {
   transform: translateX(-100%);
@@ -181,4 +185,3 @@
 h6{
   color:black;
 }
-

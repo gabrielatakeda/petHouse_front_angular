@@ -32,28 +32,35 @@
 
         <!-- Campo: Nome e Sobrenome -->
         <h6 class="nomeSbr">Nome e sobrenome</h6>
-        <mdb-form-control class="mb-4">
+        <mdb-form-control class="mb-3">
           <input mdbInput type="text" placeholder="Digite seu nome completo" class="form-control" required
             [(ngModel)]="usuario.nome" name="nome" /> <!-- Nome do campo, usado pelo Angular Forms -->
         </mdb-form-control>
 
+        <!-- Campo: CPF -->
+        <h6 class="nomeSbr">CPF</h6>
+        <mdb-form-control class="mb-3">
+          <input mdbInput type="text" placeholder="Digite seu CPF" class="form-control" required
+            [(ngModel)]="usuario.cpf" name="cpf" /> <!-- Nome do campo, usado pelo Angular Forms -->
+        </mdb-form-control>
+
         <!-- Campo: E-mail -->
         <h6 class="nomeSbr">E-mail</h6>
-        <mdb-form-control class="mb-4">
+        <mdb-form-control class="mb-3">
           <input mdbInput type="email" placeholder="Digite o seu e-mail" class="form-control" required
             [(ngModel)]="usuario.email" name="email" />
         </mdb-form-control>
 
         <!-- Campo: Senha -->
         <h6 class="nomeSbr">Senha</h6>
-        <mdb-form-control class="mb-4">
+        <mdb-form-control class="mb-3">
           <input mdbInput type="password" placeholder="Digite sua senha" class="form-control" required minlength="8"
             [(ngModel)]="usuario.senha" name="senha" />
         </mdb-form-control>
 
         <!-- Campo: Usuário -->
         <h6 class="nomeSbr">Usuário</h6>
-        <mdb-form-control class="mb-4">
+        <mdb-form-control class="mb-3">
           <input mdbInput type="text" placeholder="Digite seu usuário" class="form-control" required
             [(ngModel)]="usuario.usuario" name="usuario" />
         </mdb-form-control>

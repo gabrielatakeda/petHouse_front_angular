@@ -1,5 +1,11 @@
 <app-header-admin></app-header-admin>
-<app-sidebar>
-<router-outlet></router-outlet>
-</app-sidebar>
+
+<div class="admin-container">
+  <app-sidebar></app-sidebar>
+
+  <div class="admin-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
 <app-footer></app-footer>

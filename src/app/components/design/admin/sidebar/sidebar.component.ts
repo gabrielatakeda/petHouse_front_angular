@@ -10,9 +10,21 @@ import { RouterModule } from '@angular/router';
 })
 export class SidebarComponent {
 
+  
+
   openMenu: string | null = null;
 
+ // Guarda o estado (aberto ou fechado) de cada menu
+  openMenus: { [key: string]: boolean } = {
+    produtos: false,
+    categorias: false,
+    clientes: false,
+  };
+
   toggleMenu(menu: string): void {
-    this.openMenu = this.openMenu === menu ? null : menu;
+    // Inverte o estado do menu clicado
+    this.openMenus[menu] = !this.openMenus[menu];
   }
+
+  
 }

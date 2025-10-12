@@ -8,8 +8,6 @@ import { Usuarios } from '../../../models/usuarios';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
 
-
-
 @Component({
   selector: 'app-login',
   imports: [MdbFormsModule, FormsModule, RouterModule],
@@ -22,6 +20,7 @@ export class LoginComponent {
   usuario: Usuarios = { //Objeto 'usuario' inicializado vazio, será preenchido pelos campos do formulário através do [(ngModel)]
     nome: '',
     email: '',
+    cpf: '',
     senha: '',
     usuario: ''
   };
@@ -37,7 +36,7 @@ export class LoginComponent {
   togglePanel() {
     this.isRegisterActive = !this.isRegisterActive;
   }
-
+ 
  
   logar() {
     const success = this.authService.login(this.usuarioLogin, this.senhaLogin);
@@ -45,7 +44,7 @@ export class LoginComponent {
     if(success){
       const role = this.authService.getUserRole();
       if(role === 'admin'){
-        this.router.navigate(['/principalAdmin/cadastroProdutos']);
+        this.router.navigate(['/principalAdmin/dashboard']);
       } else if(role === 'user'){
         this.router.navigate(['/principal/home']);
       }
@@ -74,6 +73,4 @@ export class LoginComponent {
     });
   }
 
-  
 }
-

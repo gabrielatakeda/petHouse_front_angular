@@ -13,12 +13,9 @@ export class LoginService {
 
   API = 'http://localhost:8081/usuarios';
 
-
-  
   login(cpfOuEmail: string, senha: string): Observable<Login> {
     return this.http.post<Login>(`${this.API}/login`, { cpfOuEmail, senha });
   }
-
-
+  
   constructor() { }
 }
