@@ -4,18 +4,19 @@
     align-items: center;
     width: 100%;
     padding: 10px 0;
-    background-color: #4A7043;
+    background-color: #f7f7f7;
     color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 60px;
     min-height: 40px;
     position: relative;
     overflow: visible;
+
   
     .logo {
       position: absolute;
       top: -45px;
-      left: 310px;
+      left: 200px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -28,8 +29,8 @@
   
       span {
         font-size: 16px;
-        color: white;
-        margin-left: -35px;
+        color: #333;
+        margin-left: 60px;
         white-space: nowrap;
       }
     }
@@ -45,6 +46,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      box-shadow: 0px 0px 1px 1px #333;
   
       input {
         width: 100%;
@@ -59,7 +61,7 @@
         flex-grow: 1;
   
         &::placeholder {
-          color: #666;
+          color: #3333339a;
           font-family: 'Alexandria', sans-serif;
         }
       }
@@ -69,8 +71,8 @@
         padding: 0 10px;
         border: none;
         border-radius: 0 5px 5px 0;
-        background-color: #F4BF76;
-        color: #333;
+        background-color: #6f42c1;
+        color: #ffffff;
         font-family: 'Alexandria', sans-serif;
         font-size: 14px;
         cursor: pointer;
@@ -78,13 +80,14 @@
         align-items: center;
         justify-content: center;
         transition: background-color 0.5s ease;
+        box-shadow: 0px 0px 0px 2px #333;
   
         i {
           font-size: 16px;
         }
   
         &:hover {
-          background-color: #C39A61;
+          background-color: #6f42f1;
         }
       }
     }
@@ -98,25 +101,25 @@
   
       .cep-button {
         padding: 5px 10px;
-        background-color: #f0f0f0;
+        background-color: #6f42c1;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-family: 'Alexandria', sans-serif;
         font-size: 12px;
-        color: #333;
+        color: #f0f0f0;
         display: flex;
         align-items: center;
         gap: 5px;
         transition: background-color 0.5s ease;
   
         i {
-          color: #333;
+          color: #f0f0f0;
           font-size: 16px;
         }
   
         &:hover {
-          background-color: #C39A61;
+          background-color: #6f42f1;
         }
       }
     }
@@ -124,24 +127,29 @@
     .user-actions {
       display: flex;
       align-items: center;
+      justify-content: center; /* ou space-between */
+      flex-wrap: wrap; /* permite quebrar linha */
+      gap: 8px; /* espaçamento entre os itens */
+      align-items: center;
       gap: 2px;
       padding-right: 20px;
+      color: #dbdbdb;
   
       .account-btn {
         padding: 2px 10px;
-        background-color: #f0f0f0;
+        background-color: #6f42c1;
+        color: #f0f0f0;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-family: 'Alexandria', sans-serif;
         position: absolute;
-        left: 40%;
-        transform: translateX(470px);
-        margin: 0;
+        right: 185px;
+        margin: 25px;
         transition: background-color 0.5s ease;
   
         &:hover {
-          background-color: #C39A61;
+          background-color: #6f42f1;
         }
       }
   
@@ -150,7 +158,8 @@
         position: absolute;
         top: 40px;
         right: 20px;
-        background-color: #ffffff;
+        background-color: #6f42c1;
+        color: #f0f0f0;
         border: 1px solid #ddd;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -172,23 +181,26 @@
   
       .orders-btn {
         padding: 2px 10px;
-        background-color: #f0f0f0;
+        background-color: #6f42c1;
+        color: #f0f0f0;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-family: 'Alexandria', sans-serif;
         position: absolute;
-        right: 370px;
+        right: 500px;
+        margin: 25px;
         transition: background-color 0.5s ease;
   
         &:hover {
-          background-color: #C39A61;
+          background-color: #6f42f1;
         }
       }
   
       .cart-btn {
         padding: 2px 10px;
-        background-color: #f0f0f0;
+        background-color: #6f42c1;
+        color: #f0f0f0;
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -197,88 +209,124 @@
         align-items: center;
         gap: 5px;
         position: absolute;
-        right: 245px;
+        right: 375px;
+        margin: 25px;
         transition: background-color 0.5s ease;
   
         i {
           font-size: 16px;
+          color: #f0f0f0;
         }
   
         &:hover {
-          background-color: #C39A61;
+          background-color: #6f42f1;
         }
       }
     }
   
-    @media (max-width: 768px) {
-      flex-direction: column;
-      height: auto;
-      min-height: 40px;
-      padding: 10px 0;
-  
-      .logo {
-        position: static;
-        top: 0;
-        left: 0;
-        padding-left: 10px;
-  
-        img {
-          height: 50px;
+    @media (max-width: 1024px) {
+      .header-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 0 20px 0;
+    
+        .logo {
+          position: relative;
+          top: 0;
+          left: 0;
+          margin: 0 auto;
+          img {
+            height: 100px;
+          }
+          span {
+            font-size: 14px;
+            margin-left: 10px;
+          }
         }
-  
-        span {
-          display: none;
-        }
-      }
-  
-      .search-bar {
-        max-width: 100%;
-        margin: 0 10px;
-        order: -1;
-        position: static;
-        left: auto;
-        transform: none;
-        width: 100%;
-  
-        input {
-          height: 30px;
-        }
-  
-        .search-button {
-          height: 30px;
-        }
-      }
-  
-      .cep-info {
-        position: static;
-        transform: none;
-        left: auto;
-        margin: 0 0 10px 0;
-        order: 0;
-  
-        .cep-button {
-          width: 100%;
-        }
-      }
-  
-      .user-actions {
-        padding-right: 10px;
-        margin-top: 10px;
-  
-        .account-btn {
-          position: static;
+    
+        .search-bar {
+          position: relative;
+          width: 80%;
+          max-width: 500px;
+          margin: 10px auto;
           transform: none;
+          left: 0;
         }
-  
-        .orders-btn {
-          position: static;
-          right: auto;
+    
+        .cep-info {
+          position: relative;
+          transform: none;
+          left: 0;
+          margin: 10px auto;
+    
+          .cep-button {
+            width: auto;
+          }
         }
-  
-        .cart-btn {
-          position: static;
-          right: auto;
+    
+        .user-actions {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 0;
+          margin-top: 10px;
+    
+          .orders-btn,
+          .cart-btn,
+          .account-btn {
+            position: relative;
+            margin: 0;
+            right: auto;
+          }
         }
       }
     }
+    
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    
+        .logo {
+          img {
+            height: 80px;
+          }
+          span {
+            display: none;
+          }
+        }
+    
+        .search-bar {
+          width: 90%;
+          box-shadow: none;
+          input {
+            font-size: 13px;
+          }
+        }
+    
+        .cep-info {
+          width: 90%;
+          justify-content: center;
+          margin-top: 10px;
+        }
+    
+        .user-actions {
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          margin-top: 15px;
+    
+          .orders-btn,
+          .cart-btn,
+          .account-btn {
+            width: 100%;
+            max-width: 300px;
+          }
+        }
+      }
+    }    
   }

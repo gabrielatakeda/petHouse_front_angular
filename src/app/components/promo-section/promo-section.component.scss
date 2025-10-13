@@ -1,224 +1,358 @@
 .promo-section {
-    background-color: #A9BDB0;
-    padding: 40px 50px;
-    text-align: center;
-    color: #333;
-    max-width: 1200px; 
-    margin: 0 auto;
-    width: 90%; 
-  }
-  
-  .promo-header {
+  background-color: #6e42c11e;
+  padding: 40px 50px;
+  text-align: center;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.promo-carousel {
+  position: relative;
+  margin-bottom: 30px;
+  overflow: hidden;
+
+  .carousel-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
   }
-  
-  .promo-text {
-    text-align: left;
-    flex: 1;
-    margin-left: 130px;
-  
-    h1 {
-      font-size: 46px;
-      font-weight: bold;
-      margin: 0;
-      color: #2E4A3D;
-    }
-  
-    .promo-details {
-      margin: 0 0;
-  
-      p {
-        font-size: 36px;
-        margin: 5px 0;
-        color: #4A7043;
-      }
-  
-      .promo-validity {
-        font-size: 16px;
-        color: #333;
-      }
+
+  .carousel-slides {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    &.animating {
+      transition: transform 0.5s ease-in-out;
     }
   }
-  
-  .promo-image {
-    width: 400px;
-    height: auto;
-    margin-right: 130px;
-  }
-  
-  .promo-content {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .promo-card {
+
+  .promo-slide {
+    min-width: 100%;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
-    width: 350px;
-    text-align: left;
-  
-    img {
-      width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.slide-out {
+      animation: slideOut 0.5s ease-out forwards; 
+    }
+
+    &.slide-in {
+      animation: slideIn 0.5s ease-out forwards; 
+    }
+
+    .promo-slide-image {
+      width: 400px;
       height: auto;
-      border-radius: 5px;
+      margin-right: 20px;
     }
-  
-    p {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-  
-    a {
-      color: #4A7043;
-      text-decoration: none;
-      font-size: 14px;
-  
-      &:hover {
-        text-decoration: underline;
+
+    .promo-slide-text {
+      text-align: left;
+      flex: 1;
+
+      h1 {
+        font-size: 46px;
+        font-weight: bold;
+        margin: 0;
+        color: #2E4A3D;
+      }
+
+      .promo-slide-details {
+        margin: 10px 0;
+
+        p {
+          font-size: 36px;
+          margin: 5px 0;
+          color: #4A7043;
+        }
+
+        a {
+          color: #4A7043;
+          text-decoration: none;
+          font-size: 14px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }
-  
-  .accessory-promo {
-    position: relative;
-    width: 710px;
-    margin-top: 20px;
-    margin-right: 5px;
+
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
   }
-  
-  .accessory-image {
+
+  .carousel-prev {
+    left: 10px;
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+
+    span {
+      width: 12px;
+      height: 12px;
+      background-color: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.active {
+        background-color: #4A7043;
+      }
+
+      &:hover {
+        background-color: #8bc34a;
+      }
+    }
+  }
+}
+
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.promo-content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.promo-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  width: 350px;
+  text-align: left;
+
+  img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
   }
-  
-  .accessory-text {
-    position: absolute;
-    top: 30px;
-    left: 35px;
-    color: #ffffff;
-    font-family: 'Alexandria', sans-serif;
-    font-size: 21px;
+
+  p {
+    font-size: 18px;
     font-weight: bold;
-  
-    p {
-      font-weight: lighter;
-      font-size: 13px;
-      margin-right: 280px;
-      margin-bottom: 260px;
+    margin: 10px 0;
+  }
+
+  a {
+    color: #4A7043;
+    text-decoration: none;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: underline;
     }
-  
-    a {
-      color: #f0f0f0;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: lighter;
-      margin-right: 340px;
-  
-      &:hover {
-        text-decoration: underline;
+  }
+}
+
+.accessory-promo {
+  position: relative;
+  width: 710px;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+.accessory-image {
+  width: 100%;
+  height: auto;
+}
+
+.accessory-text {
+  position: absolute;
+  top: 30px;
+  left: 35px;
+  color: #ffffff;
+  font-family: 'Alexandria', sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+
+  p {
+    font-weight: lighter;
+    font-size: 13px;
+    margin-right: 280px;
+    margin-bottom: 260px;
+  }
+
+  a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: lighter;
+    margin-right: 340px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.toy-card {
+  order: 4;
+  margin-top: 20px;
+  width: 350px;
+  height: 410px;
+}
+
+.toy-card h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2E4A3D;
+  margin-bottom: 10px;
+}
+
+.toy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.toy-item {
+  text-align: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 1px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .promo-section {
+    padding: 20px 10px;
+    width: 95%;
+  }
+
+  .promo-carousel {
+    .promo-slide {
+      flex-direction: column;
+      text-align: center;
+
+      .promo-slide-image {
+        width: 150px;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .promo-slide-text {
+        text-align: center;
+
+        h1 {
+          font-size: 24px;
+        }
+
+        .promo-slide-details p {
+          font-size: 18px;
+        }
+
+        .promo-slide-details a {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .carousel-prev,
+    .carousel-next {
+      top: 70%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+    }
+
+    .carousel-indicators {
+      bottom: 5px;
+      gap: 5px;
+
+      span {
+        width: 10px;
+        height: 10px;
       }
     }
   }
-  
+
+  .promo-card,
+  .accessory-promo,
   .toy-card {
-    order: 4;
-    margin-top: 20px;
-    width: 350px;
-    height: 410px;
+    width: 100%;
+    margin-bottom: 20px;
   }
-  
-  .toy-card h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #2E4A3D;
-    margin-bottom: 10px;
+
+  .accessory-text {
+    top: 5px;
+    left: 5px;
+    font-size: 18px;
   }
-  
+
+  .text-item {
+    margin-bottom: 5px;
+  }
+
   .toy-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 10px;
+    grid-template-columns: 1fr;
   }
-  
-  .toy-item {
-    text-align: center;
-  
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-  
-    p {
-      font-size: 14px;
-      font-weight: normal;
-      margin: 1px 0;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .promo-section {
-      padding: 20px 10px;
-      width: 95%;
-    }
-  
-    .promo-header {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .promo-text {
-      text-align: center;
-      margin-left: 0;
-    }
-  
-    .promo-image {
-      width: 150px;
-      margin-right: 0;
-      margin-top: 20px;
-    }
-  
-    .promo-header h1 {
-      font-size: 24px;
-    }
-  
-    .promo-header .promo-details p {
-      font-size: 18px;
-    }
-  
-    .promo-header .promo-details .promo-validity {
-      font-size: 14px;
-    }
-  
-    .promo-card,
-    .accessory-promo,
-    .toy-card {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-  
-    .accessory-text {
-      top: 5px;
-      left: 5px;
-      font-size: 18px;
-    }
-  
-    .text-item {
-      margin-bottom: 5px;
-    }
-  
-    .toy-grid {
-      grid-template-columns: 1fr; 
-    }
-  }
+}

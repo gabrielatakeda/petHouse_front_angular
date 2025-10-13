@@ -1,13 +1,16 @@
 <nav class="nav-container">
-    <ul class="nav-list">
-      <li><a href="#">Alimentação</a></li>
-      <li><a href="#">Higiene e Cuidados</a></li>
-      <li><a href="#">Acessórios</a></li>
-      <li><a href="#">Espécies</a></li>
-      <li><a href="#">Brinquedos</a></li>
-      <li><a href="#">Produtos para Ambientes</a></li>
-      <li><a href="#">Produtos Sazonais</a></li>
-      <li><a href="#">Saúde e Bem-Estar</a></li>
-      <li><a href="#">Suporte ao Cliente</a></li>
-    </ul>
-  </nav>
+  <ul class="nav-list">
+    <li *ngFor="let category of categories" class="nav-item" [class.has-dropdown]="category.dropdown"
+        (mouseenter)="onMouseEnter(category.name)" (mouseleave)="onMouseLeave(category.name)">
+      <a href="#">
+        {{ category.name }}
+        <span *ngIf="category.dropdown" class="dropdown-icon">▼</span>
+      </a>
+      <ul *ngIf="category.dropdown && category.isOpen" class="dropdown-menu">
+        <li *ngFor="let item of category.dropdownItems">
+          <a href="#">{{ item }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
