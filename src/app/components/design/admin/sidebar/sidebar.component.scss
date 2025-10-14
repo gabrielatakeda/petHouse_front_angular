@@ -49,8 +49,8 @@
   text-decoration: none;
   font-size: 0.95rem;
   border-left: 3px solid transparent;
-  border-radius: 0 20px 20px 0;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .sidebar-menu a i {
@@ -60,12 +60,12 @@
 
 .sidebar-menu a:hover {
   background-color: #e9ecef;
-  color: #0d6efd;
-  border-left: 3px solid #0d6efd;
+  color: #4caf50 ;
+  border-left: 3px solid #4caf50;
 }
 
 .sidebar-menu a:hover i {
-  color: #0d6efd;
+  color: #4caf50;
 }
 
 .sidebar-footer {
