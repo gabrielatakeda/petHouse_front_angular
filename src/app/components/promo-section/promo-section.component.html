@@ -2,13 +2,19 @@
   <div class="promo-carousel">
     <div class="carousel-container">
       <div
-  class="promo-slide"
-  *ngFor="let slide of promoSlides; let i = index"
-  [class.active]="i === currentSlide"
-  [ngStyle]="{ 'background': slide.background }"
->
+        class="promo-slide"
+        *ngFor="let slide of promoSlides; let i = index"
+        [class.active]="i === currentSlide"
+        [ngStyle]="{ 'background': slide.background }"
+      >
         <div class="slide-content">
-          <img [src]="slide.image" [alt]="slide.title" />
+          <div class="image-container">
+            <img [src]="slide.image" [alt]="slide.title" />
+            <div class="mini-card">
+              <h3>Promoção</h3>
+              <p>Somente hoje!</p>
+            </div>
+          </div>
           <div class="text-content">
             <h1>{{ slide.title }}</h1>
             <p>{{ slide.subtitle }}</p>
