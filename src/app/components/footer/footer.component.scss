@@ -1,51 +1,137 @@
-.footer-container {
-    background-color: #333;
-    color: #ffffff;
-    padding: 50px 50px;
+.footer {
+  background-color: #1f1f1f;
+  color: #ddd;
+  padding: 30px 40px 10px; /* mais preenchimento nas laterais */
+  font-family: 'Alexandria', sans-serif;
+  font-size: 13px;
+  width: 100%;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+
+
+.footer-section h4 {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 4px;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #66A62E;
+}
+
+.footer-section p {
+  margin: 3px 0;
+}
+
+/* ===== Marca ===== */
+.brand h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.brand .pet {
+  color: #8554df;
+}
+
+.brand .house {
+  color: #66A62E;
+}
+
+/* ===== Ícones ===== */
+.social-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.social-icons a {
+  background-color: #2a2a2a;
+  color: #ccc;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #66A62E;
+  color: #fff;
+}
+
+/* ===== Rodapé inferior ===== */
+.footer-bottom {
+  border-top: 1px solid #333;
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.footer-bottom p {
+  margin-bottom: 3px;
+}
+
+.footer-bottom a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 4px;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: #66A62E;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
     text-align: center;
-    border-top: 1px solid #284135;
-    font-family: 'Alexandria', sans-serif;
-    font-size: 12px;
-    max-height: 200px; 
   }
-  
-  .footer-links {
-    margin-bottom: 20px;
+
+  .social-icons {
+    justify-content: center;
   }
-  
-  .footer-links a {
-    color: #ddd;
-    text-decoration: none;
-    margin: 0 15px; 
-    transition: color 0.5s ease;
-  }
-  
-  .footer-links a:hover {
-    color: #8554df ;
-  }
-  
-  .footer-container p {
-    margin: 5px 0;
-  }
-  
-  .footer-container a[href^="mailto"] {
-    color: #F4BF76;
-    text-decoration: none;
-    transition: color 0.5s ease;
-  }
-  
-  .footer-container a[href^="mailto"]:hover {
-    color: #C39A61;
-  }
-  
-  @media (max-width: 768px) {
-    .footer-container {
-      padding: 30px 10px; 
-      min-height: 150px; 
-    }
-  
-    .footer-links a {
-      display: block;
-      margin: 10px 0;
-    }
-  }
+}

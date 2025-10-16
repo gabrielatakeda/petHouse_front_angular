@@ -1,77 +1,31 @@
 <section class="promo-section">
   <div class="promo-carousel">
     <div class="carousel-container">
-      <div class="carousel-slides" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'" [class.animating]="isAnimating">
-        <div class="promo-slide" *ngFor="let slide of promoSlides; let i = index" 
-             [ngClass]="{
-               'active': i === currentSlide,
-               'slide-out': i === (currentSlide - 1 + promoSlides.length) % promoSlides.length && isAnimating,
-               'slide-in': i === currentSlide && isAnimating
-             }">
-          <img [src]="slide.image" [alt]="slide.title" class="promo-slide-image" />
-          <div class="promo-slide-text">
+      <div
+  class="promo-slide"
+  *ngFor="let slide of promoSlides; let i = index"
+  [class.active]="i === currentSlide"
+  [ngStyle]="{ 'background': slide.background }"
+>
+        <div class="slide-content">
+          <img [src]="slide.image" [alt]="slide.title" />
+          <div class="text-content">
             <h1>{{ slide.title }}</h1>
-            <div class="promo-slide-details">
-              <p>{{ slide.subtitle }}</p>
-              <a [href]="slide.link">Ver mais</a>
-            </div>
+            <p>{{ slide.subtitle }}</p>
           </div>
         </div>
       </div>
     </div>
-    <button class="carousel-prev" (click)="prevSlide()">❮</button>
-    <button class="carousel-next" (click)="nextSlide()">❯</button>
+
+    <button class="carousel-prev" type="button" (click)="prevSlide()">❮</button>
+    <button class="carousel-next" type="button" (click)="nextSlide()">❯</button>
+
     <div class="carousel-indicators">
-      <span *ngFor="let slide of promoSlides; let i = index" 
-            [ngClass]="{'active': i === currentSlide}" 
-            (click)="goToSlide(i)"></span>
-    </div>
-  </div>
-  <div class="promo-content">
-    <div class="promo-card">
-      <img src="assets/promo-dog.png" alt="Promoção para Cães" />
-      <p>Até 15% OFF em rações para cães | Lorem ipsum dolor sit amet</p>
-      <a href="#">Ver mais</a>
-    </div>
-    <div class="promo-card">
-      <img src="assets/promo-cat.png" alt="Promoção para Gatos" />
-      <p>Até 15% OFF em rações para gatos | Lorem ipsum dolor sit</p>
-      <a href="#">Ver mais</a>
-    </div>
-    <div class="promo-card">
-      <img src="assets/promo-bowls.png" alt="Promoção de Tigelas" />
-      <p>Potes de rações para pets a partir de R$29,99 | Lorem ipsum dolor</p>
-      <a href="#">Ver mais</a>
-    </div>
-    <div class="accessory-promo">
-      <img src="assets/promo-cat-accessories.png" alt="Promoção de Acessórios para Gatos" class="accessory-image" />
-      <div class="accessory-text">
-        <span class="text-item">Acessórios e roupas para cães e gatos</span>
-        <p>A partir de R$15,99</p>
-        <a href="#">Ver mais</a>
-      </div>
-    </div>
-    <div class="promo-card toy-card">
-      <h2>Brinquedos para o seu bichinho</h2>
-      <div class="toy-grid">
-        <div class="toy-item">
-          <img src="assets/toy-ball.png" alt="Bola de Borracha" />
-          <p>Bolas de Borracha</p>
-        </div>
-        <div class="toy-item">
-          <img src="assets/toy-feather.png" alt="Varinhas com Penas" />
-          <p>Varinhas com Penas</p>
-        </div>
-        <div class="toy-item">
-          <img src="assets/toy-bell.png" alt="Bolas com Guizo" />
-          <p>Bolas com Guizo</p>
-        </div>
-        <div class="toy-item">
-          <img src="assets/toy-rope.png" alt="Cordas de Algodão" />
-          <p>Cordas de Algodão</p>
-        </div>
-      </div>
-      <a href="#">Ver mais</a>
+      <span
+        *ngFor="let slide of promoSlides; let i = index"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+      ></span>
     </div>
   </div>
 </section>

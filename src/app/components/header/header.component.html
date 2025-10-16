@@ -1,13 +1,7 @@
 <header class="header-container">
   <div class="logo">
     <img src="/logo.png" alt="PetHouse Logo" />
-    <span>Olá, {{ userName }}</span>  
-  </div>
-
-  <div class="cep-info">
-    <button class="cep-button">
-      <i class="fas fa-map-marker-alt"></i> Informar CEP
-    </button>
+    <span>Olá, {{ userName }}</span>
   </div>
 
   <div class="search-bar">
@@ -18,24 +12,27 @@
   </div>
 
   <div class="user-actions">
-    <!-- Ícone de caixa para "Meus Pedidos" -->
+    <button class="cep-button">
+      <i class="fas fa-map-marker-alt"></i> Informar CEP
+    </button>
+
     <button class="orders-btn">
       <i class="fas fa-box"></i> Meus Pedidos
     </button>
 
-    <!-- Ícone de carrinho (já existia) -->
     <button class="cart-btn">
       <i class="fas fa-shopping-cart"></i> Carrinho
     </button>
 
-    <!-- Ícone de perfil para "Entrar | Cadastrar" -->
     <button class="account-btn" (click)="goToLogin()">
       <i class="fas fa-user"></i> Entrar | Cadastrar
     </button>
 
-    <div class="account-menu" *ngIf="isAccountMenuOpen">
-      <a href="#" (click)="closeAccountMenu()">Configurações</a>
-      <a href="#" (click)="closeAccountMenu()">Sair</a>
-    </div>
+    @if (isAccountMenuOpen) {
+      <div class="account-menu">
+        <a href="#" (click)="closeAccountMenu()">Configurações</a>
+        <a href="#" (click)="closeAccountMenu()">Sair</a>
+      </div>
+    }
   </div>
 </header>

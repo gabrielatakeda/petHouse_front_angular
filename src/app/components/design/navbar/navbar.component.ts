@@ -29,35 +29,17 @@ export class NavbarComponent {
       dropdownItems: ['Roupinhas', 'Guias', 'Coleiras', 'Camas', 'Comedouros', 'Bebedouros'],
     },
     {
-      name: 'Transporte',
-      dropdown: false,
-      isOpen: false,
-      dropdownItems: [],
-    },
-    {
       name: 'Brinquedos',
       dropdown: true,
       isOpen: false,
       dropdownItems: ['Bolinhas', 'Pelúcias', 'Mordedores', 'Arranhadores', 'Interativos'],
     },
     {
-      name: 'Casas e tocas',
-      dropdown: false,
-      isOpen: false,
-      dropdownItems: [],
-    },
-    {
       name: 'Saúde e Bem-Estar',
       dropdown: true,
       isOpen: false,
       dropdownItems: ['Antipulgas', 'Vermífugos', 'Vitaminas', 'Medicamentos'],
-    },
-    {
-      name: 'Suporte ao Cliente',
-      dropdown: false,
-      isOpen: false,
-      dropdownItems: [],
-    },
+    }
   ];
 
   // Função para abrir o dropdown ao passar o mouse

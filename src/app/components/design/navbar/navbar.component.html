@@ -1,16 +1,32 @@
 <nav class="nav-container">
   <ul class="nav-list">
-    <li *ngFor="let category of categories" class="nav-item" [class.has-dropdown]="category.dropdown"
-        (mouseenter)="onMouseEnter(category.name)" (mouseleave)="onMouseLeave(category.name)">
-      <a href="#">
-        {{ category.name }}
-        <span *ngIf="category.dropdown" class="dropdown-icon">▼</span>
-      </a>
-      <ul *ngIf="category.dropdown && category.isOpen" class="dropdown-menu">
-        <li *ngFor="let item of category.dropdownItems">
-          <a href="#">{{ item }}</a>
-        </li>
-      </ul>
-    </li>
+    @for (category of categories; track category.name) {
+      <li class="nav-item" 
+          [class.has-dropdown]="category.dropdown"
+          (mouseenter)="onMouseEnter(category.name)" 
+          (mouseleave)="onMouseLeave(category.name)">
+
+        <a href="#">
+          {{ category.name }}
+          @if (category.dropdown) {
+            <i class="bi dropdown-icon" 
+               [ngClass]="{
+                 'bi-chevron-down': category.isOpen,
+                 'bi-chevron-right': !category.isOpen
+               }"></i>
+          }
+        </a>
+
+        @if (category.dropdown && category.isOpen) {
+          <ul class="dropdown-menu">
+            @for (item of category.dropdownItems; track item) {
+              <li>
+                <a href="#">{{ item }}</a>
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    }
   </ul>
 </nav>
