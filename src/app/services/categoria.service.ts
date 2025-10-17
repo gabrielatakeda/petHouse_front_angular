@@ -20,9 +20,9 @@ export class CategoriaService {
     return this.http.post<Categoria>(`${this.apiUrl}/save`, categoria);
   }
 
- criarSubcategoria(slugOuId: string | number, subcategoria: Categoria): Observable<Categoria> {
-    return this.http.post<Categoria>(`${this.apiUrl}/${slugOuId}/subcategorias`, subcategoria);
-  }
+  criarSubcategoria(slugPai: string, categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(`${this.apiUrl}/${slugPai}/subcategorias`, categoria);
+}
 
   update(id: number, categoria: Categoria): Observable<Categoria> {
     return this.http.put<Categoria>(`${this.apiUrl}/update/${id}`, categoria);

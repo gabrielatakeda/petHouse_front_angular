@@ -109,9 +109,8 @@ salvarSubcategoria() {
   if (this.subcategoriaForm.invalid) return;
 
   const nome = this.subcategoriaForm.value.nomeSubcategoria?.trim();
-  const slugPai = this.subcategoriaForm.value.categoriaPaiSlug; // pegar slug da categoria pai
+  const slugPai = this.subcategoriaForm.value.categoriaPai; // pegar slug da categoria pai
 
- 
 
   if (!nome) {
     alert('Digite o nome da subcategoria!');

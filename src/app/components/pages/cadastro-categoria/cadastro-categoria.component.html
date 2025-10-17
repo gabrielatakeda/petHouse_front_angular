@@ -38,8 +38,8 @@
         <select id="categoriaPai" formControlName="categoriaPai" class="form-control" required>
           <option value="">Selecione...</option>
           
-          @for (cat of categoriasPai; track cat.id) {
-            <option [value]="cat.id">{{ cat.nome }}</option>
+          @for (cat of categoriasPai; track cat.slug) {
+            <option [value]="cat.slug">{{ cat.nome }}</option>
           }
         </select>
 
