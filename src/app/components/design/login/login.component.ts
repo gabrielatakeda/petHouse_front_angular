@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
 import { UsuarioService } from '../../../services/usuario.service';
-import { Usuarios } from '../../../models/usuarios';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
+import { Usuario } from '../../../models/usuario';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent {
   isRegisterActive = false;
 
-  usuario: Usuarios = { //Objeto 'usuario' inicializado vazio, será preenchido pelos campos do formulário através do [(ngModel)]
+  usuario: Usuario = { //Objeto 'usuario' inicializado vazio, será preenchido pelos campos do formulário através do [(ngModel)]
     nome: '',
     email: '',
     cpf: '',

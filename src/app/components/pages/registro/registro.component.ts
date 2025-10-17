@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
-import { Usuarios } from '../../../models/usuarios';
+import { Usuarios } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({

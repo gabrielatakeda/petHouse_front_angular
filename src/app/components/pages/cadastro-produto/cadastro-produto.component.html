@@ -37,18 +37,29 @@
                 [(ngModel)]="produto.quantidade" name="quantidade" />
             </mdb-form-control>
 
-            <!-- Categoria -->
             <h6 class="nomeSbr">Categoria</h6>
             <div class="input-group mb-3">
-              <select class="form-control" [(ngModel)]="produto.categoria" name="categoria" required>
-                <!--PLACEHOLDER-->
-                <option [ngValue]="null" disabled>Escolha uma Categoria</option>
-
+              <select class="form-control" [(ngModel)]="categoriaSelecionadaId" name="categoria" required
+                (change)="onCategoriaChange()">
+                <option [ngValue]="null" disabled selected>Escolha uma Categoria</option>
                 @for (categoria of categorias; track $index) {
-                <option [ngValue]="categoria">{{ categoria.nome }}</option>
+                <option [ngValue]="categoria.id">{{ categoria.nome }}</option>
                 }
               </select>
             </div>
+
+            @if (subcategoriasFiltradas.length > 0) {
+            <h6 class="nomeSbr">Subcategoria</h6>
+            <div class="input-group mb-3">
+              <select class="form-control" [(ngModel)]="produto.categoria" name="subcategoria" required>
+                <option [ngValue]="null" disabled selected>Escolha uma Subcategoria</option>
+                @for (sub of subcategoriasFiltradas; track $index) {
+                <option [ngValue]="sub">{{ sub.nome }}</option>
+                }
+              </select>
+            </div>
+            }
+
 
             <!-- Imagem -->
             <h6 class="nomeSbr">Imagem</h6>
@@ -78,7 +89,7 @@
       <div class="card h-100 card-Produto ">
         <img [src]="produto.urlFoto" class="card-img-top" alt="{{ produto.nome }}">
         <div class="card-body">
-          <h5 class="card-title">{{ produto.nome }}</h5>
+          <h5 class="card-title">{{ produto.categoria }} </h5>
           <p class="card-text">{{ produto.descricao }}</p>
 
           <div class="d-flex justify-content-between align-items-center">

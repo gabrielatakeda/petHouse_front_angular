@@ -15,7 +15,7 @@ export class ProdutoService {
 
   constructor() { }
 
-  URL_API = 'http://localhost:8080/api/produtos';
+  URL_API = 'http://localhost:8080/produtos';
   private http = inject(HttpClient); //Injeção manual do HttpClient para usar nas requisições
 
   findByName(nome: string){

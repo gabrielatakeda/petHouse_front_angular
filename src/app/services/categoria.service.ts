@@ -8,7 +8,7 @@ import { Categoria } from '../models/categoria';
 })
 export class CategoriaService {
 
-  private apiUrl = 'http://localhost:8080/api/ecommerce';
+  private apiUrl = 'http://localhost:8080/categorias';
 
   constructor(private http: HttpClient) { }
 
@@ -27,4 +27,15 @@ export class CategoriaService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
+
+
+findCategoriasPai(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(`${this.apiUrl}/pai`);
+  }
+
+  findSubcategorias(id:number): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(`${this.apiUrl}/${id}/subcategorias`);
+  }
+
+
 };

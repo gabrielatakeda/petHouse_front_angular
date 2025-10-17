@@ -15,29 +15,45 @@ import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
   styleUrls: ['./cadastro-produto.component.scss']
 })
 export class CadastroProdutoComponent implements OnInit {
-  produto: Produto = {
+produto: Produto = {
     nome: '',
     descricao: '',
     precoVenda: null,
     quantidade: null,
-    categoria: null,
+    categoria: {id: 0, nome: '', produtos: [], subcategorias: [] },
     urlFoto: ''
   };
 
   produtos: Produto[] = [];
-
   categorias: Categoria[] = [];
+
+  categoriaSelecionadaId: number | null = null;
+  subcategoriasFiltradas: Categoria[] = [];
   selectedFile?: File;
 
   constructor(
     private produtoService: ProdutoService,
     private categoriaService: CategoriaService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.findAll();
+    this.findCategoriasPai();
+    this.findAllProdutos();
   }
 
+  onCategoriaChange() {
+    if (this.categoriaSelecionadaId) {
+      this.categoriaService.findSubcategorias(this.categoriaSelecionadaId).subscribe({
+        next: (res) => {
+          this.subcategoriasFiltradas = res;
+          this.produto.categoria = { id: 0,nome: '', produtos: [], subcategorias: [] };
+        },
+        error: (err) => console.error('Erro ao carregar subcategorias', err)
+      });
+    } else {
+      this.subcategoriasFiltradas = [];
+    }
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -46,37 +62,37 @@ export class CadastroProdutoComponent implements OnInit {
   onSubmit() {
     this.produtoService.save(this.produto, this.selectedFile).subscribe({
       next: () => {
-        //Caso o cadastro seja bem-sucedido
-        Swal.fire({ //Exibe um alerta de sucesso
+        Swal.fire({
           title: 'Produto cadastrado com sucesso!',
           icon: 'success',
-          confirmButtonColor: '#28a745', //Cor verde no botão
+          confirmButtonColor: '#28a745',
           confirmButtonText: 'OK'
         });
-        this.produto = { nome: '', descricao: '', precoVenda: 0, quantidade: 0, categoria: { nome: '' }, urlFoto: '' };
-        this.selectedFile = undefined;
-        this.findAll(); //Atualiza a lista de produtos
+        this.findAllProdutos();
       },
-      error: (err: any) => { //Caso ocorra um erro no cadastro
-        Swal.fire({ //Exibe um alerta de erro
-          title: 'Não foi possível cadastrar o usuário. Tente novamente.',
+      error: () => {
+        Swal.fire({
+          title: 'Não foi possível cadastrar o produto. Tente novamente.',
           icon: 'error',
-          confirmButtonColor: '#d33', //Cor vermelha no botão
+          confirmButtonColor: '#d33',
           confirmButtonText: 'Fechar'
         });
       }
     });
   }
 
-  findAll() {
-    this.categoriaService.findAll().subscribe({
-      next: (resposta) => this.categorias = resposta,
-      error: (err) => console.error('Erro ao carregar categorias', err)
+  findCategoriasPai() {
+    this.categoriaService.findCategoriasPai().subscribe({
+      next: (res) => this.categorias = res,
+      error: (err) => console.error('Erro ao carregar categorias pai', err)
     });
+  }
 
+  findAllProdutos() {
     this.produtoService.findAll().subscribe({
-      next: (resposta) => this.produtos = resposta,
+      next: (res) => this.produtos = res,
       error: (err) => console.error('Erro ao carregar produtos', err)
     });
   }
+
 }

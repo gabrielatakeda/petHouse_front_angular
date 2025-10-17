@@ -1,1 +1,75 @@
-<p>cadastro-categoria works!</p>
+<!-- <div class="card p-3">
+  <h5>Cadastro de Subcategoria</h5>
+
+  <form (ngSubmit)="cadastrarSubcategoria()" #formSubcategoria="ngForm">
+    
+    Selecionar categoria pai
+    <div class="mb-3">
+      <label for="categoria" class="form-label">Categoria</label>
+      <select class="form-control" id="categoria" [(ngModel)]="novaSubcategoria.categoriaId" name="categoria" required>
+        <option [ngValue]="null" disabled selected>Escolha uma Categoria</option>
+        <option *ngFor="let cat of categorias" [ngValue]="cat.id">{{ cat.nome }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="subcategoria" class="form-label">Nome da Subcategoria</label>
+      <input type="text" class="form-control" id="subcategoria" [(ngModel)]="novaSubcategoria.nome" name="subcategoria" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="formSubcategoria.invalid">Cadastrar</button>
+
+  </form>
+</div>
+ -->
+            
+
+<div class="top-products">
+    <h3>Categorias</h3>
+    <table>
+        <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Subcategorias</th>
+                </tr>
+        </thead>
+
+        <tbody>
+            @for (categoria of categoriasPai; track $index) {
+            <tr>
+                <td>{{ categoria.id }}</td>
+                <td>{{ categoria.nome }}</td>
+                <td>
+                    <button class="btn-subcategoria" (click)="findSubcategorias(categoria.id)">Subcategorias</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@if (subcategorias.length > 0) {
+<div class="top-products">
+    <h3>Subcategorias da categoria {{ categoriaSelecionadaId }}</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (sub of subcategorias; track $index) {
+            <tr>
+                <td>{{ sub.id }}</td>
+                <td>{{ sub.nome }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
