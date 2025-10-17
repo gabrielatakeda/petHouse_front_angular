@@ -1,28 +1,56 @@
-<!-- <div class="card p-3">
-  <h5>Cadastro de Subcategoria</h5>
+<div class="container">
+  <h2>Gerenciamento de Categorias</h2>
 
-  <form (ngSubmit)="cadastrarSubcategoria()" #formSubcategoria="ngForm">
-    
-    Selecionar categoria pai
-    <div class="mb-3">
-      <label for="categoria" class="form-label">Categoria</label>
-      <select class="form-control" id="categoria" [(ngModel)]="novaSubcategoria.categoriaId" name="categoria" required>
-        <option [ngValue]="null" disabled selected>Escolha uma Categoria</option>
-        <option *ngFor="let cat of categorias" [ngValue]="cat.id">{{ cat.nome }}</option>
+  <!-- Botão para exibir opções -->
+  <button class="btn-subcategoria" (click)="onCadastrarClick()">Cadastrar</button>
+
+  <!-- Exibe opções de cadastro -->
+  @if (showCadastro()) {
+    <div style="margin-top: 1rem;">
+      <label for="tipoCadastro">Escolha o tipo de cadastro:</label>
+      <select id="tipoCadastro" class="form-control" (change)="onTipoChange($event)">
+        <option value="">Selecione...</option>
+        <option value="categoria">Categoria</option>
+        <option value="subcategoria">Subcategoria</option>
       </select>
     </div>
+  }
 
-    <div class="mb-3">
-      <label for="subcategoria" class="form-label">Nome da Subcategoria</label>
-      <input type="text" class="form-control" id="subcategoria" [(ngModel)]="novaSubcategoria.nome" name="subcategoria" required>
+  <!-- Formulário de Categoria -->
+  @if (tipoCadastro() === 'categoria') {
+    <div class="card mt-3 p-3">
+      <h4>Cadastrar Categoria</h4>
+      <form [formGroup]="categoriaForm" (ngSubmit)="salvarCategoria()">
+        <label for="nome">Nome da Categoria:</label>
+        <input id="nome" type="text" formControlName="nome" class="form-control" required>
+
+        <button type="submit" class="btn-subcategoria mt-3">Salvar Categoria</button>
+      </form>
     </div>
+  }
 
-    <button type="submit" class="btn btn-primary" [disabled]="formSubcategoria.invalid">Cadastrar</button>
+  <!-- Formulário de Subcategoria -->
+  @if (tipoCadastro() === 'subcategoria') {
+    <div class="card mt-3 p-3">
+      <h4>Cadastrar Subcategoria</h4>
+      <form [formGroup]="subcategoriaForm" (ngSubmit)="salvarSubcategoria()">
+        <label for="categoriaPai">Categoria Pai:</label>
+        <select id="categoriaPai" formControlName="categoriaPai" class="form-control" required>
+          <option value="">Selecione...</option>
+          
+          @for (cat of categoriasPai; track cat.id) {
+            <option [value]="cat.id">{{ cat.nome }}</option>
+          }
+        </select>
 
-  </form>
+        <label for="nomeSubcategoria" class="mt-2">Nome da Subcategoria:</label>
+        <input id="nomeSubcategoria" type="text" formControlName="nomeSubcategoria" class="form-control" required>
+
+        <button type="submit" class="btn-subcategoria mt-3">Salvar Subcategoria</button>
+      </form>
+    </div>
+  }
 </div>
- -->
-            
 
 <div class="top-products">
     <h3>Categorias</h3>
@@ -41,7 +69,7 @@
                 <td>{{ categoria.id }}</td>
                 <td>{{ categoria.nome }}</td>
                 <td>
-                    <button class="btn-subcategoria" (click)="findSubcategorias(categoria.id)">Subcategorias</button>
+                    <button class="btn-subcategoria" (click)="findSubcategorias(categoria.id!)">Subcategorias</button>
                 </td>
             </tr>
             }
