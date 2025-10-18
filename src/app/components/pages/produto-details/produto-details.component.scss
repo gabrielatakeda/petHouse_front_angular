@@ -13,13 +13,67 @@
 
 
 .botao:hover{
-  background-color: #8a2be2 ;
+  background-color: #832ad7 ;
   border-color: #6f42c1;
   color: white;
   font-weight: 500;
 }
 
-.botao-fin{
-  border-color: #6f42c1 !important;
+.botao-fin {
+  border: 2px solid #9541e3 !important;
   color: #6f42c1 !important;
+  background-color: white !important; /* deixa o fundo branco */
+  font-weight: 600;
+}
+
+.botao-fin:hover {
+  background-color: #9541e3 !important;
+  color: white !important;
+}
+
+//BOTAO DE QUANTIDADE 
+/* Controle de quantidade */
+.quantidade-container {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid #4caf50;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #faf7ff;
+  transition: 0.2s ease-in-out;
+}
+
+.quantidade-container:hover {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(138, 43, 226, 0.3);
+}
+
+.quantidade-btn {
+  background: none;
+  border: none;
+  color: #4caf50;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.quantidade-btn:hover {
+  background-color: rgba(138, 43, 226, 0.1);
+}
+
+.quantidade-input {
+  width: 50px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  outline: none;
 }

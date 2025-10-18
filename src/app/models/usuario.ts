@@ -9,7 +9,7 @@ export class Usuarios { //Define uma classe e ela é usada como molde para repre
   cpf!: string;
   senha!: string;
   user!: string;
-  enderecos!: Endereco[];
+  enderecos?: Endereco[];
   
       constructor(id: number, nome: string, email: string, senha: string, user: string, enderecos: Endereco[]) {
           this.id = id;

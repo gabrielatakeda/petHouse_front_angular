@@ -25,6 +25,7 @@ export class RegistroComponent {
 
   constructor(private usuarioServices: UsuarioService) {}
 
+
   save() {
     this.usuarioServices.save(this.usuarios).subscribe({
       next: () => {

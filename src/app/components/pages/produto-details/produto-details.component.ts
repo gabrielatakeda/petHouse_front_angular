@@ -33,4 +33,17 @@ export class ProdutoDetailsComponent {
       }
     });
    }
+
+   quantidade: number = 1;
+
+aumentarQuantidade() {
+  this.quantidade++;
+}
+
+diminuirQuantidade() {
+  if (this.quantidade > 1) {
+    this.quantidade--;
+  }
+}
+
 } 

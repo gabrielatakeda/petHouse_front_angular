@@ -1,0 +1,29 @@
+
+.card-Produto {
+  transition: all 0.3s ease; /* Aplica a suavização no estado normal */
+  cursor: pointer;
+}
+
+.card-Produto:hover {
+  transform: translateY(-5px); /* Move o card para cima */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+}
+
+.circular-btn {
+  width: 40px;          /* largura */
+  height: 40px;         /* altura igual à largura */
+  border-radius: 50%;   /* deixa circular */
+  display: flex;        
+  align-items: center;  /* centraliza ícone vertical */
+  justify-content: center; /* centraliza ícone horizontal */
+  border: none;
+  background-color: #6f42c1;
+  padding: 0;           /* remove padding interno extra */
+  cursor: pointer;
+}
+
+
+.circular-btn:hover {
+  transform: translateY(-2px); /* Move o card para cima */
+  background-color: #5e36a7;
+}

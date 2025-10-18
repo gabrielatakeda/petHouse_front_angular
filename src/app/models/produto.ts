@@ -1,6 +1,7 @@
 import { Categoria } from "./categoria";
 
 export class Produto {
+     id?: number;   
     nome!: string;
     descricao!: string;
     precoVenda: number | null = null;  // pode ser número ou null // pode ser número ou null
