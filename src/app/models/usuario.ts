@@ -6,6 +6,7 @@ export class Usuarios { //Define uma classe e ela é usada como molde para repre
   id!: number;
   nome!: string; 
   email!: string;
+  cpf!: string;
   senha!: string;
   user!: string;
   enderecos!: Endereco[];

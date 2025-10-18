@@ -1,10 +1,10 @@
 import { Produto } from "./produto";
 
 export class Categoria {
-
-    id!: number;
+    id?: number;
     nome!: string;
-    produtos!: Produto[];
-    subcategorias!: Categoria[];
-
+    produtos?: Produto[];
+    slug?: string;
+    subcategorias?: Categoria[];
+    categoriaPai?: { id: number } | null;
 }

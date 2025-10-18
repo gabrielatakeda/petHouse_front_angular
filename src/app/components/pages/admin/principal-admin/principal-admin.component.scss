@@ -1,0 +1,30 @@
+/* ===== CONTAINER GERAL ===== */
+.admin-container {
+  display: flex;
+  min-height: calc(100vh - 100px); /* 60 header + 40 footer */
+  margin-top: 60px; /* deixa espaço pro header */
+  background: #f8f9fa; /* mesmo fundo da sidebar */
+}
+
+/* ===== SIDEBAR ===== */
+app-sidebar {
+  width: 240px;
+  background: #f8f9fa; /* igual ao container */
+  /* Remover a borda lateral */
+  border-right: none;
+  position: fixed;
+  top: 60px; /* começa abaixo do header */
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 900;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.admin-content {
+  flex: 1;
+  margin-left: 250px; /* espaço para a sidebar */
+  padding: 20px;
+  min-height: calc(100vh - 100px);
+  background: #f8f9fa; /* mantém o mesmo fundo */
+}

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Usuarios } from '../../models/usuarios';
 import { CommonModule } from '@angular/common';
+import { Usuarios } from '../../models/usuario';
 
 @Component({
   selector: 'app-seguranca',

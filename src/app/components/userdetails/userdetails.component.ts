@@ -1,10 +1,10 @@
 import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Router, RouterLink } from '@angular/router';
-import { Usuarios } from '../../models/usuarios';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormsModule } from '@angular/forms';
+import { Usuarios } from '../../models/usuario';
 
 @Component({
   selector: 'app-userdetails',

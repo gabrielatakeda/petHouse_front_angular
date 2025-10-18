@@ -1,22 +1,187 @@
-.btn-musgo {
-  background-color: #66A62E; /* verde musgo vivo */
-  border-color: #66A62E;
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+  max-width: 100%;
+  min-height: 550px;
+  margin: 50px auto;
+  display: flex;
+}
+
+/* FORM CONTAINERS */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  width: 50%;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+  transition: all 0.6s ease-in-out;
+}
+
+/* REGISTRO (fixo à direita) */
+.sign-up-container {
+  right: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-up-container .nomeSbr {
+  margin-bottom: 1px !important;
+}
+
+/* Quando ativa o modo registro */
+.container.right-panel-active .sign-in-container {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+  opacity: 1;
+  z-index: 5;
+}
+
+/* OVERLAY (fundo roxo) */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: linear-gradient(135deg, #c19ce9 0%, #8a2be2 100%);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+/* Painéis internos do overlay */
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 40px;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+/* Botões */
+.overlay-panel .btn-outline-light {
+  background: #f7f7f7; 
+  border: 2px solid #fff;
+  color: #8a2be2;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  transition: all 0.4s ease;
+}
+
+.overlay-panel .btn-outline-light:hover {
+  color: #8a2be2;
+  border-color: #9a73dd;
+  background: #f3e8ff;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+/* Etapa intermediária: login saindo da tela */
+.container.hide-login .sign-in-container {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  z-index: 1;
+}
+
+/* Registro fixo — não se move, apenas aparece */
+.container.hide-login .sign-up-container {
+  right: 0;
+  transform: none;
+  opacity: 1;
+  z-index: 5;
+}
+
+.btn-purple{
+  background-color: #9541e3 ;
+  border-color: #6f42c1;
   color: white;
   font-weight: 500;
 }
 
-.btn-musgo:hover {
-  background-color: #558B24; /* mais escuro no hover */
-  border-color: #4a7a1f;
+.btn-purple:hover{
+ background-color: #8a2be2 ;
+  border-color: #6f42c1;
+  color: white;
+  font-weight: 500;
 }
 
-h3, h5, input,p{
-  font-family: 'Chewy', cursive;
-  color: #000000;
+.tag-a{
+  color:#66A62E;
+  cursor: pointer;
+
 }
 
-a{
-  color: #6f42c1;
-    cursor: pointer;        /* mostra a mãozinha */
+.overlay-img {
+  width: 180px;     
+  margin-top: 50px; 
+  margin-bottom: 60px;
 }
 
+h6{
+  color:black;
+}

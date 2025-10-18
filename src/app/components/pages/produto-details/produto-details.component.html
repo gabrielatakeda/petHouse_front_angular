@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="row g-4">
+    <!-- Card principal à esquerda -->
+   <div class="col-lg-8">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="row">
+        <!-- Coluna da Imagem -->
+        <div class="col-md-5 text-center">
+          <div class="card h-100 card-Produto">
+            <img [src]="produto.urlFoto" class="card-img-top img-fluid" alt="Produto">
+          </div>
+        </div>
+
+        <!-- Coluna das Informações -->
+        <div class="col-md-7 align-items-start">
+          <h1 class="h4 fw-bold text-black mb-2">{{ produto.nome }}</h1>
+          <h5 class="text-secondary mb-3">- {{ produto.categoria?.nome }}</h5>
+          <hr>
+          <p class="text-muted mb-3">{{ produto.descricao }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Card lateral à direita -->
+      <div class="col-lg-4">
+        <div class="card card-direita">
+          <div class="card-body">
+            <h3 class="fw-bold preco mb-4">R$ {{ produto.precoVenda }}</h3>
+            <div class="d-flex align-items-center justify-content-between my-3">
+              <span class="fw-semibold">Quantidade</span>
+
+              <div class="input-group quantidade-box">
+                <button class="btn btn-outline-light border-0" type="button">−</button>
+                <input type="text" class="form-control text-center border-0" value="1" readonly>
+                <button class="btn btn-outline-light border-0" type="button">+</button>
+              </div>
+            </div>
+
+
+            <p><strong>Entrega:</strong> Calcule seu frete</p>
+            <hr>
+            <button class="btn w-100 mb-2  btn-lg botao">Adicionar ao Carrinho</button>
+            <button class="btn  w-100 botao-fin btn-lg">
+              <strong>Finalizar Compra</strong></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,11 +1,11 @@
 import { Component, inject, Input, TemplateRef, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Usuarios } from '../../models/usuarios';
 import { Endereco } from '../../models/endereco';
 import { CommonModule } from '@angular/common';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { FormsModule, NgModel } from '@angular/forms';
 import { EnderecoService } from '../../services/endereco.service';
+import { Usuarios } from '../../models/usuario';
 
 @Component({
   selector: 'app-enderecodetails',

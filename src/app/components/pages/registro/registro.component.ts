@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
+import { Usuarios } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
-import { HeaderComponent } from "../../header/header.component";
-import { Usuarios } from '../../../models/usuarios';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, HeaderComponent],
+  imports: [ MdbFormsModule, FormsModule ],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })
@@ -18,6 +17,7 @@ export class RegistroComponent {
     id: 0,
     nome: '',
     email: '',
+    cpf:'',
     senha: '',
     user: '',
     enderecos: []   // ✅ inicia vazio
@@ -39,6 +39,7 @@ export class RegistroComponent {
           id: 0,
           nome: '',
           email: '',
+          cpf:'',
           senha: '',
           user: '',
           enderecos: []   // ✅ array vazio no reset também

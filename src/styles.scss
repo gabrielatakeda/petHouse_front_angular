@@ -1,4 +1,6 @@
 @use 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+@use 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+@use "bootstrap-icons/font/bootstrap-icons.css";
 
 body {
     background-color: #f7f7f7;
@@ -15,3 +17,4 @@ html, body {
   overflow-y: auto;    
   background-color: #f7f7f7;
 }
+

@@ -1,0 +1,28 @@
+
+  .card-custom {
+    border-radius: 10px; /* deixa mais quadrado */
+    max-width: 400px;   /* controla a largura do card */
+    margin: 0 auto;     /* centraliza horizontalmente */
+  }
+
+.botao{
+  border: 2px solid #9541e3 !important;
+  color: #9541e3 !important;
+  font-weight: 500;
+  background-color: #fff !important; /* opcional: garante fundo branco */
+  box-shadow: none !important; /* remove o sombreamento que pode confundir com borda */
+  }
+
+.btn-purple {
+  background-color: #9541e3 ;
+  border-color: #6f42c1;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-purple:hover {
+ background-color: #8a2be2 ;
+  border-color: #6f42c1;
+  color: white;
+  font-weight: 500;
+}

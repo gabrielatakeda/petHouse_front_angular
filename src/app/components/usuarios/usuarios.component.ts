@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
-import { Usuarios } from '../../models/usuarios';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { Usuarios } from '../../models/usuario';
 
 @Component({
   selector: 'app-usuarios',
@@ -33,6 +33,6 @@ export class UsuariosComponent {
       error: () => {
         alert("Ocorreu um erro ao buscar o usuário");
       }
-    });
+    }); 
   }
 }

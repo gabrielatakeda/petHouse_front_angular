@@ -20,8 +20,10 @@
       <i class="fas fa-box"></i> Meus Pedidos
     </button>
 
-    <button class="cart-btn">
-      <i class="fas fa-shopping-cart"></i> Carrinho
+    <button class="cart-btn" [routerLink]="['/principal/carrinho']">
+      <i class="fas fa-shopping-cart"
+      ></i>
+      Carrinho
     </button>
 
     <button class="account-btn" (click)="goToLogin()">

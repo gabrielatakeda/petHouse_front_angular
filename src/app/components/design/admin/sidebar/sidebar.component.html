@@ -1,0 +1,85 @@
+<div class="sidebar bg-light d-flex flex-column">
+  <div class="sidebar-header shadow-sm">
+    <img src="assets/logoSNome.png" [routerLink]="['dashboard']"  class="img1" alt="">
+  </div>
+
+  <!-- Área rolável -->
+  <div class="sidebar-body flex-grow-1 overflow-auto">
+    <ul class="sidebar-menu list-unstyled mb-0">
+      <li>
+        <a [routerLink]="['dashboard']" class="menu-item">
+          <i class="bi bi-box-seam"></i> Dashboard
+        </a>
+      </li>
+
+      <!-- PRODUTOS -->
+      <li>
+        <a (click)="toggleMenu('produtos')" class="menu-item">
+          <i class="bi bi-box-seam"></i> Produtos
+          <i class="bi" [ngClass]="{
+            'bi-chevron-down': openMenus['produtos'],
+            'bi-chevron-right': !openMenus['produtos']
+          }"></i>
+        </a>
+        @if (openMenus['produtos']) {
+          <ul class="submenu list-unstyled ps-4">
+            <li><a [routerLink]="['cadastroProdutos']">Cadastrar</a></li>
+            <li><a href="#">Listar</a></li>
+          </ul>
+        }
+      </li>
+
+      <!-- CATEGORIAS -->
+      <li>
+        <a (click)="toggleMenu('categorias')" class="menu-item">
+          <i class="bi bi-tags"></i> Categorias
+          <i class="bi" [ngClass]="{
+            'bi-chevron-down': openMenus['categorias'],
+            'bi-chevron-right': !openMenus['categorias']
+          }"></i>
+        </a>
+        @if (openMenus['categorias']) {
+          <ul class="submenu list-unstyled ps-4">
+            <li><a [routerLink]="['cadastroCategorias']">Cadastrar / Listar </a></li>
+          </ul>
+        }
+      </li>
+
+      <!-- CLIENTES -->
+      <li>
+        <a (click)="toggleMenu('clientes')" class="menu-item">
+          <i class="bi bi-people"></i> Clientes
+          <i class="bi" [ngClass]="{
+            'bi-chevron-down': openMenus['clientes'],
+            'bi-chevron-right': !openMenus['clientes']
+          }"></i>
+        </a>
+        @if (openMenus['clientes']) {
+          <ul class="submenu list-unstyled ps-4">
+            <li><a href="#">Listar</a></li>
+          </ul>
+        }
+      </li>
+
+      <!-- OUTRAS OPÇÕES -->
+      <li>
+        <a href="/principalAdmin/pedidos">
+          <i class="bi bi-receipt"></i> Pedidos
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="bi bi-gear"></i> Configurações
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Footer fixo -->
+  <div class="sidebar-footer p-3 border-top">
+    <a href="#" class="text-danger d-flex align-items-center">
+      <i class="bi bi-box-arrow-right me-2"></i> Sair
+    </a>
+  </div>
+</div>

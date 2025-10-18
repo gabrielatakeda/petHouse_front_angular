@@ -1,4 +1,5 @@
-import { Usuarios } from "./usuarios";
+import { Usuarios } from "./usuario";
+
 
 export class Endereco {
 
