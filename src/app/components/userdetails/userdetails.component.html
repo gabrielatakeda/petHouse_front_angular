@@ -2,8 +2,8 @@
   <aside class="sidebar">
     <div class="user-profile">
       <img src="https://via.placeholder.com/100" alt="Foto usuário" class="user-photo" />
-      <h4>{{usuario?.nome}}</h4>
-      <p>{{usuario?.email}}</p>
+      <h4>{{usuario.nome}}</h4>
+      <p>{{usuario.email}}</p>
     </div>
   </aside>
 
@@ -18,19 +18,19 @@
     <div class="user-data-list">
       <div class="user-data-item">
         <span class="label">Nome:</span>
-        <span class="value">{{usuario?.nome}}</span>
+        <span class="value">{{usuario.nome}}</span>
         <button class="btn btn-sm btn-primary" (click)="editarDetails(usuario, 'nome')">Editar</button>
       </div>
 
       <div class="user-data-item">
         <span class="label">Username:</span>
-        <span class="value">{{usuario?.user}}</span>
+        <span class="value">{{usuario.user}}</span>
         <button class="btn btn-sm btn-primary" (click)="editarDetails(usuario, 'usuario')">Editar</button>
       </div>
 
       <div class="user-data-item">
         <span class="label">Email:</span>
-        <span class="value">{{usuario?.email}}</span>
+        <span class="value">{{usuario.email}}</span>
         <button class="btn btn-sm btn-primary" (click)="editarDetails(usuario, 'email')">Editar</button>
       </div>
     </div>
