@@ -10,6 +10,7 @@ import { RoleGuard } from './services/role-guard.service';
 import { CadastroProdutoComponent } from './components/pages/cadastro-produto/cadastro-produto.component';
 import { DashboardComponent } from './components/pages/admin/dashboard/dashboard.component';
 import { CadastroCategoriaComponent } from './components/pages/cadastro-categoria/cadastro-categoria.component';
+import { LandingPageProdutoComponent } from './components/pages/landing-page-produto/landing-page-produto.component';
 
 export const routes: Routes = [
 
@@ -26,6 +27,7 @@ export const routes: Routes = [
             { path: 'home', component: HomeComponent },
             { path: 'carrinho', component: CarrinhoComponent },
             { path: "produtoDetails/:id", component: ProdutoDetailsComponent }
+           //{ path: 'ladingPageProdutos', component: LandingPageProdutoComponent}
         ]
     },
 
