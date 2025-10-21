@@ -4,7 +4,7 @@ import { NgFor, NgStyle } from '@angular/common';
 @Component({
   selector: 'app-promo-section',
   standalone: true,
-  imports: [NgFor, NgStyle], // ✅ importe NgFor para o *ngFor funcionar
+  imports: [NgFor, NgStyle],
   templateUrl: './promo-section.component.html',
   styleUrls: ['./promo-section.component.scss']
 })
@@ -14,20 +14,26 @@ export class PromoSectionComponent implements OnInit, OnDestroy {
       image: 'assets/promo-rations.png',
       title: 'Ração Premium com até 40% OFF',
       subtitle: 'As melhores marcas de ração com descontos imperdíveis.',
-      background: 'linear-gradient(90deg, #5c2d91 60%, #7e3ee9 100%)'
+      background: 'linear-gradient(90deg, #5c2d91 60%, #7e3ee9 100%)',
+      cardTitle: 'Super oferta!',
+      cardSubtitle: 'Somente hoje!'
     },
     {
       image: 'assets/promo-toys.png',
       title: 'Acessórios e brinquedos com descontos!',
       subtitle:
         'Coleiras, guias, roupinhas e brinquedos para deixar seu pet ainda mais estiloso e feliz.',
-      background: 'linear-gradient(90deg, #ff6b6b 60%, #ff9671 100%)'
+      background: 'linear-gradient(90deg, #ff6b6b 60%, #ff9671 100%)',
+      cardTitle: 'Promoção Relâmpago!',
+      cardSubtitle: 'Descontos até 50%!'
     },
     {
       image: 'assets/promo-cat.png',
       title: 'Até 15% OFF em rações para gatos!',
       subtitle: 'Nutrição de qualidade para seu pet.',
-      background: 'linear-gradient(90deg, #4CAF50 60%, #81C784 100%)'
+      background: 'linear-gradient(90deg, #4CAF50 60%, #81C784 100%)',
+      cardTitle: 'Especial Gatos!',
+      cardSubtitle: 'Ofertas limitadas!'
     }
   ];
 

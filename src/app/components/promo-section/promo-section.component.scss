@@ -64,7 +64,7 @@
           position: absolute;
           top: -20px;
           left: -20px;
-          background: #8e3ff2;
+          background: #8e3ff2; /* Mantendo o mesmo roxo */
           color: #fff;
           padding: 10px 20px;
           border-radius: 15px;
@@ -107,7 +107,7 @@
       top: 50%;
       transform: translateY(-50%);
       background: rgba(255, 255, 255, 0.9);
-      color: #5c2d91;
+      color: #8e3ff2;
       border: none;
       font-size: 1.8rem;
       font-weight: bold;
@@ -120,7 +120,7 @@
       transition: all 0.3s ease;
 
       &:hover {
-        background: #5c2d91;
+        background: #8e3ff2;
         color: #fff;
       }
     }
@@ -148,11 +148,11 @@
         transition: background-color 0.3s ease;
 
         &.active {
-          background-color: #000;
+          background-color: #8e3ff2;
         }
 
         &:hover {
-          background-color: #000;
+          background-color: #8e3ff2;
         }
       }
     }
@@ -177,6 +177,74 @@
           font-size: 1rem !important;
         }
       }
+    }
+  }
+}
+
+.benefits-section {
+  background-color: #f9f6ff;
+  padding: 5px 0;
+  font-family: 'Poppins', sans-serif;
+
+  .benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 250px;
+
+    .icon {
+      background-color: #8e3ff2;
+      color: #fff;
+      font-size: 1.4rem;
+      padding: 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      transition: transform 0.3s ease;
+    }
+
+    .icon:hover {
+      transform: scale(1.1);
+    }
+
+    .text {
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        color: #000;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .benefits-container {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 30px;
+    }
+
+    .benefit-item {
+      min-width: unset;
     }
   }
 }
