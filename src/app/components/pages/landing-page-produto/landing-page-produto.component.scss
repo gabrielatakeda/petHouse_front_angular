@@ -1,3 +1,10 @@
+h2 {
+  color: black;
+}
+
+h6 {
+  color: gray;
+}
 
 .card-Produto {
   transition: all 0.3s ease; /* Aplica a suavização no estado normal */
@@ -26,4 +33,46 @@
 .circular-btn:hover {
   transform: translateY(-2px); /* Move o card para cima */
   background-color: #5e36a7;
+}
+
+.offers-section {
+  background: linear-gradient(90deg, #7e3ee9 0%, #4caf50 100%);
+  color: #fff;
+  border-radius: 0; // ocupa toda a largura
+  margin-top: 60px;
+  padding: 60px 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  .offers-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  input.form-control {
+    min-width: 280px;
+    border-radius: 8px;
+    border: none;
+  }
+
+  button {
+    border-radius: 8px;
+    background-color: #fff;
+    color: #5c2d91;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #f5f5f5;
+      color: #4a1d85;
+    }
+  }
 }
