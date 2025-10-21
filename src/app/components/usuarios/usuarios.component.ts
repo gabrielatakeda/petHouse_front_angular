@@ -17,7 +17,7 @@ export class UsuariosComponent {
   usuarioService = inject(UsuarioService);
 
   constructor() {
-    const idUsuario = 3; // temporário apenas para teste
+    const idUsuario = 928; // temporário apenas para teste
     this.findById(idUsuario);
   }
 

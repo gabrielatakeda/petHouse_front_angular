@@ -24,7 +24,7 @@
 
       <div class="user-data-item">
         <span class="label">Username:</span>
-        <span class="value">{{usuario?.usuario}}</span>
+        <span class="value">{{usuario?.user}}</span>
         <button class="btn btn-sm btn-primary" (click)="editarDetails(usuario, 'usuario')">Editar</button>
       </div>
 
@@ -57,7 +57,7 @@
       <!-- Username -->
       <div class="form-group mb-3">
         <label for="usuario" class="form-label">Username</label>
-        <input type="text" id="usuario" class="form-control" [(ngModel)]="usuarioEdit.usuario" name="usuario"
+        <input type="text" id="usuario" class="form-control" [(ngModel)]="usuarioEdit.user" name="usuario"
           placeholder="Digite seu username" />
       </div>
       }

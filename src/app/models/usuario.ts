@@ -5,7 +5,7 @@ export class Usuario {
     nome!: string;
     email!: string;
     senha!: string;
-    usuario!: string;
+    user!: string;
     enderecos!: Endereco[];
 
     constructor(id: number, nome: string, email: string, senha: string, usuario: string, enderecos: Endereco[]) {
@@ -13,7 +13,7 @@ export class Usuario {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.usuario = usuario;
+        this.user = usuario;
         this.enderecos = enderecos;
     }
 }
