@@ -18,12 +18,12 @@ export class LoginComponent {
   isRegisterActive = false;
 
   usuario: Usuarios = {
-    id: 0,
     nome: '',
     email: '',
     cpf:'',
     senha: '',
     user: '',
+    dataNascimento: new Date(),
     enderecos: []   // ✅ inicia vazio
   };
 
@@ -56,7 +56,7 @@ export class LoginComponent {
   }
 
   save() { //Método chamado quando o botão "Salvar" é clicado
-    this.usuarioServices.save(this.usuario).subscribe(() => {
+    console.log(this.usuario)
       this.usuarioServices.save(this.usuario).subscribe({
         next: () => {
           this.snackBar.open('Salvo com sucesso!', 'Fechar', {
@@ -72,7 +72,6 @@ export class LoginComponent {
           });
         }
       });
-    });
   }
 
 }
