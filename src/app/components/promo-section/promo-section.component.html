@@ -11,8 +11,8 @@
           <div class="image-container">
             <img [src]="slide.image" [alt]="slide.title" />
             <div class="mini-card">
-              <h3>Promoção</h3>
-              <p>Somente hoje!</p>
+              <h3>{{ slide.cardTitle }}</h3>
+              <p>{{ slide.cardSubtitle }}</p>
             </div>
           </div>
           <div class="text-content">
@@ -32,6 +32,50 @@
         [class.active]="i === currentSlide"
         (click)="goToSlide(i)"
       ></span>
+    </div>
+  </div>
+</section>
+
+<section class="benefits-section">
+  <div class="benefits-container">
+    <div class="benefit-item">
+      <div class="icon">
+        <i class="fas fa-truck"></i>
+      </div>
+      <div class="text">
+        <h3>Frete Grátis</h3>
+        <p>Em compras acima de R$ 99</p>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <div class="text">
+        <h3>Compra Segura</h3>
+        <p>Proteção em todas as transações</p>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="icon">
+        <i class="fas fa-credit-card"></i>
+      </div>
+      <div class="text">
+        <h3>Parcele em até 10x</h3>
+        <p>Sem juros no cartão</p>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <div class="text">
+        <h3>Atendimento</h3>
+        <p>Suporte especializado</p>
+      </div>
     </div>
   </div>
 </section>
