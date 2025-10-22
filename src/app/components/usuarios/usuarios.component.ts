@@ -3,22 +3,28 @@ import { UsuarioService } from '../../services/usuario.service';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Usuarios } from '../../models/usuario';
+import { HeaderComponent } from "../design/header/header.component";
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [RouterLink, NgIf],
+  imports: [RouterLink, NgIf, HeaderComponent],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent {
 
-  usuario?: Usuarios;  
+  authService = inject(AuthService)
+  usuario?: Usuarios;
   usuarioService = inject(UsuarioService);
+  idUsuario!: number;
 
   constructor() {
-    const idUsuario = 3; // temporário para teste
-    this.findById(idUsuario);
+    this.authService.usuarioLogado$.subscribe(usuario => {
+      this.idUsuario = usuario.id;
+    }); 
+    this.findById(this.idUsuario);
   }
 
   findById(id: number) {
@@ -33,6 +39,6 @@ export class UsuariosComponent {
       error: () => {
         alert("Ocorreu um erro ao buscar o usuário");
       }
-    }); 
+    });
   }
 }

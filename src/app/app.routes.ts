@@ -11,6 +11,10 @@ import { CadastroProdutoComponent } from './components/pages/cadastro-produto/ca
 import { DashboardComponent } from './components/pages/admin/dashboard/dashboard.component';
 import { CadastroCategoriaComponent } from './components/pages/cadastro-categoria/cadastro-categoria.component';
 import { LandingPageProdutoComponent } from './components/pages/landing-page-produto/landing-page-produto.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { UserdetailsComponent } from './components/userdetails/userdetails.component';
+import { EnderecodetailsComponent } from './components/enderecodetails/enderecodetails.component';
+import { SegurancaComponent } from './components/seguranca/seguranca.component';
 
 export const routes: Routes = [
 
@@ -26,8 +30,11 @@ export const routes: Routes = [
         children: [
             { path: 'home', component: HomeComponent },
             { path: 'carrinho', component: CarrinhoComponent },
-            { path: "produtoDetails/:id", component: ProdutoDetailsComponent }
-           //{ path: 'ladingPageProdutos', component: LandingPageProdutoComponent}
+            { path: "produtoDetails/:id", component: ProdutoDetailsComponent },
+            { path: 'usuario', component: UsuariosComponent },
+            { path: 'usuario/details', component: UserdetailsComponent },
+            { path: 'usuario/adress', component: EnderecodetailsComponent },
+            { path: 'usuario/security', component: SegurancaComponent }           //{ path: 'ladingPageProdutos', component: LandingPageProdutoComponent}
         ]
     },
 
@@ -39,9 +46,9 @@ export const routes: Routes = [
         data: { role: 'admin' },
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            {path: 'dashboard', component: DashboardComponent},
-            {path: 'cadastroProdutos', component: CadastroProdutoComponent },
-            {path: 'cadastroCategorias', component: CadastroCategoriaComponent}
+            { path: 'dashboard', component: DashboardComponent },
+            { path: 'cadastroProdutos', component: CadastroProdutoComponent },
+            { path: 'cadastroCategorias', component: CadastroCategoriaComponent }
         ]
     }
 ];

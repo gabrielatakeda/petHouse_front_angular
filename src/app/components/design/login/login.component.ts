@@ -41,19 +41,20 @@ export class LoginComponent {
  
  
   logar() {
-    const success = this.authService.login(this.usuarioLogin, this.senhaLogin);
-
-    if(success){
+  this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe(success => {
+    console.log(this.usuarioLogin, this.senhaLogin)//console.log de  teste
+    if (success) {
       const role = this.authService.getUserRole();
-      if(role === 'admin'){
+      if (role === 'admin') {
         this.router.navigate(['/principalAdmin/dashboard']);
-      } else if(role === 'user'){
+      } else {
         this.router.navigate(['/principal/home']);
       }
     } else {
       Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
     }
-  }
+  });
+}
 
   save() { //Método chamado quando o botão "Salvar" é clicado
     console.log(this.usuario)

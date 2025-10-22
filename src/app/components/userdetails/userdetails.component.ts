@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormsModule } from '@angular/forms';
 import { Usuarios } from '../../models/usuario';
+import { HeaderComponent } from "../design/header/header.component";
 
 @Component({
   selector: 'app-userdetails',
-  imports: [RouterLink, CommonModule, MdbModalModule, FormsModule],
+  imports: [RouterLink, CommonModule, MdbModalModule, FormsModule, HeaderComponent],
   templateUrl: './userdetails.component.html',
   styleUrl: './userdetails.component.scss'
 })
@@ -16,7 +17,7 @@ export class UserdetailsComponent {
 
   edit!: string;
 
-  usuarioEdit: Usuarios = new Usuarios(0, "", "", "", "", [])
+  usuarioEdit: Usuarios = new Usuarios("", "", "", "", "",new Date, [])
 
   modalService = inject(MdbModalService); //para cosneguir abrir a modal
   @ViewChild("modalEditdetails") modalEditdetails!: TemplateRef<any>
@@ -38,8 +39,8 @@ export class UserdetailsComponent {
   }
 
   salvarEdicaoDatails() {
-
-    this.usuarioService.update(this.usuarioEdit.id, this.usuarioEdit).subscribe({
+    if (this.usuarioEdit.id) {
+      this.usuarioService.update(this.usuarioEdit.id, this.usuarioEdit).subscribe({
       next: retorno => {
         this.usuario = retorno;
       },
@@ -48,6 +49,8 @@ export class UserdetailsComponent {
       }
     })
     this.modalRef.close();
+    }
+    
   }
 
 }
