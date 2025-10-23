@@ -1,35 +1,87 @@
 /* Layout principal */
 .main-layout {
-  background-color: #fef6e4; // fundo bege geral
+  background-color: #fef6e4; /* fundo bege geral */
   min-height: 100vh;
 }
 
 .content-area {
-  background-color: rgba(124, 174, 115, 0.83); // fundo verde do conteúdo
+  background: #ad7be4;
   border-radius: 12px;
   padding: 20px;
+  position: relative;
 }
 
+/* Botão de voltar */
+.btn-voltar {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #9e51e6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #9644e2;
+  transform: translateY(-2px);
+}
+
+.btn-voltar .material-icons {
+  font-size: 20px;
+}
+
+/* Perfil do usuário */
 .user {
   border-radius: 12px;
   border: none;
 }
 
+.user-profile {
+  background-color: #cea8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Faz o bloco preencher toda a altura da área roxa */
+  height: 100%;
+  border-radius: 12px;
+}
+
+/* Faz as colunas terem a mesma altura */
+.content-area .row {
+  align-items: stretch;
+}
+
+/* Garante que a coluna esquerda se expanda igualmente */
+.col-md-3 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Corrige espaçamento para não subir demais */
+.col-md-3 .user-profile {
+  margin-top: 50px;    /* opcional, ajusta o topo */
+  margin-bottom: 0;    /* encosta no fundo */
+}
+
 /* Cards gerais */
 .card {
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: none;
-}
-
-/* Perfil do usuário */
-.user-profile {
-  background-color: rgba(124, 174, 115, 0.83);
 }
 
 /* Promoção */
 .promo-card {
-  background-color: #fff;
 }
 
 /* Botões */
@@ -37,24 +89,22 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: rgb(101, 148, 101);
+  color: white;
+  background-color: #9e51e6;
   transition: transform 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
 
-  &[routerLink] {
-    cursor: pointer;
-  }
+.action-card:hover {
+  transform: translateY(-2px);
+  background-color: #9644e2;
+}
 
-  &:hover {
-    transform: translateY(-2px);
-    background-color: #7d9c7d;
-  }
+.action-card span.material-icons {
+  font-size: 28px;
+  color: #ffffff;
+}
 
-  span.material-icons {
-    font-size: 28px;
-    color: #2f4f2f;
-  }
-
-  small {
-    color: #333;
-  }
+.action-card small {
+  color: #ffffff;
 }

@@ -5,11 +5,12 @@ import { NgIf } from '@angular/common';
 import { Usuarios } from '../../models/usuario';
 import { HeaderComponent } from "../design/header/header.component";
 import { AuthService } from '../../services/auth.service';
+import { MiniPromoComponent } from "../design/mini-promo/mini-promo.component";
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [RouterLink, NgIf, HeaderComponent],
+  imports: [RouterLink, NgIf, HeaderComponent, MiniPromoComponent],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })

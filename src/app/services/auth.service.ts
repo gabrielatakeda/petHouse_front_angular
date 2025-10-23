@@ -13,18 +13,19 @@ export class AuthService {
 
   // Guarda o usuário logado
   private _usuarioLogado = new BehaviorSubject<any>(null);
-  usuarioLogado$ = this._usuarioLogado.asObservable();
+  usuarioLogado$ = this._usuarioLogado.asObservable();// cria um Observable o usuario
 
   constructor(private http: HttpClient, private router: Router) { }
 
   login(usuarioLogin: string, senha: string): Observable<boolean> {
     const body = { usuarioLogin, senha };
 
+    //função para pegar o email e senha e logar no sistema
     return this.http.post<any>(`${this.apiUrl}/login`, body).pipe(
       tap(response => {
         if (response) {
           this.role = response.role?.toLowerCase() || 'user';
-          this._usuarioLogado.next(response); // salva o usuário logado
+          this._usuarioLogado.next(response); //salva o usuario que logou
         }
       }),
       tap(() => true),
