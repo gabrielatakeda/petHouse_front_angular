@@ -1,91 +1,138 @@
 .userdetails-container {
   display: flex;
   min-height: 100vh;
-  background-color: #f9f6ef; // fundo bege da página inicial
+  background-color: #fff8f0; // fundo bege suave, padrão do sistema
 }
 
+/* Lateral do perfil */
 .sidebar {
-  width: 250px;
-  background-color: #ad7be4; // verde do layout
-  color: #fff;
-  padding: 20px;
+  width: 260px;
+  background-color: #d9c8ff; // lavanda clara
+  color: #2e2e2e;
+  padding: 25px 15px;
   text-align: center;
+  border-right: 2px solid #f0e6ff;
 }
 
 .user-photo {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  background-color: #f7f5fb;
 }
 
+.user-profile h4 {
+  color: #2e2e2e;
+  font-weight: 600;
+}
+
+.user-profile p {
+  color: #6b6b6b;
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* Conteúdo principal */
 .content {
   flex: 1;
-  padding: 30px;
-  background-color: #f9f6ef;
+  padding: 40px;
+  background-color: #f7f5fb; // lavanda bem clara, suave
 
   h2 {
-    color: #333;
+    color: #2e2e2e;
     margin-bottom: 10px;
+    font-weight: 700;
   }
 
   p {
-    color: #666;
-    margin-bottom: 20px;
+    color: #6b6b6b;
+    margin-bottom: 25px;
   }
 }
 
+/* Botão voltar */
 .back-button {
   margin-bottom: 20px;
 
   button {
-    background-color: #ad7be4;
+    background-color: #7b4ae2;
     border: none;
     color: #fff;
     font-weight: 500;
+    border-radius: 8px;
+    padding: 6px 14px;
+    transition: all 0.2s ease;
 
     &:hover {
-      background-color: #9650e0;
+      background-color: #6a3cc9;
+      transform: translateY(-2px);
     }
   }
 }
 
+/* Lista de dados */
 .user-data-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
+/* Cada campo de dados */
 .user-data-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #9e51e6;
+  background: #7b4ae2; /* roxo principal */
   color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   .label {
-    font-weight: bold;
+    font-weight: 600;
     flex: 1;
   }
 
   .value {
     flex: 2;
     text-align: left;
+    font-weight: 500;
   }
 
   button {
     background-color: #fff;
-    color: #571366;
+    color: #7b4ae2;
     border: none;
-    padding: 5px 12px;
-    border-radius: 6px;
+    padding: 5px 14px;
+    border-radius: 8px;
     font-weight: 600;
+    transition: all 0.2s ease;
 
     &:hover {
-      background-color: #eaeaea;
+      background-color: #f0e6ff;
+      transform: translateY(-1px);
     }
+  }
+}
+
+/* Modal */
+.modal-header,
+.modal-footer {
+  background-color: #f7f5fb;
+}
+
+.modal-title {
+  color: #2e2e2e;
+  font-weight: 600;
+}
+
+.btn-success {
+  background-color: #7b4ae2;
+  border: none;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #6a3cc9;
   }
 }

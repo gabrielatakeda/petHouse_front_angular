@@ -1,11 +1,11 @@
 /* Layout principal */
 .main-layout {
-  background-color: #fef6e4; /* fundo bege geral */
+  background-color: #fff8f0; /* fundo bege suave */
   min-height: 100vh;
 }
 
 .content-area {
-  background: #ad7be4;
+  background: #f7f5fb; /* fundo lavanda bem claro */
   border-radius: 12px;
   padding: 20px;
   position: relative;
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background-color: #9e51e6;
+  background-color: #7b4ae2; /* roxo principal */
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -30,74 +30,46 @@
 }
 
 .btn-voltar:hover {
-  background-color: #9644e2;
+  background-color: #6a3cc9; /* roxo mais escuro */
   transform: translateY(-2px);
 }
 
-.btn-voltar .material-icons {
-  font-size: 20px;
-}
-
-/* Perfil do usuário */
 .user {
   border-radius: 12px;
   border: none;
 }
 
 .user-profile {
-  background-color: #cea8f8;
+  background-color: #d9c8ff; /* lavanda clara */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  /* Faz o bloco preencher toda a altura da área roxa */
   height: 100%;
   border-radius: 12px;
 }
 
-/* Faz as colunas terem a mesma altura */
-.content-area .row {
-  align-items: stretch;
-}
-
-/* Garante que a coluna esquerda se expanda igualmente */
-.col-md-3 {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Corrige espaçamento para não subir demais */
-.col-md-3 .user-profile {
-  margin-top: 50px;    /* opcional, ajusta o topo */
-  margin-bottom: 0;    /* encosta no fundo */
-}
-
-/* Cards gerais */
+/* Cards */
 .card {
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   border: none;
 }
 
-/* Promoção */
-.promo-card {
-}
-
-/* Botões */
+/* Cards de ação */
 .action-card {
   display: flex;
   align-items: center;
   gap: 12px;
   color: white;
-  background-color: #9e51e6;
+  background-color: #7b4ae2;
   transition: transform 0.2s, background-color 0.2s;
   cursor: pointer;
 }
 
 .action-card:hover {
   transform: translateY(-2px);
-  background-color: #9644e2;
+  background-color: #6a3cc9;
 }
 
 .action-card span.material-icons {

@@ -10,7 +10,7 @@ import { MiniPromoComponent } from "../design/mini-promo/mini-promo.component";
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [RouterLink, NgIf, HeaderComponent, MiniPromoComponent],
+  imports: [RouterLink, NgIf, MiniPromoComponent],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })

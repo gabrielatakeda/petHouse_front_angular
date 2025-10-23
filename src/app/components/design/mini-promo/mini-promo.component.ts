@@ -1,9 +1,8 @@
-import { NgForOf, NgStyle } from '@angular/common';
 import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-mini-promo',
-  imports: [NgForOf, NgStyle],
+  imports: [],
   templateUrl: './mini-promo.component.html',
   styleUrl: './mini-promo.component.scss'
 })
