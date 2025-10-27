@@ -19,7 +19,7 @@ import { SegurancaComponent } from './components/seguranca/seguranca.component';
 export const routes: Routes = [
 
 
-    { path: "", pathMatch: 'full', redirectTo: "login" },
+    { path: "", pathMatch: 'full', redirectTo: "principal/home" },
     { path: "forgot", component: ForgotComponent },
     { path: "login", component: LoginComponent },
     {
