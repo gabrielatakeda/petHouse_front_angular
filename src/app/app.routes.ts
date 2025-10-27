@@ -25,8 +25,8 @@ export const routes: Routes = [
     {
         path: "principal",
         component: MainComponent,
-        canActivate: [RoleGuard],
-        data: { role: 'user' },
+        // canActivate: [RoleGuard],
+        // data: { role: 'user' },
         children: [
             { path: 'home', component: HomeComponent },
             { path: 'carrinho', component: CarrinhoComponent },

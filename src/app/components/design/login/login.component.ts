@@ -42,7 +42,6 @@ export class LoginComponent {
  
   logar() {
   this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe(success => {
-    console.log(this.usuarioLogin, this.senhaLogin)//console.log de  teste
     if (success) {
       const role = this.authService.getUserRole();
       if (role === 'admin') {
@@ -57,7 +56,6 @@ export class LoginComponent {
 }
 
   save() { //Método chamado quando o botão "Salvar" é clicado
-    console.log(this.usuario)
       this.usuarioServices.save(this.usuario).subscribe({
         next: () => {
           this.snackBar.open('Salvo com sucesso!', 'Fechar', {

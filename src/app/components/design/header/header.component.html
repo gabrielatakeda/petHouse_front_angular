@@ -1,7 +1,8 @@
 <header class="header-container">
   <div class="logo">
     <img (click)="goToMenu()" src="assets/logoPet.png" alt="PetHouse Logo" />
-    <span>Olá, {{ userName }}</span>
+    <span *ngIf="userName" >Olá, {{ userName }}</span>
+    <span *ngIf="userName == '' " >Olá, Visitante</span>
   </div>
 
   <div class="search-bar">
@@ -25,22 +26,18 @@
       Carrinho
     </button>
 
-    @if (usuario.cpf=="") {
-    <button class="account-btn" (click)="goToLogin()">
+    <button *ngIf="!usuario?.cpf || usuario?.cpf === ''" class="account-btn" (click)="goToLogin()">
       <i class="fas fa-user"></i> Entrar / Cadastrar
     </button>
-    }@else {
-      <button class="account-btn" (click)="goToUsuario()">
+
+    <button *ngIf="usuario?.cpf" class="account-btn" (click)="goToUsuario()">
       <i class="fas fa-user"></i> Perfil
     </button>
-    }
 
-
-    @if (isAccountMenuOpen) {
-    <div class="account-menu">
+    <div *ngIf="isAccountMenuOpen" class="account-menu">
       <a href="#" (click)="closeAccountMenu()">Configurações</a>
       <a href="#" (click)="closeAccountMenu()">Sair</a>
     </div>
-    }
+
   </div>
 </header>
