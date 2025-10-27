@@ -16,14 +16,14 @@ export class ProdutoDetailsComponent {
 
   activedRoute = inject(ActivatedRoute);
 
-   constructor() {
+  constructor() {
     let id = this.activedRoute.snapshot.params['id'];
     if (id > 0) {
       this.findById(id);
     }
   }
 
-   findById(id: number) {
+  findById(id: number) {
     this.produtoService.findById(id).subscribe({
       next: produto => {
         this.produto = produto;
@@ -32,18 +32,24 @@ export class ProdutoDetailsComponent {
         console.error(erro);
       }
     });
-   }
-
-   quantidade: number = 1;
-
-aumentarQuantidade() {
-  this.quantidade++;
-}
-
-diminuirQuantidade() {
-  if (this.quantidade > 1) {
-    this.quantidade--;
   }
-}
+
+  quantidade: number = 1;
+
+  aumentarQuantidade() {
+    this.quantidade++;
+  }
+
+  diminuirQuantidade() {
+    if (this.quantidade > 1) {
+      this.quantidade--;
+    }
+  }
+
+  adicionarCarrinho() {
+    
+    console.log(this.produto);
+
+  }
 
 } 
