@@ -31,10 +31,6 @@ export class UsuariosComponent {
   findById(id: number) {
     this.usuarioService.findById(id).subscribe({
       next: result => {
-        console.log(result);
-        if (result.enderecos && result.enderecos.length > 0) {
-          console.log(result.enderecos[0]);
-        }
         this.usuario = result;
       },
       error: () => {

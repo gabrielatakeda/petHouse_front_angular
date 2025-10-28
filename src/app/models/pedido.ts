@@ -6,15 +6,15 @@ import { Usuarios } from "./usuario";
 export class Pedido {
 
     id?: number;
-    cliente!: Usuarios;
+    cliente?: Usuarios;
     dataPedido!: Date;
     total!: number;
-    pagamento!: Pagamento;
+    pagamento?: Pagamento;
     produtos!: Produto[];
-    endereco!: Endereco;
+    endereco?: Endereco;
     statusPedido!: string;
 
-    constructor(cliente: Usuarios, dataPedido: Date, total: number, pagamento: Pagamento, produtos: Produto[], endereco: Endereco, statusPedido: string, id?: number){
+    constructor( dataPedido: Date, total: number,  statusPedido: string, produtos: Produto[], endereco?: Endereco, cliente?: Usuarios, id?: number, pagamento?: Pagamento){
         this.cliente = cliente;
         this.dataPedido = dataPedido;
         this.total = total;
