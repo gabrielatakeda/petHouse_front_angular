@@ -1,32 +1,78 @@
-<nav class="nav-container">
-  <ul class="nav-list">
-    @for (category of categories; track category.name) {
-      <li class="nav-item" 
-          [class.has-dropdown]="category.dropdown"
-          (mouseenter)="onMouseEnter(category.name)" 
-          (mouseleave)="onMouseLeave(category.name)">
+<!-- navbar.component.html -->
+<div class="navbar-wrapper">
 
-        <a href="#">
-          {{ category.name }}
-          @if (category.dropdown) {
-            <i class="bi dropdown-icon" 
-               [ngClass]="{
-                 'bi-chevron-down': category.isOpen,
-                 'bi-chevron-right': !category.isOpen
-               }"></i>
-          }
-        </a>
+  <!-- HEADER (parte superior) -->
+  <header class="header-container">
+    <div class="logo">
+      <img (click)="goToMenu()" src="assets/logoPet.png" alt="PetHouse Logo" />
+      <span *ngIf="userName">Olá, {{ userName }}</span>
+      <span *ngIf="!userName">Olá, Visitante</span>
+    </div>
 
-        @if (category.dropdown && category.isOpen) {
-          <ul class="dropdown-menu">
-            @for (item of category.dropdownItems; track item) {
-              <li>
-                <a href="#">{{ item }}</a>
-              </li>
+    <div class="search-bar">
+      <input type="text" placeholder="Busque por produtos, marcas ou categorias..." />
+      <button class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+    <div class="user-actions">
+      <button class="cep-button">
+        <i class="fas fa-map-marker-alt"></i> Informar CEP
+      </button>
+
+      <button class="orders-btn">
+        <i class="fas fa-box"></i> Meus Pedidos
+      </button>
+
+      <button class="cart-btn" [routerLink]="['/principal/carrinho']">
+        <i class="fas fa-shopping-cart"></i> Carrinho
+      </button>
+
+      <button *ngIf="!usuario?.cpf || usuario?.cpf === ''" class="account-btn" (click)="goToLogin()">
+        <i class="fas fa-user"></i> Entrar / Cadastrar
+      </button>
+
+      <button *ngIf="usuario?.cpf" class="account-btn" (click)="goToUsuario()">
+        <i class="fas fa-user"></i> Perfil
+      </button>
+
+      <div *ngIf="isAccountMenuOpen" class="account-menu">
+        <a href="#" (click)="closeAccountMenu()">Configurações</a>
+        <a href="#" (click)="closeAccountMenu()">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR (categorias) -->
+  <nav class="nav-container">
+    <ul class="nav-list">
+      @for (category of categories; track category.name) {
+        <li class="nav-item" 
+            [class.has-dropdown]="category.dropdown"
+            (mouseenter)="onMouseEnter(category.name)" 
+            (mouseleave)="onMouseLeave(category.name)">
+
+          <a href="#">
+            {{ category.name }}
+            @if (category.dropdown) {
+              <i class="bi dropdown-icon" 
+                 [ngClass]="{
+                   'bi-chevron-down': category.isOpen,
+                   'bi-chevron-right': !category.isOpen
+                 }"></i>
             }
-          </ul>
-        }
-      </li>
-    }
-  </ul>
-</nav>
+          </a>
+
+          @if (category.dropdown && category.isOpen) {
+            <ul class="dropdown-menu">
+              @for (item of category.dropdownItems; track item) {
+                <li><a href="#">{{ item }}</a></li>
+              }
+            </ul>
+          }
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
