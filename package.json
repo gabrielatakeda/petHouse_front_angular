@@ -27,8 +27,6 @@
     "chart.js": "^3.1.1",
     "jwt-decode": "^4.0.0",
     "mdb-angular-ui-kit": "^8.0.0",
-    "ngx-owl-carousel-o": "^18.0.0",
-    "owl.carousel": "^2.3.4",
     "rxjs": "~7.8.0",
     "save": "^2.9.0",
     "sweetalert2": "^11.23.0",

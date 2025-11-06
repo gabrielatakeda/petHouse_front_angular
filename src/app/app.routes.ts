@@ -19,14 +19,14 @@ import { SegurancaComponent } from './components/seguranca/seguranca.component';
 export const routes: Routes = [
 
 
-    { path: "", pathMatch: 'full', redirectTo: "login" },
+    { path: "", pathMatch: 'full', redirectTo: "principal/home" },
     { path: "forgot", component: ForgotComponent },
     { path: "login", component: LoginComponent },
     {
         path: "principal",
         component: MainComponent,
-        canActivate: [RoleGuard],
-        data: { role: 'user' },
+        // canActivate: [RoleGuard],
+        // data: { role: 'user' },
         children: [
             { path: 'home', component: HomeComponent },
             { path: 'carrinho', component: CarrinhoComponent },
