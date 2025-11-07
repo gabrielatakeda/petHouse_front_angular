@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
+import Swal from 'sweetalert2';
 import { UsuarioService } from '../../../services/usuario.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
@@ -20,57 +20,85 @@ export class LoginComponent {
   usuario: Usuarios = {
     nome: '',
     email: '',
-    cpf:'',
+    cpf: '',
     senha: '',
-    user: '',
-    dataNascimento: new Date(),
-    enderecos: []   // ✅ inicia vazio
+    user: '',                    
+    dataNascimento: '',  
+    enderecos: []
   };
 
   usuarioLogin = '';
   senhaLogin = '';
 
-  router = inject(Router);
-  authService = inject(AuthService);
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
-  constructor(private usuarioServices: UsuarioService, private snackBar: MatSnackBar) { } //Injeta o serviço de usuários no construtor para poder usá-lo
+  constructor(
+    private usuarioServices: UsuarioService,
+    private snackBar: MatSnackBar
+  ) { }
 
   togglePanel() {
     this.isRegisterActive = !this.isRegisterActive;
   }
- 
- 
-  logar() {
-  this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe(success => {
-    if (success) {
-      const role = this.authService.getUserRole();
-      if (role === 'admin') {
-        this.router.navigate(['/principalAdmin/dashboard']);
-      } else {
-        this.router.navigate(['/principal/home']);
-      }
-    } else {
-      Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
-    }
-  });
-}
 
-  save() { //Método chamado quando o botão "Salvar" é clicado
-      this.usuarioServices.save(this.usuario).subscribe({
-        next: () => {
-          this.snackBar.open('Salvo com sucesso!', 'Fechar', {
-            duration: 3000,
-            panelClass: ['success-snackbar']
-          });
-        },
-        error: (err) => {
-          console.error(err);
-          this.snackBar.open('Erro ao salvar!', 'Fechar', {
-            duration: 3000,
-            panelClass: ['error-snackbar']
-          });
+  logar() {
+    this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe({
+      next: (success) => {
+        if (success) {
+          const role = this.authService.getUserRole();
+          if (role === 'admin') {
+            this.router.navigate(['/principalAdmin/dashboard']);
+          } else {
+            this.router.navigate(['/principal/home']);
+          }
+        } else {
+          Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
         }
-      });
+      },
+      error: () => {
+        Swal.fire('Erro', 'Erro ao conectar com o servidor', 'error');
+      }
+    });
   }
 
+  save() {
+   
+    if (!this.usuario.nome || !this.usuario.email || !this.usuario.cpf || 
+        !this.usuario.senha || !this.usuario.user) {
+      this.snackBar.open('Preencha todos os campos!', 'Fechar', {
+        duration: 3000,
+        panelClass: ['error-snack-bar']
+      });
+      return;
+    }
+
+    this.usuarioServices.save(this.usuario).subscribe({
+      next: () => {
+        this.snackBar.open('Salvo com sucesso!', 'Fechar', {
+          duration: 3000,
+          panelClass: ['success-snackbar']
+        });
+      
+        this.usuario = {
+          nome: '',
+          email: '',
+          cpf: '',
+          senha: '',
+          user: '',
+          dataNascimento: new Date(),
+          enderecos: []
+        };
+       
+        this.isRegisterActive = false;
+      },
+      error: (err) => {
+        console.error('Erro ao salvar usuário:', err);
+        this.snackBar.open('Erro ao salvar! Verifique os dados.', 'Fechar', {
+          duration: 5000,
+          panelClass: ['error-snackbar']
+        });
+      }
+    });
+  }
 }
