@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2'; //Biblioteca para exibir alertas bonitos
 import { Usuarios } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registro',
@@ -13,47 +16,47 @@ import { UsuarioService } from '../../../services/usuario.service';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent {
-  usuarios: Usuarios = {
-    id: 0,
+  isRegisterActive = false;
+
+  usuario: Usuarios = {
     nome: '',
     email: '',
     cpf:'',
     senha: '',
     user: '',
+    dataNascimento: new Date(),
     enderecos: []   // ✅ inicia vazio
   };
 
-  constructor(private usuarioServices: UsuarioService) {}
+  usuarioLogin = '';
+  senhaLogin = '';
 
+  router = inject(Router);
+  authService = inject(AuthService);
 
-  save() {
-    this.usuarioServices.save(this.usuarios).subscribe({
-      next: () => {
-        Swal.fire({
-          title: 'Usuário cadastrado com sucesso!',
-          icon: 'success',
-          confirmButtonColor: '#28a745',
-          confirmButtonText: 'OK'
-        });
-        // reset
-        this.usuarios = {
-          id: 0,
-          nome: '',
-          email: '',
-          cpf:'',
-          senha: '',
-          user: '',
-          enderecos: []   // ✅ array vazio no reset também
-        };
-      },
-      error: () => {
-        Swal.fire({
-          title: 'Não foi possível cadastrar o usuário. Tente novamente.',
-          icon: 'error',
-          confirmButtonColor: '#d33',
-          confirmButtonText: 'Fechar'
-        });
-      }
-    });
+  constructor(private usuarioServices: UsuarioService, private snackBar: MatSnackBar) { } //Injeta o serviço de usuários no construtor para poder usá-lo
+
+  togglePanel() {
+    this.isRegisterActive = !this.isRegisterActive;
   }
+ 
+
+  save() { //Método chamado quando o botão "Salvar" é clicado
+      this.usuarioServices.save(this.usuario).subscribe({
+        next: () => {
+          this.snackBar.open('Salvo com sucesso!', 'Fechar', {
+            duration: 3000,
+            panelClass: ['success-snackbar']
+          });
+        },
+        error: (err) => {
+          console.error(err);
+          this.snackBar.open('Erro ao salvar!', 'Fechar', {
+            duration: 3000,
+            panelClass: ['error-snackbar']
+          });
+        }
+      });
+  }
+
 }
