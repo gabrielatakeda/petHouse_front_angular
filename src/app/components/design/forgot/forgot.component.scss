@@ -26,3 +26,35 @@
   color: white;
   font-weight: 500;
 }
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+  .card-custom {
+    max-width: 90%; /* ocupa mais espaço da tela em tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .card-custom {
+    max-width: 100%; /* ocupa toda a largura em celulares */
+    border-radius: 0; /* remove borda arredondada para visual mais limpo */
+    box-shadow: none; /* remove sombra em telas muito pequenas */
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .input-group-text i {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
