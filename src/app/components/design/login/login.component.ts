@@ -7,6 +7,8 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
 import { Usuarios } from '../../../models/usuario';
+import { LoginService } from '../../../auth/login.service';
+import { Login } from '../../../models/login';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,8 @@ import { Usuarios } from '../../../models/usuario';
 })
 export class LoginComponent {
   isRegisterActive = false;
+
+  login: Login = new Login();
 
   usuario: Usuarios = {
     nome: '',
@@ -32,6 +36,7 @@ export class LoginComponent {
 
   router = inject(Router);
   authService = inject(AuthService);
+  loginService = inject(LoginService); //Injeção do auth
 
   constructor(private usuarioServices: UsuarioService, private snackBar: MatSnackBar) { } //Injeta o serviço de usuários no construtor para poder usá-lo
 
@@ -40,6 +45,20 @@ export class LoginComponent {
   }
  
  
+/*   logar(){
+    this.loginService.logar(this.login).subscribe({
+      next: token => (
+        if(token){ //Usuário e senha digitados corretos
+          this.loginService.addToken(token);
+        }
+      ),
+      error: erro => {
+        alert('Deu erro!');
+      }
+    
+    });
+  } */
+
   logar() {
   this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe(success => {
     if (success) {
