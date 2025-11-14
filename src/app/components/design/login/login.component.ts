@@ -36,7 +36,7 @@ export class LoginComponent {
 
   router = inject(Router);
   authService = inject(AuthService);
-  loginService = inject(LoginService); //Injeção do auth
+  loginService = inject(LoginService); //Para usar o Service dentro de um componente, deve ser feito a injeção
 
   constructor(private usuarioServices: UsuarioService, private snackBar: MatSnackBar) { } //Injeta o serviço de usuários no construtor para poder usá-lo
 
@@ -45,17 +45,16 @@ export class LoginComponent {
   }
  
  
-/*   logar(){
+/*   logar(){ //Requisição HTTP de uma função logar que está dentro do auth (login.service)
     this.loginService.logar(this.login).subscribe({
-      next: token => (
-        if(token){ //Usuário e senha digitados corretos
-          this.loginService.addToken(token);
+      next: token => ( //Se der certo, token é o retorno que eu vou receber do servidor
+        if(token){ //Usuário e senha digitados corretos, verifica se o backend realmente retornou um token válido
+          this.loginService.addToken(token); //Salva o token no localStorage
         }
       ),
-      error: erro => {
+      error: erro => { //Se der erro
         alert('Deu erro!');
       }
-    
     });
   } */
 
