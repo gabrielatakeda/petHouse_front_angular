@@ -25,16 +25,16 @@ export const routes: Routes = [
     {
         path: "principal",
         component: MainComponent,
-        // canActivate: [RoleGuard],
-        // data: { role: 'user' },
+    
         children: [
             { path: 'home', component: HomeComponent },
+            //{ path: 'principalAdmin', component: PrincipalAdminComponent}
             { path: 'carrinho', component: CarrinhoComponent },
             { path: "produtoDetails/:id", component: ProdutoDetailsComponent },
             { path: 'usuario', component: UsuariosComponent },
             { path: 'usuario/details', component: UserdetailsComponent },
             { path: 'usuario/adress', component: EnderecodetailsComponent },
-            { path: 'usuario/security', component: SegurancaComponent }           //{ path: 'ladingPageProdutos', component: LandingPageProdutoComponent}
+            { path: 'usuario/security', component: SegurancaComponent }     
         ]
     },
 
@@ -42,8 +42,8 @@ export const routes: Routes = [
     {
         path: 'principalAdmin',
         component: PrincipalAdminComponent,
-        canActivate: [RoleGuard],
-        data: { role: 'admin' },
+        //canActivate: [RoleGuard],
+        //data: { role: 'admin' },
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent },
