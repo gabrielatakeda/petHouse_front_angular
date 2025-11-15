@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Login } from "./login";
+import { Usuario } from "./usuario";
 
 @Injectable({
     providedIn: 'root'
@@ -21,10 +22,10 @@ export class LoginService {
 
     addToken(token: string){ //Recebe como parâmetro o token que o backend enviou após o login
         localStorage.setItem('token', token); //Aqui é salvo no navegador, o localStorage é um armazenamento permanente
-    }
+    } //localStorage é um objeto reservado do Angular sem nenhum tipo de injeção
 
     removeToken(){ //Remove o token passado no navegador que estava salvo no localStorage
-        localStorage.removeItem('token');
+        localStorage.removeItem('token'); //Ele remove quando tiver deslogado
     }
 
     getToken(){ //Pega o token salvo no localStorage
@@ -32,10 +33,19 @@ export class LoginService {
     }
 
     jwtDecode(){
-        let token = this.getToken(); //pega o token armazenado no localStorage e o valor retornado é armazenado na variável
+        let token = this.getToken(); //Pega o token armazenado no localStorage e o valor retornado é armazenado na variável
         if(token){ //Verifica se o token existe e não está vazio
             //return jwtDecode<JwtPayload>(token); //Apenas abre o token e mostra o que tem dentro dela
         }
         return ""; //Se o token não existir, retorna uma string vazia
+    }
+
+    hasPermission(role: string){
+        let user = this.jwtDecode() as Usuario;
+        if(user.role == role){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -50,7 +50,9 @@ export class LoginComponent {
       next: token => ( //Se der certo, token é o retorno que eu vou receber do servidor
         if(token){ //Usuário e senha digitados corretos, verifica se o backend realmente retornou um token válido
           this.loginService.addToken(token); //Salva o token no localStorage
-        }
+        }else{ //O token pode chegar nulo, ou seja, usuário ou senha incorretos
+            alert('Usuário ou senha incorretos!');
+          }
       ),
       error: erro => { //Se der erro
         alert('Deu erro!');
