@@ -7,6 +7,8 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
 import { Usuarios } from '../../../models/usuario';
+import { LoginService } from '../../../auth/login.service';
+import { Login } from '../../../models/login';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,8 @@ import { Usuarios } from '../../../models/usuario';
 })
 export class LoginComponent {
   isRegisterActive = false;
+
+  login: Login = new Login();
 
   usuario: Usuarios = {
     nome: '',
@@ -30,8 +34,9 @@ export class LoginComponent {
   usuarioLogin = '';
   senhaLogin = '';
 
-  private router = inject(Router);
-  private authService = inject(AuthService);
+  router = inject(Router);
+  authService = inject(AuthService);
+  loginService = inject(LoginService); //Para usar o Service dentro de um componente, deve ser feito a injeção
 
   constructor(
     private usuarioServices: UsuarioService,
@@ -41,6 +46,23 @@ export class LoginComponent {
   togglePanel() {
     this.isRegisterActive = !this.isRegisterActive;
   }
+ 
+ 
+/*   logar(){ //Requisição HTTP de uma função logar que está dentro do auth (login.service)
+    this.loginService.logar(this.login).subscribe({
+      next: token => ( //Se der certo, token é o retorno que eu vou receber do servidor
+        if(token){ //Usuário e senha digitados corretos, verifica se o backend realmente retornou um token válido
+          this.loginService.addToken(token); //Salva o token no localStorage
+          this.router.navigate(['/principal/home']); //Redireciona para a página inicial
+        }else{ //O token pode chegar nulo, ou seja, usuário ou senha incorretos
+            alert('Usuário ou senha incorretos!');
+          }
+      ),
+      error: erro => { //Se der erro
+        alert('Deu erro!');
+      }
+    });
+  } */
 
   logar() {
     this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe({

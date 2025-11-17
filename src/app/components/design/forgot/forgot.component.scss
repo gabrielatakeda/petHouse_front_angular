@@ -1,28 +1,72 @@
+.card-custom{
+  border-radius: 10px;
+  max-width: 100%;
+  padding: 20px;
+}
 
-  .card-custom {
-    border-radius: 10px; /* deixa mais quadrado */
-    max-width: 400px;   /* controla a largura do card */
-    margin: 0 auto;     /* centraliza horizontalmente */
-  }
+.texto-ajuste{ /*Texto menor para telas pequenas*/
+  max-width: 90%;
+}
+
+.btn-purple, .botao{
+  font-size: 1rem;
+  padding: 12px;
+}
 
 .botao{
   border: 2px solid #9541e3 !important;
   color: #9541e3 !important;
+  background-color: #fff !important;
   font-weight: 500;
-  background-color: #fff !important; /* opcional: garante fundo branco */
-  box-shadow: none !important; /* remove o sombreamento que pode confundir com borda */
-  }
-
-.btn-purple {
-  background-color: #9541e3 ;
-  border-color: #6f42c1;
-  color: white;
-  font-weight: 500;
+  transition: 0.2s ease-in-out;
 }
 
-.btn-purple:hover {
- background-color: #8a2be2 ;
+.botao:hover{
+  background-color: #f4e7ff;
+  transform: scale(1.03);
+}
+
+.botao:active{
+  background-color: #e6d3ff !important;
+  transform: scale(0.97);
+}
+
+.btn-purple{
+  background-color: #9541e3;
   border-color: #6f42c1;
-  color: white;
+  color: #fff;
   font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-purple:hover{
+  background-color: #8a2be2;
+  transform: scale(1.03);
+}
+
+.btn-purple:active{
+  background-color: #7127b8 !important;
+  transform: scale(0.97);
+}
+
+/*Telas menores*/
+@media(max-width: 576px){
+  h2{
+    font-size: 1.4rem;
+  }
+
+  .texto-ajuste{
+    font-size: 0.9rem;
+  }
+
+  .input-group input{
+    font-size: 0.95rem;
+  }
+}
+
+/*Telas maiores*/
+@media(min-width: 992px){
+  .card-custom{
+    max-width: 420px; /*Limita em telas grandes*/
+  }
 }

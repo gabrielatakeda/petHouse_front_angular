@@ -1,4 +1,32 @@
 .header-container{
-    height: 60px;
-     background-color: #f8f9fa; /* cor equivalente ao bg-light */
+    height: 60px; /*Define altura fixa*/
+    background-color: #f8f9fa;
+    padding: 0 20px; /*Espaçamento interno*/
+}
+
+.info-admin h6{ /*Ajuste da fonte dependendo do tamanho da tela*/
+    font-size: 1rem;
+}
+
+.info-admin p{
+    font-size: 0.85rem; /*Tamanho da fonte*/
+}
+
+/*Responsividade para telas menores, melhora a leitura*/
+@media(max-width: 576px){
+    .info-admin h6{
+        font-size: 0.9rem;
+    }
+
+    .info-admin p{
+        font-size: 0.75rem;
+    }
+}
+
+/*Telas muito pequenas, centraliza os textos*/
+@media(max-width: 400px){
+    .container-fluid{
+        justify-content: center !important;
+        text-align: center !important;
+    }
 }
