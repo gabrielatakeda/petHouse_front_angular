@@ -24,23 +24,23 @@ export class UsuarioService {
     return this.http.post<Usuarios>(`${this.apiUrl}/save`, payload);
   }
 
-  private formatarData(date: Date | string | null): string | null {
-    if (!date) {
-      return null; 
-    }
-
-    const d = new Date(date);
-
-    if (isNaN(d.getTime())) {
-      return null;
-    }
-
-    const ano = d.getFullYear();
-    const mes = String(d.getMonth() + 1).padStart(2, '0');
-    const dia = String(d.getDate()).padStart(2, '0');
-
-    return `${ano}-${mes}-${dia}`; 
+  private formatarData(date: Date | string | null | undefined): string | null {
+  if (!date) {
+    return null; 
   }
+
+  const d = new Date(date);
+
+  if (isNaN(d.getTime())) {
+    return null;
+  }
+
+  const ano = d.getFullYear();
+  const mes = String(d.getMonth() + 1).padStart(2, '0');
+  const dia = String(d.getDate()).padStart(2, '0');
+
+  return `${ano}-${mes}-${dia}`; 
+}
 
   findById(id: number): Observable<Usuarios> {
     return this.http.get<Usuarios>(`${this.apiUrl}/findById/${id}`);
