@@ -21,7 +21,7 @@ export class CategoriaService {
   }
 
   criarSubcategoria(slugPai: string, categoria: Categoria): Observable<Categoria> {
-    return this.http.post<Categoria>(`${this.apiUrl}/${slugPai}/subcategorias`, categoria);
+    return this.http.post<Categoria>(`${this.apiUrl}/${slugPai}/subcategoria`, categoria);
 }
 
   update(id: number, categoria: Categoria): Observable<Categoria> {
