@@ -1,4 +1,4 @@
-import { Endereco } from "../models/endereco";
+/*import { Endereco } from "../models/endereco";
 
 export class Usuario { //Representa o usuário que é salvo no banco de dados
     id!: number;
@@ -8,4 +8,4 @@ export class Usuario { //Representa o usuário que é salvo no banco de dados
     usuario!: string;
     //endereco!: List<Endereco>;
     role!: string; //Permissão do tipo de acesso que o usuário possui
-}
+}*/

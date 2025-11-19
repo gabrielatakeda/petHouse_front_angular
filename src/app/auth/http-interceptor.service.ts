@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
+/*import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, throwError } from "rxjs";
@@ -37,4 +37,4 @@ export const meuhttpInterceptor : HttpInterceptorFn = (request, next) => {
             return throwError(() => err); //Devolve o erro para quem chamou a requisição para que possa ser tratado lá também
         })
     );
-}
+}*/

@@ -105,7 +105,7 @@ export class CadastroProdutoComponent {
   }
 
   onSubmit() {
-  if (!this.produto.categoria) {
+  if (!this.modoEdicao && !this.produto.categoria) {
     Swal.fire('Atenção', 'Selecione uma categoria', 'warning');
     return;
   }
@@ -122,8 +122,8 @@ export class CadastroProdutoComponent {
       this.findAllProdutos();
     },
     error: (err) => {
-      console.error(err);
-      Swal.fire('Erro', `Falha ao ${this.modoEdicao ? 'atualizar' : 'cadastrar'}.`, 'error');
+      console.error('Erro completo:', err);
+      Swal.fire('Erro', `Falha ao ${this.modoEdicao ? 'atualizar' : 'cadastrar'} o produto.`, 'error');
     }
   });
 }
@@ -145,6 +145,7 @@ finalizar(msg: string) {
   this.produto = new Produto('', '', 0, 0, '', undefined);
   this.selectedFile = undefined;
   this.categoriaSelecionadaId = null;
+  this.dropdownAberto = null;
   this.modoEdicao = false;
   this.produtoEditandoId = null;
 }
@@ -173,13 +174,11 @@ modoEdicao: boolean = false;
 produtoEditandoId: number | null = null;
 
 editarProduto(produto: Produto) {
-  this.produto = { ...produto };
-  this.categoriaSelecionadaId = produto.categoria?.id || null;
+  this.produto = JSON.parse(JSON.stringify(produto));
+  this.categoriaSelecionadaId = produto.categoria?.id ?? null;
   this.modoEdicao = true;
-  this.produtoEditandoId = produto.id || null;
-
-
-  window.scrollTo(0, 0);
+  this.produtoEditandoId = produto.id ?? null;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 removerProduto(id: number) {
@@ -203,6 +202,23 @@ removerProduto(id: number) {
           Swal.fire('Erro', 'Não foi possível remover.', 'error');
         }
       });
+    }
+  });
+}
+
+cancelarEdicao() {
+  Swal.fire({
+    title: 'Tem certeza?',
+    text: 'As alterações não salvas serão perdidas.',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Sim, cancelar',
+    cancelButtonText: 'Não, continuar editando',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.resetForm();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
 }

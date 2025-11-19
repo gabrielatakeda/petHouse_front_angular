@@ -4,9 +4,11 @@
       <div class="card">
         <div class="card-body ">
           <form (ngSubmit)="onSubmit()">
-            <h4 class="text-center mb-2 titulo-form">Cadastrar Produto</h4>
+            <h4 class="text-center mb-2 titulo-form">
+              {{ modoEdicao ? 'Editar Produto' : 'Cadastrar Produto' }}
+            </h4>
             <p class="text-center text-muted mb-4 subtitulo-form">
-              Preencha os dados abaixo para realizar o cadastro.
+              {{ modoEdicao ? 'Altere os dados abaixo e clique em Salvar.' : 'Preencha os dados abaixo para realizar o cadastro.' }}
             </p>
 
             <!-- Nome -->
@@ -58,10 +60,22 @@
               <input mdbInput type="file" class="form-control" (change)="onFileSelected($event)" />
             </mdb-form-control>
 
-            <!-- Botão Salvar -->
-            <button mdbRipple type="submit" class="btn btn-musgo w-100">
-              Salvar
-            </button>
+            <div class="d-flex justify-content-between mt-4">
+              <button 
+                type="button" 
+                class="btn btn-outline-secondary" 
+                (click)="cancelarEdicao()"
+                *ngIf="modoEdicao">
+                Cancelar
+              </button>
+            
+              <button 
+                mdbRipple 
+                type="submit" 
+                class="btn btn-musgo ms-auto">
+                {{ modoEdicao ? 'Salvar Alterações' : 'Salvar' }}
+              </button>
+            </div>
           </form>
         </div>
       </div>
