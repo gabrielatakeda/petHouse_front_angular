@@ -79,11 +79,11 @@ export class NavbarComponent implements OnInit {
   }
 
   goToUsuario() {
-    this.router.navigate(['principal/usuario']);
+    this.router.navigate(['/usuario']);
   }
 
   goToMenu() {
-    this.router.navigate(['principal/home']);
+    this.router.navigate(['/home']);
   }
 
   onMouseEnter(categoryName: string): void {

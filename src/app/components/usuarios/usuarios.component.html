@@ -1,9 +1,10 @@
-<div class="container-fluid main-layout" *ngIf="usuario">
+@if (usuario != null && usuario != undefined){
+<div class="container-fluid main-layout">
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10 content-area py-4 position-relative">
       <!-- Botão de voltar -->
-      <button class="btn-voltar" [routerLink]="['/principal/home']">
+      <button class="btn-voltar" [routerLink]="['/home']">
         <span class="material-icons"></span>
         Voltar
       </button>
@@ -85,3 +86,4 @@
     <div class="col-1"></div>
   </div>
 </div>
+}
