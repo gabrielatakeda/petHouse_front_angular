@@ -9,8 +9,6 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:8080/usuarios';
-  private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080/usuarios';
 
   save(usuario: Usuarios) { //Método para salvar um usuário
     return this.http.post(`${this.apiUrl}/save`, usuario, { //Faz uma requisição POST para a API
@@ -28,7 +26,7 @@ export class UsuarioService {
   update(id: number, usuario: Usuarios): Observable<Usuarios> {
     const payload = {
       ...usuario,
-      dataNascimento: this.formatarData(usuario.dataNascimento)
+    //  dataNascimento: this.formatarData(usuario.dataNascimento)
     };
     return this.http.put<Usuarios>(`${this.apiUrl}/update/${id}`, payload);
   }

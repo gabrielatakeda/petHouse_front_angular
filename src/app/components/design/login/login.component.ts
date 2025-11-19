@@ -3,7 +3,6 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
-import Swal from 'sweetalert2';
 import { UsuarioService } from '../../../services/usuario.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
@@ -26,14 +25,10 @@ export class LoginComponent {
     nome: '',
     email: '',
     cpf: '',
-    cpf: '',
     senha: '',
     user: '',                    
     dataNascimento: '',  
-    enderecos: []
-    user: '',                    
-    dataNascimento: '',  
-    enderecos: []
+    enderecos: []         
   };
 
   usuarioLogin = '';
@@ -43,10 +38,6 @@ export class LoginComponent {
   authService = inject(AuthService);
   loginService = inject(LoginService); //Para usar o Service dentro de um componente, deve ser feito a injeção
 
-  constructor(
-    private usuarioServices: UsuarioService,
-    private snackBar: MatSnackBar
-  ) { }
   constructor(
     private usuarioServices: UsuarioService,
     private snackBar: MatSnackBar
@@ -81,25 +72,7 @@ export class LoginComponent {
           if (role === 'admin') {
             this.router.navigate(['/principalAdmin/dashboard']);
           } else {
-            this.router.navigate(['/principal/home']);
-          }
-        } else {
-          Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
-        }
-      },
-      error: () => {
-        Swal.fire('Erro', 'Erro ao conectar com o servidor', 'error');
-      }
-    });
-  }
-    this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe({
-      next: (success) => {
-        if (success) {
-          const role = this.authService.getUserRole();
-          if (role === 'admin') {
-            this.router.navigate(['/principalAdmin/dashboard']);
-          } else {
-            this.router.navigate(['/principal/home']);
+            this.router.navigate(['/home']);
           }
         } else {
           Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
@@ -149,44 +122,6 @@ export class LoginComponent {
         });
       }
     });
-  save() {
-   
-    if (!this.usuario.nome || !this.usuario.email || !this.usuario.cpf || 
-        !this.usuario.senha || !this.usuario.user) {
-      this.snackBar.open('Preencha todos os campos!', 'Fechar', {
-        duration: 3000,
-        panelClass: ['error-snack-bar']
-      });
-      return;
-    }
-
-    this.usuarioServices.save(this.usuario).subscribe({
-      next: () => {
-        this.snackBar.open('Salvo com sucesso!', 'Fechar', {
-          duration: 3000,
-          panelClass: ['success-snackbar']
-        });
-      
-        this.usuario = {
-          nome: '',
-          email: '',
-          cpf: '',
-          senha: '',
-          user: '',
-          dataNascimento: new Date(),
-          enderecos: []
-        };
-       
-        this.isRegisterActive = false;
-      },
-      error: (err) => {
-        console.error('Erro ao salvar usuário:', err);
-        this.snackBar.open('Erro ao salvar! Verifique os dados.', 'Fechar', {
-          duration: 5000,
-          panelClass: ['error-snackbar']
-        });
-      }
-    });
-  }
-
+  
+}
 }

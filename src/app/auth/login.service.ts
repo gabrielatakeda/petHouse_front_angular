@@ -40,12 +40,12 @@ export class LoginService {
         return ""; //Se o token não existir, retorna uma string vazia
     }
 
-    hasPermission(role: string){
-        let user = this.jwtDecode() as Usuario;
-        if(user.role == role){
-            return true;
-        }else{
-            return false;
-        }
-    }
+   hasPermission(role: string): boolean {
+  const user: any = this.jwtDecode();
+
+  if (user && user.role === role) {
+    return true;
+  }
+  return false;
+}
 }
