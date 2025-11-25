@@ -12,15 +12,14 @@ import { CommonModule } from '@angular/common';
 })
 export class CadastroCategoriaComponent {
 
+ 
   categoriasPai: Categoria[] = [];
   subcategorias: Categoria[] = [];
   categoriaSelecionadaId: number | null = null;
 
-  // Sinais para controlar a exibição condicional (substitui ifs de template)
-  showCadastro = signal(false);
-  tipoCadastro = signal<'categoria' | 'subcategoria' | null>(null);
+  // 🔹 Signal para mostrar/esconder formulário de subcategoria
+  showSubcategoriaForm = signal(false);
 
-  // Formulários reativos
   categoriaForm: FormGroup;
   subcategoriaForm: FormGroup;
 
@@ -29,32 +28,25 @@ export class CadastroCategoriaComponent {
     private fb: FormBuilder
   ) {
     this.categoriaForm = this.fb.group({
-  nome: ['', Validators.required]
-});
+      nome: ['', Validators.required]
+    });
 
-this.subcategoriaForm = this.fb.group({
-  categoriaPai: [null, Validators.required],
-  nomeSubcategoria: ['', Validators.required]
-});
-
+    this.subcategoriaForm = this.fb.group({
+      categoriaPai: [null, Validators.required],
+      nomeSubcategoria: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
     this.findCategoriasPai();
   }
 
-  // Exibe a área de cadastro
-  onCadastrarClick() {
-    this.showCadastro.set(true);
+  // 🔹 Alternar visibilidade do formulário
+  toggleSubcategoriaForm() {
+    this.showSubcategoriaForm.update(v => !v);
   }
 
-  // Define o tipo de cadastro escolhido
-  onTipoChange(event: Event) {
-    const value = (event.target as HTMLSelectElement).value as 'categoria' | 'subcategoria' | null;
-    this.tipoCadastro.set(value);
-  }
-
-  //METODO PARA EXIBIR CATEGORIAS E SUBCATEGORIAS
+  // --- Métodos de listagem e salvar (sem alterações) ---
   findCategoriasPai() {
     this.categoriaService.findCategoriasPai().subscribe({
       next: (res) => {
@@ -76,66 +68,30 @@ this.subcategoriaForm = this.fb.group({
     });
   }
 
-  //METODO SALVAR
- salvarCategoria() {
-  if (this.categoriaForm.invalid) return;
+  salvarSubcategoria() {
+    if (this.subcategoriaForm.invalid) return;
 
-  const nome = this.categoriaForm.value.nome?.trim();
+    const nome = this.subcategoriaForm.value.nomeSubcategoria?.trim();
+    const slugPai = this.subcategoriaForm.value.categoriaPai;
 
-  if (!nome) {
-    alert('Digite o nome da categoria!');
-    return;
-  }
-
-  const categoria: any = { nome };
-this.categoriaService.save(categoria).subscribe({
-    next: (res) => {
-      // adiciona à lista local sem precisar recarregar tudo
-      this.categoriasPai.push(res);
-
-      alert(`Categoria "${res.nome}" cadastrada com sucesso!`);
-      this.categoriaForm.reset();
-    },
-    error: (err) => {
-      console.error('Erro ao salvar categoria:', err);
-      alert('Erro ao salvar categoria.');
-    },
-  });
-}
-
-
-salvarSubcategoria() {
-  
-  if (this.subcategoriaForm.invalid) return;
-
-  const nome = this.subcategoriaForm.value.nomeSubcategoria?.trim();
-  const slugPai = this.subcategoriaForm.value.categoriaPai; // pegar slug da categoria pai
-
-
-  if (!nome) {
-    alert('Digite o nome da subcategoria!');
-    return;
-  }
-  if (!slugPai) {
-    alert('Selecione uma categoria pai!');
-    return;
-  }
-
-  const subcategoria: any = {
-    nome // categoriaPai não precisa no body, backend associa pelo slugPai
-  };
-
-   console.log('slugPai selecionado:', slugPai);
-  this.categoriaService.criarSubcategoria(slugPai, subcategoria).subscribe({
-    next: () => {
-      alert('Subcategoria cadastrada com sucesso!');
-      this.subcategoriaForm.reset();
-      this.findCategoriasPai(); // atualizar lista de categorias pai
-    },
-    error: (err) => {
-      console.error('Erro ao salvar subcategoria:', err);
-      alert('Erro ao salvar subcategoria.');
+    if (!nome || !slugPai) {
+      alert('Preencha todos os campos!');
+      return;
     }
-  });
-}
+
+    const subcategoria = { nome };
+
+    this.categoriaService.criarSubcategoria(slugPai, subcategoria).subscribe({
+      next: () => {
+        alert('Subcategoria cadastrada com sucesso!');
+        this.subcategoriaForm.reset();
+        this.findCategoriasPai();
+        this.showSubcategoriaForm.set(false); // 🔹 Esconde o formulário após salvar
+      },
+      error: (err) => {
+        console.error('Erro ao salvar subcategoria:', err);
+        alert('Erro ao salvar subcategoria.');
+      }
+    });
+  }
 }

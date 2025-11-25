@@ -1,0 +1,45 @@
+.footer-container{
+    width: 100%; /*Ocupa toda a largura da página*/
+    background-color: #f8f9fa;
+}
+
+.footer-content{
+    background-color: rgba(95, 95, 95, 0.1);
+    font-size: 0.85rem; /*Tamanho da fonte*/
+    padding: 0.8rem 1rem; /*Espaçamento interno, tanto vertical quanto horizontal*/
+}
+
+.footer-contact a{
+    color: inherit; /*Mantém a mesma cor do texto do parágrafo*/
+    text-decoration: none; /*Remove o sublinhado*/
+}
+
+/*Responsividade para telas grandes como notebook PC*/
+@media(min-width: 992px){
+    .footer-content{
+        font-size: 0.9rem; /*Aumenta pouco o tamanho do texto*/
+        padding: 1rem; /*Mais espaço para acompanhar o tamanho da tela*/
+    }
+}
+
+/*Telas médias como tablets*/
+@media(max-width: 768px) and (min-width: 577px){
+    .footer-content p{
+        font-size: 0.8rem;
+    }
+}
+
+/*Telas pequenas, smartphones padrão*/
+@media(max-width: 576px){
+    .footer-content{
+        font-size: 0.75rem;
+        padding: 0.6rem;
+    }
+}
+
+/*Telas muito pequenas, smartphones compactos*/
+@media(max-width: 400px){
+    .footer-content p{
+        font-size: 0.68rem; /*Texto menor para não quebrar linhas*/
+    }
+}

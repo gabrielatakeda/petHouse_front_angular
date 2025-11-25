@@ -1,7 +1,8 @@
 <div class="details-container" *ngIf="usuario">
   <aside class="sidebar">
     <div class="user-profile">
-      <img src="https://via.placeholder.com/100" alt="Foto usuário" class="user-photo" />
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto usuário" class="rounded-circle mb-3"
+        width="100" height="100">
       <h4>{{usuario.nome}}</h4>
       <p>{{usuario.email}}</p>
     </div>
@@ -9,7 +10,7 @@
 
   <main class="content">
     <div class="back-button">
-      <button class="btn btn-secondary" routerLink="">&larr; Voltar</button>
+      <button class="btn btn-secondary" routerLink="/principal/usuario">&larr; Voltar</button>
     </div>
 
     <h2>Segurança</h2>
@@ -18,7 +19,7 @@
     <div class="security-list">
       <div class="security-item">
         <span>Senha</span>
-        <button class="btn btn-sm btn-primary">Alterar</button>
+        <button class="btn btn-sm btn-primary" (click)="editarSenha(usuario)">Alterar</button>
       </div>
 
       <div class="security-item">
@@ -33,3 +34,33 @@
     </div>
   </main>
 </div>
+
+<ng-template #modalEditSenha>
+  <div class="modal-header">
+    <h5 class="modal-title">Editar informações</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+
+      <!-- Senha -->
+      <div class="form-group mb-3">
+        <label for="nome" class="form-label">Nova senha</label>
+        <input type="password" id="senha" class="form-control" [(ngModel)]="usuarioEdit.senha" name="senha"/>
+      </div>
+
+      <!-- confirmação da senha -->
+      <div class="form-group mb-3">
+        <label for="nome" class="form-label">Confirme a senha</label>
+        <input type="password" id="senha2" class="form-control" [(ngModel)]="senhaConfirm" name="senha"/>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modalRef.close()">Cancelar</button>
+    <button class="btn btn-success" (click)="salvarEdicaoSenha()">Salvar</button>
+  </div>
+</ng-template>
