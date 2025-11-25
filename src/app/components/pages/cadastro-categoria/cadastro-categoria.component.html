@@ -1,19 +1,43 @@
 <div class="container">
   <h2>Gerenciamento de Categorias</h2>
 
-<!-- Botão para exibir/esconder formulário -->
-  <button class="btn-subcategoria" (click)="toggleSubcategoriaForm()">
-    {{ showSubcategoriaForm() ? 'Fechar Cadastro' : 'Cadastrar Subcategoria' }}
-  </button>
+  <!-- Botão para exibir opções -->
+  <button class="btn-subcategoria" (click)="onCadastrarClick()">Cadastrar</button>
+
+  <!-- Exibe opções de cadastro -->
+  @if (showCadastro()) {
+    <div style="margin-top: 1rem;">
+      <label for="tipoCadastro">Escolha o tipo de cadastro:</label>
+      <select id="tipoCadastro" class="form-control" (change)="onTipoChange($event)">
+        <option value="">Selecione...</option>
+        <option value="categoria">Categoria</option>
+        <option value="subcategoria">Subcategoria</option>
+      </select>
+    </div>
+  }
+
+  <!-- Formulário de Categoria -->
+  @if (tipoCadastro() === 'categoria') {
+    <div class="card mt-3 p-3">
+      <h4>Cadastrar Categoria</h4>
+      <form [formGroup]="categoriaForm" (ngSubmit)="salvarCategoria()">
+        <label for="nome">Nome da Categoria:</label>
+        <input id="nome" type="text" formControlName="nome" class="form-control" required>
+
+        <button type="submit" class="btn-subcategoria mt-3">Salvar Categoria</button>
+      </form>
+    </div>
+  }
 
   <!-- Formulário de Subcategoria -->
-  @if (showSubcategoriaForm()) {
+  @if (tipoCadastro() === 'subcategoria') {
     <div class="card mt-3 p-3">
       <h4>Cadastrar Subcategoria</h4>
       <form [formGroup]="subcategoriaForm" (ngSubmit)="salvarSubcategoria()">
         <label for="categoriaPai">Categoria Pai:</label>
         <select id="categoriaPai" formControlName="categoriaPai" class="form-control" required>
           <option value="">Selecione...</option>
+          
           @for (cat of categoriasPai; track cat.slug) {
             <option [value]="cat.slug">{{ cat.nome }}</option>
           }

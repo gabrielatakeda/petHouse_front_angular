@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormsModule } from '@angular/forms';
 import { Usuarios } from '../../models/usuario';
-import Swal from 'sweetalert2';
+import { HeaderComponent } from "../design/header/header.component";
 
 @Component({
   selector: 'app-userdetails',
-  imports: [RouterLink, CommonModule, MdbModalModule, FormsModule],
+  imports: [RouterLink, CommonModule, MdbModalModule, FormsModule, HeaderComponent],
   templateUrl: './userdetails.component.html',
   styleUrl: './userdetails.component.scss'
 })
@@ -43,12 +43,9 @@ export class UserdetailsComponent {
       this.usuarioService.update(this.usuarioEdit.id, this.usuarioEdit).subscribe({
       next: retorno => {
         this.usuario = retorno;
-        this.modalRef.close;
-        Swal.fire("Sucesso", "Informações salvas com sucesso!", "success");
       },
       error: erro => {
-        Swal.fire("Erro", "Erro ao atualizar infromações", "error");
-        console.log(erro);//console.log para mostrar erro dado
+        alert("erro ao salvar dados do usuário");
       }
     })
     this.modalRef.close();

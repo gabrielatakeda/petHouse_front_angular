@@ -7,33 +7,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080/usuarios';
-  private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080/usuarios';
+
+   private http = inject(HttpClient); //Injeção manual do HttpClient para usar nas requisições
+  private apiUrl = 'http://localhost:8080/usuarios'; //URL base da API
 
   save(usuario: Usuarios) { //Método para salvar um usuário
-    return this.http.post(`${this.apiUrl}/save`, usuario, { //Faz uma requisição POST para a API
-      headers: { 'Content-Type': 'application/json' } //Define que o conteúdo enviado é JSON
-    });
-  }
-  findById(id: number): Observable<Usuarios> {
-    return this.http.get<Usuarios>(`${this.apiUrl}/findById/${id}`);
-  }
-
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+  return this.http.post(`${this.apiUrl}/save`, usuario, { //Faz uma requisição POST para a API
+    headers: { 'Content-Type': 'application/json' } //Define que o conteúdo enviado é JSON
+  });
+}
+  findById(id: number): Observable<Usuarios>{
+    return this.http.get<Usuarios>(this.apiUrl+"/findById/"+id);
   }
 
-  update(id: number, usuario: Usuarios): Observable<Usuarios> {
-    const payload = {
-      ...usuario,
-      dataNascimento: this.formatarData(usuario.dataNascimento)
-    };
-    return this.http.put<Usuarios>(`${this.apiUrl}/update/${id}`, payload);
+  delete(id: number): Observable<void>{
+    return this.http.delete<void>(this.apiUrl+"/delete/"+id);
   }
 
-  findAll(): Observable<Usuarios[]> {
-    return this.http.get<Usuarios[]>(`${this.apiUrl}/findAll`);
+  update(id:number, usuario:Usuarios): Observable<Usuarios>{
+    return this.http.put<Usuarios>(this.apiUrl+"/update/"+id, usuario);
+  }
+
+  findAll(): Observable<Usuarios[]>{
+    return this.http.get<Usuarios[]>(this.apiUrl+"/findAll");
   }
 }

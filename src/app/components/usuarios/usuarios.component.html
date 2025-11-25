@@ -1,34 +1,28 @@
 <div class="container-fluid main-layout" *ngIf="usuario">
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-10 content-area py-4 position-relative">
-      <!-- Botão de voltar -->
-      <button class="btn-voltar" [routerLink]="['/principal/home']">
-        <span class="material-icons"></span>
-        Voltar
-      </button>
-
+    <div class="col-10 content-area py-4">
       <div class="row">
         <!-- Perfil do usuário -->
-        <div class="col-md-3 d-flex align-items-center justify-content-center">
+        <div class="col-md-3">
           <div class="user user-profile text-center p-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto usuário"
-              class="rounded-circle mb-3" width="100" height="100">
-            <h5>{{ usuario.user }}</h5> <!-- CORRIGIDO -->
-            <p class="text-muted">{{ usuario.email }}</p>
+            <img [src]="usuario.enderecos ? 'https://via.placeholder.com/100' : ''" alt="Foto usuário" class="rounded-circle mb-3">
+            <h5>{{usuario.user}}</h5>
+            <p class="text-muted">{{usuario.email}}</p>
           </div>
         </div>
 
         <!-- Conteúdo principal -->
         <div class="col-md-9">
           <div class="card text-center mb-3 p-3 promo-card">
-            <app-mini-promo></app-mini-promo>
+            <h6><strong>SEMANA DO CLIENTE</strong></h6>
+            <p>15% OFF no Pix<br>promoção válida até o dia 28/09</p>
+            <img src="https://via.placeholder.com/200x80" alt="Produtos" class="img-fluid">
           </div>
 
           <div class="row g-3">
             <div class="col-md-6">
-              <div class="card action-card p-3 w-100" [routerLink]="['/principal/usuario/details']"
-                [state]="{ usuario: usuario }">
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/details']" [state]="{ usuario: usuario }">
                 <span class="material-icons">person</span>
                 <div>
                   <strong>Seus dados</strong><br>
@@ -36,7 +30,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-6">
               <div class="card action-card p-3 w-100">
                 <span class="material-icons">shopping_cart</span>
@@ -46,10 +39,8 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-6">
-              <div class="card action-card p-3 w-100" [routerLink]="['/principal/usuario/adress']"
-                [state]="{ usuario: usuario }">
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/adress']" [state]="{ usuario: usuario }">
                 <span class="material-icons">location_on</span>
                 <div>
                   <strong>Endereços</strong><br>
@@ -57,10 +48,8 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-6">
-              <div class="card action-card p-3 w-100" [routerLink]="['/principal/usuario/security']"
-                [state]="{ usuario: usuario }">
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/security']" [state]="{ usuario: usuario }">
                 <span class="material-icons">security</span>
                 <div>
                   <strong>Segurança</strong><br>
@@ -68,7 +57,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-12">
               <div class="card action-card p-3 w-100">
                 <span class="material-icons">inventory</span>
@@ -79,6 +67,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

@@ -1,30 +1,15 @@
-// navbar.component.ts
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../services/auth.service';
-import { Usuarios } from '../../../models/usuario';
-
-interface Category {
-  name: string;
-  dropdown: boolean;
-  isOpen: boolean;
-  dropdownItems: string[];
-}
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
-  userName: string = '';
-  isAccountMenuOpen: boolean = false;
-  usuario: Usuarios = new Usuarios("", "", "", "", "", new Date(), []);
-  
-  categories: Category[] = [
+export class NavbarComponent {
+  categories = [
     {
       name: 'Alimentação',
       dropdown: true,
@@ -57,47 +42,21 @@ export class NavbarComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router, private authService: AuthService) {}
-
-  ngOnInit() {
-    this.authService.usuarioLogado$.subscribe(usuario => {
-      this.userName = usuario ? usuario.user : '';
-      this.usuario = usuario || new Usuarios("", "", "", "", "", new Date(), []);
-    });
-  }
-
-  toggleAccountMenu() {
-    this.isAccountMenuOpen = !this.isAccountMenuOpen;
-  }
-
-  closeAccountMenu() {
-    this.isAccountMenuOpen = false;
-  }
-
-  goToLogin() {
-    this.router.navigate(['/login']);
-  }
-
-  goToUsuario() {
-    this.router.navigate(['principal/usuario']);
-  }
-
-  goToMenu() {
-    this.router.navigate(['principal/home']);
-  }
-
+  // Função para abrir o dropdown ao passar o mouse
   onMouseEnter(categoryName: string): void {
-    const category = this.categories.find(cat => cat.name === categoryName);
+    const category = this.categories.find((cat) => cat.name === categoryName);
     if (category && category.dropdown) {
       category.isOpen = true;
+      // Fecha outros dropdowns abertos
       this.categories
-        .filter(cat => cat.name !== categoryName)
-        .forEach(cat => cat.isOpen = false);
+        .filter((cat) => cat.name !== categoryName)
+        .forEach((cat) => (cat.isOpen = false));
     }
   }
 
+  // Função para fechar o dropdown ao tirar o mouse
   onMouseLeave(categoryName: string): void {
-    const category = this.categories.find(cat => cat.name === categoryName);
+    const category = this.categories.find((cat) => cat.name === categoryName);
     if (category && category.dropdown) {
       category.isOpen = false;
     }

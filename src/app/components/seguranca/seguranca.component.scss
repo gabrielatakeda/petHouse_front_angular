@@ -1,116 +1,80 @@
 .details-container {
   display: flex;
   min-height: 100vh;
-  background-color: #fff8f0; // bege clarinho de fundo
+  background-color: #f9f6ef;
 }
 
-/* Sidebar do usuário */
 .sidebar {
-  width: 260px;
-  background-color: #d9c8ff; // lavanda clara
-  color: #2e2e2e;
-  padding: 25px 15px;
+  width: 250px;
+  background-color: #74a474;
+  color: #fff;
+  padding: 20px;
   text-align: center;
-  border-right: 2px solid #f0e6ff;
 }
 
 .user-photo {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  margin-bottom: 12px;
-  background-color: #f7f5fb;
+  margin-bottom: 10px;
 }
 
-.user-profile h4 {
-  color: #2e2e2e;
-  font-weight: 600;
-}
-
-.user-profile p {
-  color: #6b6b6b;
-  font-size: 0.95rem;
-  margin-bottom: 0;
-}
-
-/* Conteúdo principal */
 .content {
   flex: 1;
-  padding: 40px;
-  background-color: #f7f5fb; // lavanda super clara para o fundo
+  padding: 30px;
+  background-color: #f9f6ef;
 
   h2 {
-    color: #2e2e2e;
+    color: #333;
     margin-bottom: 10px;
-    font-weight: 700;
   }
 
   p {
-    color: #6b6b6b;
-    margin-bottom: 25px;
+    color: #666;
+    margin-bottom: 20px;
   }
 }
 
-/* Botão voltar */
 .back-button {
   margin-bottom: 20px;
 
   button {
-    background-color: #7b4ae2;
+    background-color: #74a474;
     border: none;
     color: #fff;
     font-weight: 500;
-    border-radius: 8px;
-    padding: 6px 14px;
-    transition: all 0.2s ease;
 
     &:hover {
-      background-color: #6a3cc9;
-      transform: translateY(-2px);
+      background-color: #5b845b;
     }
   }
 }
 
-/* Lista de opções de segurança */
 .security-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 15px;
 }
 
-/* Cada item (Senha, 2FA, etc.) */
 .security-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #7b4ae2; // roxo principal do sistema
+  background: #74a474;
   color: #fff;
-  padding: 16px 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  span {
-    font-weight: 500;
-  }
+  padding: 15px;
+  border-radius: 10px;
 
   button {
     background: #fff;
-    color: #7b4ae2;
+    color: #74a474;
     border: none;
-    padding: 6px 14px;
-    border-radius: 8px;
+    padding: 5px 12px;
+    border-radius: 6px;
     font-weight: 600;
-    transition: all 0.2s ease;
 
     &:hover {
-      background-color: #f0e6ff;
-      transform: translateY(-1px);
+      background: #eaeaea;
     }
   }
 }

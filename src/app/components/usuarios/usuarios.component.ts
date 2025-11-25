@@ -3,13 +3,13 @@ import { UsuarioService } from '../../services/usuario.service';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Usuarios } from '../../models/usuario';
+import { HeaderComponent } from "../design/header/header.component";
 import { AuthService } from '../../services/auth.service';
-import { MiniPromoComponent } from "../design/mini-promo/mini-promo.component";
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [RouterLink, NgIf, MiniPromoComponent],
+  imports: [RouterLink, NgIf, HeaderComponent],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })
@@ -30,6 +30,10 @@ export class UsuariosComponent {
   findById(id: number) {
     this.usuarioService.findById(id).subscribe({
       next: result => {
+        console.log(result);
+        if (result.enderecos && result.enderecos.length > 0) {
+          console.log(result.enderecos[0]);
+        }
         this.usuario = result;
       },
       error: () => {

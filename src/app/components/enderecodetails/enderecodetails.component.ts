@@ -6,7 +6,6 @@ import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit
 import { FormsModule, NgModel } from '@angular/forms';
 import { EnderecoService } from '../../services/endereco.service';
 import { Usuarios } from '../../models/usuario';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-enderecodetails',
@@ -59,28 +58,30 @@ export class EnderecodetailsComponent {
     this.enderecoService.delete(endereco.id).subscribe({
       next: retorno => {
         this.endereco = this.endereco.filter(e => e.id !== endereco.id);
+        alert("Endereço deletado com sucesso");
         this.modalRef.close();
-        Swal.fire('Sucesso', 'Endereço deletado com sucesso!', "info");
       },
       error: erro => {
-        Swal.fire('Erro', 'Erro ao deletar endereço!', 'error');
-        console.log(erro);//console.log para mostrar erro dado
+        alert("Falha ao deletar endereço");
+        console.log(erro);
       }
     });
   }
 
 
   salvarEdicaoEndereco() {
+    console.log(this.enderecoEdit); // teste
+
     if (this.modoEndereco === 'novo') {
       this.enderecoService.save(this.enderecoEdit).subscribe({
         next: retorno => {
           this.endereco.push(retorno); // Adiciona o retorno do backend
           this.modalRef.close();
-          Swal.fire('Sucesso', 'Endereço salvo com sucesso!', "success");
+          alert("Endereço adicionado com sucesso");
         },
         error: erro => {
-          Swal.fire('Erro', 'Erro ao salvar um endereço!', "error");
-          console.log(erro);//console.log para mostrar erro dado
+          alert("Erro ao salvar o endereço");
+          console.log(erro);
         }
       });
     } else {
@@ -90,11 +91,11 @@ export class EnderecodetailsComponent {
           const index = this.endereco.findIndex(e => e.id === retorno.id);
           if (index > -1) this.endereco[index] = retorno;
           this.modalRef.close();
-          Swal.fire('Sucesso', 'Endereço atialzado com sucesso!',"success");
+          alert("Endereço atualizado com sucesso");
         },
         error: erro => {
-          Swal.fire('Erro', 'Erro ao atualizar endereço!', "error");
-          console.log(erro);//console.log para moastrar erro dado
+          alert("Erro ao atualizar o endereço");
+          console.log(erro);
         }
       });
     }
