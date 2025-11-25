@@ -1,13 +1,37 @@
 /* Layout principal */
 .main-layout {
-  background-color: #fef6e4; // fundo bege geral
+  background-color: #fff8f0; /* fundo bege suave */
   min-height: 100vh;
 }
 
 .content-area {
-  background-color: rgba(124, 174, 115, 0.83); // fundo verde do conteúdo
+  background: #f7f5fb; /* fundo lavanda bem claro */
   border-radius: 12px;
   padding: 20px;
+  position: relative;
+}
+
+/* Botão de voltar */
+.btn-voltar {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #7b4ae2; /* roxo principal */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #6a3cc9; /* roxo mais escuro */
+  transform: translateY(-2px);
 }
 
 .user {
@@ -15,46 +39,44 @@
   border: none;
 }
 
-/* Cards gerais */
+.user-profile {
+  background-color: #d9c8ff; /* lavanda clara */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-radius: 12px;
+}
+
+/* Cards */
 .card {
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   border: none;
 }
 
-/* Perfil do usuário */
-.user-profile {
-  background-color: rgba(124, 174, 115, 0.83);
-}
-
-/* Promoção */
-.promo-card {
-  background-color: #fff;
-}
-
-/* Botões */
+/* Cards de ação */
 .action-card {
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: rgb(101, 148, 101);
+  color: white;
+  background-color: #7b4ae2;
   transition: transform 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
 
-  &[routerLink] {
-    cursor: pointer;
-  }
+.action-card:hover {
+  transform: translateY(-2px);
+  background-color: #6a3cc9;
+}
 
-  &:hover {
-    transform: translateY(-2px);
-    background-color: #7d9c7d;
-  }
+.action-card span.material-icons {
+  font-size: 28px;
+  color: #ffffff;
+}
 
-  span.material-icons {
-    font-size: 28px;
-    color: #2f4f2f;
-  }
-
-  small {
-    color: #333;
-  }
+.action-card small {
+  color: #ffffff;
 }

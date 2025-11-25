@@ -39,27 +39,18 @@
 
             <h6 class="nomeSbr">Categoria</h6>
             <div class="input-group mb-3">
-              <select class="form-control" [(ngModel)]="categoriaSelecionadaId" name="categoria" required
-                (change)="onCategoriaChange()">
+              <select 
+                class="form-control" 
+                [(ngModel)]="categoriaSelecionadaId" 
+                name="categoria" 
+                required 
+                (change)="selecionarCategoriaPai()">
                 <option [ngValue]="null" disabled selected>Escolha uma Categoria</option>
-                @for (categoria of categorias; track $index) {
-                <option [ngValue]="categoria.id">{{ categoria.nome }}</option>
+                @for (cat of categoriasFixas; track cat.id) {
+                  <option [ngValue]="cat.id">{{ cat.nome }}</option>
                 }
               </select>
             </div>
-
-            @if (subcategoriasFiltradas.length > 0) {
-            <h6 class="nomeSbr">Subcategoria</h6>
-            <div class="input-group mb-3">
-              <select class="form-control" [(ngModel)]="produto.categoria" name="subcategoria" required>
-                <option [ngValue]="null" disabled selected>Escolha uma Subcategoria</option>
-                @for (sub of subcategoriasFiltradas; track $index) {
-                <option [ngValue]="sub">{{ sub.nome }}</option>
-                }
-              </select>
-            </div>
-            }
-
 
             <!-- Imagem -->
             <h6 class="nomeSbr">Imagem</h6>
@@ -79,31 +70,29 @@
 </div>
 
 <div class="container mt-4">
-  <h2 class="mb-4">Produtos</h2>
+  <h2 class="mb-4">Produtos Cadastrados</h2>
   <hr>
   <div class="row">
-    @for (produto of produtos; track $index) {
-    <div class="col-md-3 mb-3">
-      <div class="card h-100 card-Produto ">
-        <img [src]="produto.urlFoto" class="card-img-top" alt="{{ produto.nome }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ produto.categoria?.nome }} </h5>
-          <p class="card-text">{{ produto.descricao }}</p>
-
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="mb-0"><strong>R$ {{ produto.precoVenda }}</strong></p>
-
-            <button class="btn circular-btn">
-              <!-- <i class="bi bi-plus-circle fs-4 text-primary"></i> -->
-              <i class="bi bi-plus fs-4 text-light"></i>
-            </button>
+    @for (produto of produtos; track produto.id) {
+      <div class="col-md-3 mb-3">
+        <div class="card h-100 card-Produto">
+          <img [src]="produto.urlFoto" class="card-img-top" alt="{{ produto.nome }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ produto.nome }}</h5>
+            <p class="card-text flex-grow-1">{{ produto.descricao }}</p>
+            <p class="mb-2"><strong>R$ {{ produto.precoVenda }}</strong></p>
+            <div class="mt-auto">
+              <button class="btn btn-sm btn-outline-primary me-2" (click)="editarProduto(produto)">
+                Editar
+              </button>
+              <button class="btn btn-sm btn-outline-danger" (click)="removerProduto(produto.id!)">
+                Remover
+              </button>
+            </div>
           </div>
-
         </div>
       </div>
-    </div>
     }
   </div>
-
 </div>
 

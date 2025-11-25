@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../design/navbar/navbar.component';
 import { PromoSectionComponent } from '../../promo-section/promo-section.component';
-import { LandingPageProdutoComponent } from "../landing-page-produto/landing-page-produto.component";
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from '../../design/navbar/navbar.component';
+import { FooterComponent } from '../../design/footer/footer.component';
+import { LandingPageProdutoComponent } from "../../pages/landing-page-produto/landing-page-produto.component";
 
 @Component({
   selector: 'app-home',
-  imports: [NavbarComponent, PromoSectionComponent, LandingPageProdutoComponent],
+  imports: [PromoSectionComponent, FooterComponent, RouterOutlet, NavbarComponent, LandingPageProdutoComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 

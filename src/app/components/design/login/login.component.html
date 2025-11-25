@@ -4,21 +4,17 @@
     <div class="card-body">
       <form class="login-form">
         <h2 class="mb-4 text-center text-black">Acesse sua conta</h2>
-
         <label class="text-black">Email ou CPF</label>
         <input type="text" [(ngModel)]="usuarioLogin" name="usuarioLogin" class="form-control mb-3"
           placeholder="Digite seu email ou CPF" />
-
         <label class="text-black">Senha</label>
         <input type="password" [(ngModel)]="senhaLogin" name="senhaLogin" class="form-control mb-3"
           placeholder="Digite sua senha" />
-
         <div class="text-center mb-3">
           <a class="tag-a" [routerLink]="['/forgot']">Esqueceu a senha?</a><br />
           <span class="text-black">Não tem uma conta? </span>
           <a class="tag-a" (click)="togglePanel()">Cadastre-se!</a>
         </div>
-
         <button type="button" class="btn btn-purple w-100 btn-lg" (click)="logar()">Acessar</button>
       </form>
     </div>
@@ -29,19 +25,19 @@
     <div class="card-body">
       <form>
         <h3 class="text-center mb-3 text-black">Criar Conta</h3>
-
+        
         <!-- Campo: Nome e Sobrenome -->
         <h6 class="nomeSbr">Nome e sobrenome</h6>
         <mdb-form-control class="mb-3">
           <input mdbInput type="text" placeholder="Digite seu nome completo" class="form-control" required
-            [(ngModel)]="usuario.nome" name="nome" /> <!-- Nome do campo, usado pelo Angular Forms -->
+            [(ngModel)]="usuario.nome" name="nome" />
         </mdb-form-control>
 
         <!-- Campo: CPF -->
         <h6 class="nomeSbr">CPF</h6>
         <mdb-form-control class="mb-3">
           <input mdbInput type="text" placeholder="Digite seu CPF" class="form-control" required
-            [(ngModel)]="usuario.cpf" name="cpf" /> <!-- Nome do campo, usado pelo Angular Forms -->
+            [(ngModel)]="usuario.cpf" name="cpf" />
         </mdb-form-control>
 
         <!-- Campo: E-mail -->
@@ -58,18 +54,17 @@
             [(ngModel)]="usuario.senha" name="senha" />
         </mdb-form-control>
 
-        <!-- Campo: Usuário -->
+        <!-- Campo: Usuário → CORRIGIDO AQUI -->
         <h6 class="nomeSbr">Usuário</h6>
         <mdb-form-control class="mb-3">
           <input mdbInput type="text" placeholder="Digite seu usuário" class="form-control" required
-            [(ngModel)]="usuario.user" name="usuario" />
+            [(ngModel)]="usuario.user" name="user" />
         </mdb-form-control>
 
         <p class="text-center text-black">
           Já tem uma conta?
           <a class="tag-a" (click)="togglePanel()">Acesse!</a>
         </p>
-
         <button mdbRipple type="button" class="btn btn-purple w-100 btn-lg" (click)="save()">
           Salvar
         </button>
@@ -87,7 +82,6 @@
         <p>Para continuar conectado, faça login com suas credenciais</p>
         <button class="btn btn-outline-light" (click)="togglePanel()">Login</button>
       </div>
-
       <!-- LADO DIREITO -->
       <div class="overlay-panel overlay-right d-flex flex-column align-items-center justify-content-start pt-3">
         <img src="assets/logoPet.png" alt="Logo" class="overlay-img">
@@ -95,3 +89,6 @@
         <p>Não tem conta ainda? Crie uma e comece agora!</p>
         <button class="btn btn-outline-light" (click)="togglePanel()">Registrar</button>
       </div>
+    </div>
+  </div>
+</div>
