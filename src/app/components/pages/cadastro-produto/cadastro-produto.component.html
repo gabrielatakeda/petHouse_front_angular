@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-lg-6 col-md-8 col-11 mx-auto">
       <div class="card">
-        <div class="card-body ">
+        <div class="card-body">
           <form (ngSubmit)="onSubmit()">
+
             <h4 class="text-center mb-2 titulo-form">
               {{ modoEdicao ? 'Editar Produto' : 'Cadastrar Produto' }}
             </h4>
@@ -15,43 +16,58 @@
             <h6 class="nomeSbr">Nome</h6>
             <mdb-form-control class="mb-4">
               <input mdbInput type="text" placeholder="Nome do Produto" class="form-control" required
-                [(ngModel)]="produto.nome" name="nome" />
+                     [(ngModel)]="produto.nome" name="nome" />
             </mdb-form-control>
 
             <!-- Descrição -->
             <h6 class="nomeSbr">Descrição</h6>
             <mdb-form-control class="mb-4">
               <textarea mdbInput placeholder="Descrição" class="form-control" [(ngModel)]="produto.descricao"
-                name="descricao"></textarea>
+                        name="descricao"></textarea>
             </mdb-form-control>
 
             <!-- Preço -->
             <h6 class="nomeSbr">Preço</h6>
             <mdb-form-control class="mb-4">
               <input mdbInput type="number" step="0.01" placeholder="Preço" class="form-control" required
-                [(ngModel)]="produto.precoVenda" name="precoVenda" />
+                     [(ngModel)]="produto.precoVenda" name="precoVenda" />
             </mdb-form-control>
 
             <!-- Quantidade -->
             <h6 class="nomeSbr">Quantidade</h6>
             <mdb-form-control class="mb-4">
-              <input mdbInput type="text" placeholder="Quantidade" class="form-control" required
-                [(ngModel)]="produto.quantidade" name="quantidade" />
+              <input mdbInput type="number" placeholder="Quantidade" class="form-control" required
+                     [(ngModel)]="produto.quantidade" name="quantidade" />
             </mdb-form-control>
 
+            <!-- Categoria Pai -->
             <h6 class="nomeSbr">Categoria</h6>
-            <div class="input-group mb-3">
-              <select 
-                class="form-control" 
-                [(ngModel)]="categoriaSelecionadaId" 
-                name="categoria" 
-                required 
-                (change)="selecionarCategoriaPai()">
-                <option [ngValue]="null" disabled selected>Escolha uma Categoria</option>
+            <div class="mb-3">
+              <select class="form-select" 
+                      [(ngModel)]="categoriaSelecionadaId" 
+                      name="categoriaPai" 
+                      required 
+                      (change)="onCategoriaChange()">
+                <option [ngValue]="null" disabled selected>Selecione uma categoria</option>
                 @for (cat of categoriasFixas; track cat.id) {
                   <option [ngValue]="cat.id">{{ cat.nome }}</option>
                 }
               </select>
+            </div>
+
+            <!-- Subcategoria (só aparece se tiver categoria selecionada) -->
+            <div class="mb-4" *ngIf="subcategoriasFiltradas.length > 0">
+              <h6 class="nomeSbr">Subcategoria</h6>
+              <select class="form-select" 
+                      [(ngModel)]="subcategoriaSelecionadaId" 
+                      name="subcategoria" 
+                      (change)="onSubcategoriaChange()">
+                <option [ngValue]="null">Selecione uma subcategoria (opcional)</option>
+                @for (sub of subcategoriasFiltradas; track sub.id) {
+                  <option [ngValue]="sub.id">{{ sub.nome }}</option>
+                }
+              </select>
+              <small class="text-muted">Caso não escolha uma subcategoria, será salva apenas a categoria principal.</small>
             </div>
 
             <!-- Imagem -->
@@ -61,18 +77,11 @@
             </mdb-form-control>
 
             <div class="d-flex justify-content-between mt-4">
-              <button 
-                type="button" 
-                class="btn btn-outline-secondary" 
-                (click)="cancelarEdicao()"
-                *ngIf="modoEdicao">
+              <button type="button" class="btn btn-outline-secondary" (click)="cancelarEdicao()" *ngIf="modoEdicao">
                 Cancelar
               </button>
-            
-              <button 
-                mdbRipple 
-                type="submit" 
-                class="btn btn-musgo ms-auto">
+
+              <button mdbRipple type="submit" class="btn btn-musgo ms-auto">
                 {{ modoEdicao ? 'Salvar Alterações' : 'Salvar' }}
               </button>
             </div>
@@ -83,18 +92,25 @@
   </div>
 </div>
 
-<div class="container mt-4">
+<!-- Lista de Produtos -->
+<div class="container mt-5">
   <h2 class="mb-4">Produtos Cadastrados</h2>
   <hr>
   <div class="row">
     @for (produto of produtos; track produto.id) {
-      <div class="col-md-3 mb-3">
-        <div class="card h-100 card-Produto">
-          <img [src]="produto.urlFoto" class="card-img-top" alt="{{ produto.nome }}">
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="card h-100 shadow-sm card-Produto">
+          <img [src]="produto.urlFoto || 'assets/img/placeholder.jpg'" 
+               class="card-img-top" 
+               alt="{{ produto.nome }}"
+               style="height: 200px; object-fit: cover;">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ produto.nome }}</h5>
+            <p class="card-text text-muted small">
+              {{ produto.categoria?.nome || 'Sem categoria' }}
+            </p>
             <p class="card-text flex-grow-1">{{ produto.descricao }}</p>
-            <p class="mb-2"><strong>R$ {{ produto.precoVenda }}</strong></p>
+            <p class="mb-2"><strong>R$ {{ produto.precoVenda | number:'1.2-2' }}</strong></p>
             <div class="mt-auto">
               <button class="btn btn-sm btn-outline-primary me-2" (click)="editarProduto(produto)">
                 Editar
@@ -109,4 +125,3 @@
     }
   </div>
 </div>
-

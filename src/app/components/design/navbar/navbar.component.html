@@ -25,7 +25,7 @@
         <i class="fas fa-box"></i> Meus Pedidos
       </button>
 
-      <button class="cart-btn" [routerLink]="['/principal/carrinho']">
+      <button class="cart-btn" [routerLink]="['/carrinho']">
         <i class="fas fa-shopping-cart"></i> Carrinho
       </button>
 
@@ -48,15 +48,17 @@
   <nav class="nav-container">
     <ul class="nav-list">
       @for (category of categories; track category.name) {
-        <li class="nav-item" 
+        <li class="nav-item"
             [class.has-dropdown]="category.dropdown"
-            (mouseenter)="onMouseEnter(category.name)" 
+            (mouseenter)="onMouseEnter(category.name)"
             (mouseleave)="onMouseLeave(category.name)">
 
-          <a href="#">
+          <a [routerLink]="['/categoria', category.name | slugify]"
+             routerLinkActive="active"
+             class="category-link">
             {{ category.name }}
             @if (category.dropdown) {
-              <i class="bi dropdown-icon" 
+              <i class="bi dropdown-icon"
                  [ngClass]="{
                    'bi-chevron-down': category.isOpen,
                    'bi-chevron-right': !category.isOpen

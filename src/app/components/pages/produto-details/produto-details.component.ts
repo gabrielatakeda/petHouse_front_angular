@@ -39,7 +39,7 @@ export class ProdutoDetailsComponent {
           alert("Ocorreu um erro ao buscar o usuário");
         }
       });
-    });//função para buscar o usuario que esta logado no momento
+    });
 
     let id = this.activedRoute.snapshot.params['id'];
     if (id > 0) {

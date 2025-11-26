@@ -1,0 +1,90 @@
+.categoria-container {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 20px;
+}
+
+.titulo-pagina {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.resultados {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.produto-card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .imagem {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #f9f9f9;
+  }
+
+  .info {
+    padding: 15px;
+    text-align: center;
+
+    h3 {
+      font-size: 1rem;
+      margin: 0 0 10px;
+      color: #333;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .preco {
+      .valor {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #e91e63;
+      }
+      .parcela {
+        display: block;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .btn-add {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}
+
+.loading, .erro, .vazio {
+  text-align: center;
+  padding: 4rem;
+  color: #666;
+  font-size: 1.1rem;
+}

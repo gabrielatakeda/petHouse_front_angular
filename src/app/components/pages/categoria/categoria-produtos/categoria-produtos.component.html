@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="categoria-container">
+  <h1 class="titulo-pagina" *ngIf="categoriaPai">
+    {{ categoriaPai.nome }}
+  </h1>
+
+  <p class="resultados" *ngIf="!loading && produtos.length > 0">
+    {{ produtos.length }} produtos encontrados
+  </p>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="loading">
+    <p>Carregando produtos...</p>
+  </div>
+
+  <!-- Erro -->
+  <div class="erro" *ngIf="error">
+    <p>Categoria não encontrada.</p>
+  </div>
+
+  <!-- Lista de produtos -->
+  <div class="grid-produtos" *ngIf="!loading && !error && produtos.length > 0">
+    <div 
+      class="produto-card" 
+      *ngFor="let p of produtos" 
+      (click)="irParaProduto(p.id)"
+    >
+      <img [src]="p.urlFoto" [alt]="p.nome" class="imagem">
+      
+      <div class="info">
+        <h3>{{ p.nome }}</h3>
+        
+        <div class="preco">
+          <span class="valor">R$ {{ p.precoVenda | number:'1.2-2' }}</span>
+          <small class="parcela">
+            ou 6x de R$ {{ (p.precoVenda! / 6) | number:'1.2-2' }} sem juros
+          </small>
+        </div>
+      </div>
+
+      <button 
+          class="btn-add" 
+          (click)="$event.stopPropagation(); adicionarAoCarrinho(p)">
+          +
+      </button>
+    </div>
+  </div>
+
+  <!-- Sem produtos -->
+  <div class="vazio" *ngIf="!loading && !error && produtos.length === 0">
+    <p>Nenhum produto encontrado nesta categoria.</p>
+  </div>
+</div>

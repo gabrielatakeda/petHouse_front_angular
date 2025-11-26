@@ -6,7 +6,7 @@
   <div class="row">
     @for (produto of produtos; track $index) {
     <div class="col-md-3 mb-3">
-      <div class="card h-100 card-Produto " [routerLink]="['/principal/produtoDetails', produto.id]">
+      <div class="card h-100 card-Produto " [routerLink]="['/produtoDetails', produto.id]">
         <img [src]="produto.urlFoto" class="card-img-top" alt="{{ produto.nome }}">
         <div class="card-body">
           <h5 class="card-title">{{ produto.nome}} </h5>

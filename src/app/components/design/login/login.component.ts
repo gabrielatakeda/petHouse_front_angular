@@ -71,7 +71,7 @@ export class LoginComponent {
           if (role === 'admin') {
             this.router.navigate(['/principalAdmin/dashboard']);
           } else {
-            this.router.navigate(['/principal/home']);
+            this.router.navigate(['/home']);
           }
         } else {
           Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
