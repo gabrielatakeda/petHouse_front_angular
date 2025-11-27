@@ -107,43 +107,5 @@ export class LoginComponent {
         });
       }
     });
-   
-    if (!this.usuario.nome || !this.usuario.email || !this.usuario.cpf || 
-        !this.usuario.senha || !this.usuario.user) {
-      this.snackBar.open('Preencha todos os campos!', 'Fechar', {
-        duration: 3000,
-        panelClass: ['error-snack-bar']
-      });
-      return;
-    }
-
-    this.usuarioServices.save(this.usuario).subscribe({
-      next: () => {
-        this.snackBar.open('Salvo com sucesso!', 'Fechar', {
-          duration: 3000,
-          panelClass: ['success-snackbar']
-        });
-      
-        this.usuario = {
-          nome: '',
-          email: '',
-          cpf: '',
-          senha: '',
-          user: '',
-          dataNascimento: new Date(),
-          enderecos: []
-        };
-       
-        this.isRegisterActive = false;
-      },
-      error: (err) => {
-        console.error('Erro ao salvar usuário:', err);
-        this.snackBar.open('Erro ao salvar! Verifique os dados.', 'Fechar', {
-          duration: 5000,
-          panelClass: ['error-snackbar']
-        });
-      }
-    });
   }
-
 }
