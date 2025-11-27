@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Login } from "./login";
 import { Usuario } from "./usuario";
+import { jwtDecode, JwtPayload } from "jwt-decode";
 
 @Injectable({
     providedIn: 'root'
@@ -35,17 +36,17 @@ export class LoginService {
     jwtDecode(){
         let token = this.getToken(); //Pega o token armazenado no localStorage e o valor retornado é armazenado na variável
         if(token){ //Verifica se o token existe e não está vazio
-            //return jwtDecode<JwtPayload>(token); //Apenas abre o token e mostra o que tem dentro dela
+            return jwtDecode<JwtPayload>(token); //Apenas abre o token e mostra o que tem dentro dela
         }
-        return ""; //Se o token não existir, retorna uma string vazia
+        return null; //Se o token não existir, retorna nulo
     }
 
     hasPermission(role: string){
-        let user = this.jwtDecode() as Usuario;
-        if(user.role == role){
-            return true;
+        let user = this.jwtDecode() as Usuario; //Pega o JWT armazenado no navegador e decodifica o token
+        if(user.role == role){ //Compara o role que veio do token com o role do metodo
+            return true; //Usuário tem permissão
         }else{
-            return false;
+            return false; //Usuário não tem permissão
         }
     }
 }
