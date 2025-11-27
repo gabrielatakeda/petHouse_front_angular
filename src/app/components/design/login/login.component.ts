@@ -40,13 +40,14 @@ export class LoginComponent {
 
   constructor(
     private usuarioServices: UsuarioService,
-    private snackBar: MatSnackBar
-  ) { }
+    private snackBar: MatSnackBar,
+  ) { 
+    this.loginService.removeToken(); //Apaga o token do LocalStorage
+  }
 
   togglePanel() {
     this.isRegisterActive = !this.isRegisterActive;
   }
-
 
   logar() {
     this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe({
