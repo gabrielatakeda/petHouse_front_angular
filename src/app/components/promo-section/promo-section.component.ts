@@ -1,10 +1,9 @@
 import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
-import { NgFor, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-promo-section',
   standalone: true,
-  imports: [NgFor, NgStyle],
+  imports: [],
   templateUrl: './promo-section.component.html',
   styleUrls: ['./promo-section.component.scss']
 })

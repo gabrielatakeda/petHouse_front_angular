@@ -1,9 +1,10 @@
-<div class="container-fluid main-layout" *ngIf="usuario">
+@if (usuario != null && usuario != undefined){
+<div class="container-fluid main-layout">
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10 content-area py-4 position-relative">
       <!-- Botão de voltar -->
-      <button class="btn-voltar" [routerLink]="['/principal/home']">
+      <button class="btn-voltar" [routerLink]="['/home']">
         <span class="material-icons"></span>
         Voltar
       </button>
@@ -27,7 +28,7 @@
 
           <div class="row g-3">
             <div class="col-md-6">
-              <div class="card action-card p-3 w-100" [routerLink]="['/principal/usuario/details']"
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/details']"
                 [state]="{ usuario: usuario }">
                 <span class="material-icons">person</span>
                 <div>
@@ -48,7 +49,7 @@
             </div>
 
             <div class="col-md-6">
-              <div class="card action-card p-3 w-100" [routerLink]="['/principal/usuario/adress']"
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/adress']"
                 [state]="{ usuario: usuario }">
                 <span class="material-icons">location_on</span>
                 <div>
@@ -59,7 +60,7 @@
             </div>
 
             <div class="col-md-6">
-              <div class="card action-card p-3 w-100" [routerLink]="['/principal/usuario/security']"
+              <div class="card action-card p-3 w-100" [routerLink]="['/usuario/security']"
                 [state]="{ usuario: usuario }">
                 <span class="material-icons">security</span>
                 <div>
@@ -85,3 +86,4 @@
     <div class="col-1"></div>
   </div>
 </div>
+}

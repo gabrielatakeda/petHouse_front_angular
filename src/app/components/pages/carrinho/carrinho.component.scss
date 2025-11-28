@@ -41,4 +41,43 @@ input[type="radio"]{
   accent-color: #6f42c1; //Cor personalizada para o radio
 }
 
-// teste git
+// CSS CARD ENDERECO
+.card-endereco {
+    transition: all 0.3s ease-in-out;
+}
+
+.endereco-item {
+    display: flex;
+    flex-direction: column;
+    padding: .7rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+.endereco-item:hover {
+    background: #f8f9fa;
+    border-color: #b8a6ff;
+}
+
+.endereco-selecionado {
+    padding: .7rem;
+    border-radius: 10px;
+    background: #f7f7f7;
+    border-left: 4px solid #6f42c1;
+}
+
+//MODAL PARA SELECIONAR UM ENDEREÇO
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn .3s ease;
+}

@@ -1,24 +1,27 @@
-<div class="details-container" *ngIf="usuario">
+@if (usuario != null && usuario != undefined){
+<div class="details-container" >
   <aside class="sidebar">
     <div class="user-profile">
       <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto usuário" class="rounded-circle mb-3"
         width="100" height="100">
-      <h4>{{usuario?.nome}}</h4>
-      <p>{{usuario?.email}}</p>
+      <h4>{{usuario.nome}}</h4>
+      <p>{{usuario.email}}</p>
     </div>
   </aside>
 
   <main class="content">
     <div class="back-button">
-      <button class="btn btn-secondary" routerLink="/principal/usuario">&larr; Voltar</button>
+      <button class="btn btn-secondary" routerLink="/usuario">&larr; Voltar</button>
     </div>
 
     <h2>Endereços</h2>
     <p>Gerencie os endereços cadastrados para suas entregas.</p>
 
     <div class="address-list">
-      <div class="address-item" *ngFor="let end of endereco">
-        <div *ngIf="end">
+      @for (end of endereco; track $index) {
+      <div class="address-item">
+        @if (end) {
+        <div>
           <div>
             <strong>{{end.logradouro}}</strong><br>
             {{end.logradouro}}, {{end.numero}} - {{end.bairro}}<br>
@@ -29,7 +32,9 @@
             <button class="btn btn-sm btn-danger" (click)="removerEndereco(end)">Remover</button>
           </div>
         </div>
+      }
       </div>
+    }
     </div>
 
     <div class="add-button">
@@ -37,6 +42,7 @@
     </div>
   </main>
 </div>
+}
 
 <ng-template #modalEditEndereco>
   <div class="modal-header">

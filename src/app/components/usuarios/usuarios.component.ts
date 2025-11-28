@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
 import { Usuarios } from '../../models/usuario';
 import { AuthService } from '../../services/auth.service';
 import { MiniPromoComponent } from "../design/mini-promo/mini-promo.component";
@@ -9,7 +8,7 @@ import { MiniPromoComponent } from "../design/mini-promo/mini-promo.component";
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [RouterLink, NgIf, MiniPromoComponent],
+  imports: [RouterLink, MiniPromoComponent],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })

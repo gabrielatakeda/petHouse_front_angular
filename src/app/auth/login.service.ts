@@ -41,6 +41,7 @@ export class LoginService {
         return null; //Se o token não existir, retorna nulo
     }
 
+<<<<<<< HEAD
     hasPermission(role: string){
         let user = this.jwtDecode() as Usuario; //Pega o JWT armazenado no navegador e decodifica o token
         if(user.role == role){ //Compara o role que veio do token com o role do metodo
@@ -49,5 +50,15 @@ export class LoginService {
             return false; //Usuário não tem permissão
         }
     }
+=======
+   hasPermission(role: string): boolean {
+  const user: any = this.jwtDecode();
+
+  if (user && user.role === role) {
+    return true;
+  }
+  return false;
+}
+>>>>>>> origin/Debora3
 }
 */

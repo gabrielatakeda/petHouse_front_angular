@@ -1,11 +1,12 @@
 <section class="promo-section">
   <div class="promo-carousel">
     <div class="carousel-container">
+      
+      @for (slide of promoSlides; let i = $index; track i){
       <div
         class="promo-slide"
-        *ngFor="let slide of promoSlides; let i = index"
         [class.active]="i === currentSlide"
-        [ngStyle]="{ 'background': slide.background }"
+        [style.background]="slide.background"
       >
         <div class="slide-content">
           <div class="image-container">
@@ -21,17 +22,19 @@
           </div>
         </div>
       </div>
+    }
     </div>
 
     <button class="carousel-prev" type="button" (click)="prevSlide()">❮</button>
     <button class="carousel-next" type="button" (click)="nextSlide()">❯</button>
 
     <div class="carousel-indicators">
+      @for (slide of promoSlides; let i = $index; track i){
       <span
-        *ngFor="let slide of promoSlides; let i = index"
         [class.active]="i === currentSlide"
         (click)="goToSlide(i)"
       ></span>
+      }
     </div>
   </div>
 </section>

@@ -28,7 +28,11 @@ export class LoginComponent {
     senha: '',
     user: '',                    
     dataNascimento: '',  
+<<<<<<< HEAD
     enderecos: []
+=======
+    enderecos: []         
+>>>>>>> origin/Debora3
   };
 
   usuarioLogin = '';
@@ -42,12 +46,15 @@ export class LoginComponent {
 <<<<<<< HEAD
     private snackBar: MatSnackBar
   ) { }
+<<<<<<< HEAD
 =======
     private snackBar: MatSnackBar,
   ) { 
     this.loginService.removeToken(); //Apaga o token do LocalStorage
   }
 >>>>>>> origin/poly6
+=======
+>>>>>>> origin/Debora3
 
   togglePanel() {
     this.isRegisterActive = !this.isRegisterActive;
@@ -62,10 +69,14 @@ export class LoginComponent {
             this.router.navigate(['/principalAdmin/dashboard']);
           } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.router.navigate(['/home']);
 =======
             this.router.navigate(['/principal/home']);
 >>>>>>> origin/poly6
+=======
+            this.router.navigate(['/home']);
+>>>>>>> origin/Debora3
           }
         } else {
           Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
@@ -78,9 +89,13 @@ export class LoginComponent {
   }
 
   save() {
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
+=======
+   
+>>>>>>> origin/Debora3
     if (!this.usuario.nome || !this.usuario.email || !this.usuario.cpf || 
         !this.usuario.senha || !this.usuario.user) {
       this.snackBar.open('Preencha todos os campos!', 'Fechar', {
@@ -90,7 +105,10 @@ export class LoginComponent {
       return;
     }
 
+<<<<<<< HEAD
 >>>>>>> origin/poly6
+=======
+>>>>>>> origin/Debora3
     this.usuarioServices.save(this.usuario).subscribe({
       next: () => {
         this.snackBar.open('Salvo com sucesso!', 'Fechar', {
@@ -118,5 +136,10 @@ export class LoginComponent {
         });
       }
     });
+<<<<<<< HEAD
   }
+=======
+  
+}
+>>>>>>> origin/Debora3
 }

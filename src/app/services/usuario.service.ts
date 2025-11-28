@@ -26,7 +26,11 @@ export class UsuarioService {
   update(id: number, usuario: Usuarios): Observable<Usuarios> {
     const payload = {
       ...usuario,
+<<<<<<< HEAD
    //   dataNascimento: this.formatarData(usuario.dataNascimento)
+=======
+    //  dataNascimento: this.formatarData(usuario.dataNascimento)
+>>>>>>> origin/Debora3
     };
     return this.http.put<Usuarios>(`${this.apiUrl}/update/${id}`, payload);
   }
