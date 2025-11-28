@@ -17,6 +17,4 @@ export class LoginService {
   }
   
   constructor() { }
-
-  //logar(login: )
 }
