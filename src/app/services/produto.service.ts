@@ -33,17 +33,16 @@ export class ProdutoService {
 
 
 update(id: number, produto: Produto, file?: File): Observable<Produto> {
+  const formData = new FormData();
+  formData.append('produto', new Blob([JSON.stringify(produto)], { type: 'application/json' }));
+  
   if (file) {
-    // Tem imagem → FormData
-    const formData = new FormData();
-    formData.append('produto', new Blob([JSON.stringify(produto)], { type: 'application/json' }));
     formData.append('file', file);
-    return this.http.put<Produto>(`${this.URL_API}/update/${id}`, formData);
-  } else {
-    // Sem imagem → JSON puro
-    return this.http.put<Produto>(`${this.URL_API}/update/${id}`, produto);
   }
+
+  return this.http.put<Produto>(`${this.URL_API}/update/${id}`, formData);
 }
+
   deleteById(id: number): Observable<void> {
     return this.http.delete<void>(`${this.URL_API}/deleteById/${id}`);
   }

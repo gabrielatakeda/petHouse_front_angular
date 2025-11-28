@@ -19,6 +19,11 @@ export const routes: Routes = [
 
 
     { path: "", pathMatch: 'full', redirectTo: "home" },
+    {
+        path: 'categoria/:slug',
+          loadComponent: () => import('./components/pages/categoria/categoria-produtos/categoria-produtos.component')
+            .then(m => m.CategoriaProdutosComponent)
+    },
     { path: "forgot", component: ForgotComponent },
     { path: "login", component: LoginComponent },
     { path: 'ladingPageProdutos', component: LandingPageProdutoComponent },

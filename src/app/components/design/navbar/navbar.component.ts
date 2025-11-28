@@ -1,9 +1,10 @@
 // navbar.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
 import { Usuarios } from '../../../models/usuario';
+import { SlugifyPipe } from '../../../pipes/slugify.pipe';
 
 interface Category {
   name: string;
@@ -15,7 +16,7 @@ interface Category {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, RouterLinkActive, SlugifyPipe],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
@@ -79,11 +80,11 @@ export class NavbarComponent implements OnInit {
   }
 
   goToUsuario() {
-    this.router.navigate(['principal/usuario']);
+    this.router.navigate(['/usuario']);
   }
 
   goToMenu() {
-    this.router.navigate(['principal/home']);
+    this.router.navigate(['/home']);
   }
 
   onMouseEnter(categoryName: string): void {
