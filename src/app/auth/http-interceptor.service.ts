@@ -2,6 +2,7 @@
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, throwError } from "rxjs";
+import Swal from "sweetalert2";
 
 //Está configurado para setar o token no cabeçalho de cada requisição automaticamente, exceto na rota Login
 export const meuhttpInterceptor : HttpInterceptorFn = (request, next) => {
@@ -21,13 +22,25 @@ export const meuhttpInterceptor : HttpInterceptorFn = (request, next) => {
             if(err instanceof HttpErrorResponse){ //Verificação do tipo do erro. Se sim, verifica o código. Se não, é um erro próprio do Angular
 
                 if(err.status === 401){ //401 - UNAUTHORIZED. Token pode estar inválido, expirado, usuário não logado ou requisição sem token
-                    alert('401 - tratar aqui'); //Manda um aviso na tela
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Sessão expirada',
+                        text: 'Faça login novamente',
+                        timer: 2500,
+                        showConfirmButton: false
+                    });
                     router.navigate(['/login']); //Usuário vai para a tela de login
                 }else if(err.status === 403){ //403 - FORBIDDEN. Token é válido, mas o usuário não tem permissão para esse recurso
-                    alert('403 - tratar aqui');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Acesso negado',
+                        text: 'Você não tem permissão para isso',
+                        timer: 2500,
+                        showConfirmButton: false
+                    });
                     router.navigate(['/login']);
                 }else{
-                    console.error('HTTP error:', err); //Outros erros, como por exemplo: 404, 500, 400, etc.
+                    console.error('HTTP error:', err); //Outros erros que não são 401 e 403, como por exemplo: 404, 500, 400, etc.
                 }
 
             }else{ //Se o erro não for HTTP, como por exemplo: bug do Angular, erro de sintaxe, etc.

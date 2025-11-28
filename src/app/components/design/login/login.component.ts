@@ -39,29 +39,19 @@ export class LoginComponent {
 
   constructor(
     private usuarioServices: UsuarioService,
+<<<<<<< HEAD
     private snackBar: MatSnackBar
   ) { }
+=======
+    private snackBar: MatSnackBar,
+  ) { 
+    this.loginService.removeToken(); //Apaga o token do LocalStorage
+  }
+>>>>>>> origin/poly6
 
   togglePanel() {
     this.isRegisterActive = !this.isRegisterActive;
   }
- 
- 
-/*   logar(){ //Requisição HTTP de uma função logar que está dentro do auth (login.service)
-    this.loginService.logar(this.login).subscribe({
-      next: token => ( //Se der certo, token é o retorno que eu vou receber do servidor
-        if(token){ //Usuário e senha digitados corretos, verifica se o backend realmente retornou um token válido
-          this.loginService.addToken(token); //Salva o token no localStorage
-          this.router.navigate(['/principal/home']); //Redireciona para a página inicial
-        }else{ //O token pode chegar nulo, ou seja, usuário ou senha incorretos
-            alert('Usuário ou senha incorretos!');
-          }
-      ),
-      error: erro => { //Se der erro
-        alert('Deu erro!');
-      }
-    });
-  } */
 
   logar() {
     this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe({
@@ -71,7 +61,11 @@ export class LoginComponent {
           if (role === 'admin') {
             this.router.navigate(['/principalAdmin/dashboard']);
           } else {
+<<<<<<< HEAD
             this.router.navigate(['/home']);
+=======
+            this.router.navigate(['/principal/home']);
+>>>>>>> origin/poly6
           }
         } else {
           Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
@@ -84,7 +78,9 @@ export class LoginComponent {
   }
 
   save() {
-   
+
+<<<<<<< HEAD
+=======
     if (!this.usuario.nome || !this.usuario.email || !this.usuario.cpf || 
         !this.usuario.senha || !this.usuario.user) {
       this.snackBar.open('Preencha todos os campos!', 'Fechar', {
@@ -94,6 +90,7 @@ export class LoginComponent {
       return;
     }
 
+>>>>>>> origin/poly6
     this.usuarioServices.save(this.usuario).subscribe({
       next: () => {
         this.snackBar.open('Salvo com sucesso!', 'Fechar', {
@@ -122,5 +119,4 @@ export class LoginComponent {
       }
     });
   }
-
 }
