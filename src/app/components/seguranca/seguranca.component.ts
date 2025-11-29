@@ -22,7 +22,7 @@ export class SegurancaComponent {
   usuarioService = inject(UsuarioService);
 
   //construção para edição de dados
-  usuarioEdit: Usuarios = new Usuarios("", "", "", "", "", new Date, [])
+  usuarioEdit: Usuarios = new Usuarios("", "", "", "", "", [])
 
   senhaConfirm!: string;
 

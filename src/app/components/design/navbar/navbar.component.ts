@@ -23,7 +23,7 @@ interface Category {
 export class NavbarComponent implements OnInit {
   userName: string = '';
   isAccountMenuOpen: boolean = false;
-  usuario: Usuarios = new Usuarios("", "", "", "", "", new Date(), []);
+  usuario: Usuarios = new Usuarios("", "", "", "", "", []);
   
   categories: Category[] = [
     {
@@ -63,7 +63,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.authService.usuarioLogado$.subscribe(usuario => {
       this.userName = usuario ? usuario.user : '';
-      this.usuario = usuario || new Usuarios("", "", "", "", "", new Date(), []);
+      this.usuario = usuario || new Usuarios("", "", "", "", "", []);
     });
   }
 

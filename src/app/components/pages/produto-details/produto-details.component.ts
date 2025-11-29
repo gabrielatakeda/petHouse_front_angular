@@ -26,7 +26,7 @@ export class ProdutoDetailsComponent {
 
   activedRoute = inject(ActivatedRoute);
 
-  usuario: Usuarios = new Usuarios("","","","","", new Date,[])
+  usuario: Usuarios = new Usuarios("","","","","",[])
 
   constructor(private router : Router) {
     

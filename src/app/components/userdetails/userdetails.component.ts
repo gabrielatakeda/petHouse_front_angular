@@ -17,7 +17,7 @@ export class UserdetailsComponent {
 
   edit!: string;
 
-  usuarioEdit: Usuarios = new Usuarios("", "", "", "", "",new Date, [])
+  usuarioEdit: Usuarios = new Usuarios("", "", "", "", "", [])
 
   modalService = inject(MdbModalService); //para cosneguir abrir a modal
   @ViewChild("modalEditdetails") modalEditdetails!: TemplateRef<any>

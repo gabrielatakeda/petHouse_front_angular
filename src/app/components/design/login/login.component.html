@@ -4,10 +4,10 @@
     <div class="card-body">
       <form class="login-form">
         <h2 class="mb-4 text-center text-black">Acesse sua conta</h2>
-        <label class="text-black">Email ou CPF</label>
+        <label class="text-black">Email ou CPF:</label>
         <input type="text" [(ngModel)]="usuarioLogin" name="usuarioLogin" class="form-control mb-3"
           placeholder="Digite seu email ou CPF" />
-        <label class="text-black">Senha</label>
+        <label class="text-black">Senha:</label>
         <input type="password" [(ngModel)]="senhaLogin" name="senhaLogin" class="form-control mb-3"
           placeholder="Digite sua senha" />
         <div class="text-center mb-3">
@@ -27,28 +27,28 @@
         <h3 class="text-center mb-3 text-black">Criar Conta</h3>
         
         <!-- Campo: Nome e Sobrenome -->
-        <h6 class="nomeSbr">Nome e sobrenome</h6>
+        <h6 class="nomeSbr">Nome completo:</h6>
         <mdb-form-control class="mb-3">
           <input mdbInput type="text" placeholder="Digite seu nome completo" class="form-control" required
             [(ngModel)]="usuario.nome" name="nome" />
         </mdb-form-control>
 
         <!-- Campo: CPF -->
-        <h6 class="nomeSbr">CPF</h6>
+        <h6 class="nomeSbr">CPF:</h6>
         <mdb-form-control class="mb-3">
           <input mdbInput type="text" placeholder="Digite seu CPF" class="form-control" required
             [(ngModel)]="usuario.cpf" name="cpf" />
         </mdb-form-control>
 
         <!-- Campo: E-mail -->
-        <h6 class="nomeSbr">E-mail</h6>
+        <h6 class="nomeSbr">E-mail:</h6>
         <mdb-form-control class="mb-3">
           <input mdbInput type="email" placeholder="Digite o seu e-mail" class="form-control" required
             [(ngModel)]="usuario.email" name="email" />
         </mdb-form-control>
 
         <!-- Campo: Senha -->
-        <h6 class="nomeSbr">Senha</h6>
+        <h6 class="nomeSbr">Senha:</h6>
         <mdb-form-control class="mb-3">
           <input mdbInput type="password" placeholder="Digite sua senha" class="form-control" required minlength="8"
             [(ngModel)]="usuario.senha" name="senha" />

@@ -7,7 +7,6 @@ export class Usuarios {
   cpf!: string;
   senha!: string;
   user!: string;       
-  dataNascimento!: Date | string; 
   enderecos?: Endereco[];
 
   constructor(
@@ -16,7 +15,6 @@ export class Usuarios {
     cpf: string,
     senha: string,
     user: string,       
-    dataNascimento: Date | string,
     enderecos: Endereco[] = [],
     id?: number
   ) {
@@ -26,7 +24,6 @@ export class Usuarios {
     this.cpf = cpf;
     this.senha = senha;
     this.user = user;  
-    this.dataNascimento = dataNascimento;
     this.enderecos = enderecos;
   }
 }

@@ -27,9 +27,10 @@ export class LoginComponent {
     cpf: '',
     senha: '',
     user: '',
-    dataNascimento: '',
     enderecos: []
   };
+
+  
 
   usuarioLogin = '';
   senhaLogin = '';
@@ -108,8 +109,7 @@ export class LoginComponent {
           cpf: '',
           senha: '',
           user: '',
-          dataNascimento: new Date(),
-          enderecos: []
+          enderecos: [] 
         };
 
         this.isRegisterActive = false;
