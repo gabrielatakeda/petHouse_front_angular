@@ -14,7 +14,7 @@ import { LoginService } from '../../../services/login.service';
   selector: 'app-login',
   imports: [MdbFormsModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   isRegisterActive = false;
@@ -30,14 +30,12 @@ export class LoginComponent {
     enderecos: []
   };
 
-  
-
   usuarioLogin = '';
   senhaLogin = '';
 
   router = inject(Router);
   authService = inject(AuthService);
-  loginService = inject(LoginService); //Para usar o Service dentro de um componente, deve ser feito a injeção
+  loginService = inject(LoginService);
 
   constructor(
     private usuarioServices: UsuarioService,
@@ -48,45 +46,29 @@ export class LoginComponent {
     this.isRegisterActive = !this.isRegisterActive;
   }
 
-
-  /*   logar(){ //Requisição HTTP de uma função logar que está dentro do auth (login.service)
-      this.loginService.logar(this.login).subscribe({
-        next: token => ( //Se der certo, token é o retorno que eu vou receber do servidor
-          if(token){ //Usuário e senha digitados corretos, verifica se o backend realmente retornou um token válido
-            this.loginService.addToken(token); //Salva o token no localStorage
-            this.router.navigate(['/principal/home']); //Redireciona para a página inicial
-          }else{ //O token pode chegar nulo, ou seja, usuário ou senha incorretos
-              alert('Usuário ou senha incorretos!');
-            }
-        ),
-        error: erro => { //Se der erro
-          alert('Deu erro!');
-        }
-      });
-    } */
-
   logar() {
-    this.authService.login(this.usuarioLogin, this.senhaLogin).subscribe({
-      next: (success) => {
-        if (success) {
-          const role = this.authService.getUserRole();
-          if (role === 'admin') {
-            this.router.navigate(['/principalAdmin/dashboard']);
-          } else {
-            this.router.navigate(['/principal/home']);
-          }
+    // Popula o objeto login com os dados digitados
+    this.login.email = this.usuarioLogin;
+    this.login.cpf = this.usuarioLogin;
+    this.login.password = this.senhaLogin;
+
+    this.loginService.logar(this.login).subscribe({
+      next: token => {
+        if (token) {
+          this.loginService.addToken(token);
+          this.router.navigate(['/principal/home']);
         } else {
-          Swal.fire('Erro', 'Usuário ou senha incorretos', 'error');
+          Swal.fire('Erro', 'Usuário ou senha incorretos!', 'error');
         }
       },
-      error: () => {
-        Swal.fire('Erro', 'Erro ao conectar com o servidor', 'error');
+      error: erro => {
+        Swal.fire('Erro', 'Não foi possível conectar com o servidor!', 'error');
+        console.error('Erro no login:', erro);
       }
     });
   }
 
   save() {
-
     if (!this.usuario.nome || !this.usuario.email || !this.usuario.cpf ||
       !this.usuario.senha || !this.usuario.user) {
       this.snackBar.open('Preencha todos os campos!', 'Fechar', {
@@ -109,7 +91,7 @@ export class LoginComponent {
           cpf: '',
           senha: '',
           user: '',
-          enderecos: [] 
+          enderecos: []
         };
 
         this.isRegisterActive = false;
@@ -118,10 +100,9 @@ export class LoginComponent {
         console.error('Erro ao salvar usuário:', err);
         this.snackBar.open('Erro ao salvar! Verifique os dados.', 'Fechar', {
           duration: 5000,
-          panelClass: ['error-snackbar']
+          panelClass: ['error-snack-bar']
         });
       }
     });
-
   }
 }
