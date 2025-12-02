@@ -1,129 +1,137 @@
 <div class="container">
-    <div class="row">
+  <div class="row">
 
-        <div class="col-lg-8">
+    <!-- Lista de produtos no carrinho -->
+    <div class="col-lg-8">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h3 class="mb-4">Sacola</h3>
 
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h3 class="mb-4">Sacola</h3>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-start">Produtos</th>
+                  <th class="text-end">Preço</th>
+                  <th class="text-end">Quantidade</th>
+                  <th class="text-end">Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of cartItems; let i = index">
+                  <td>{{ item.nome }}</td>
+                  <td class="text-end">R$ {{ item.precoVenda | number:'1.2-2' }}</td>
+                  <td class="text-end">{{ item.quantidadeSelecionada ?? 1 }}</td>
+                  <td class="text-end">
+                    R$ {{ (item.precoVenda * (item.quantidadeSelecionada ?? 1)) | number:'1.2-2' }}
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-danger" (click)="removerItem(i)">Remover</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-start">Produtos</th>
-                                    <th class="text-end">Preço</th>
-                                    <th class="text-end">Quantidade</th>
-                                    <th class="text-end">Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-
-                    <div class="text-end mb-4">
-                        <button class="btn btn-link text-primary">
-                            Limpar sacola
-                        </button>
-                    </div>
-                </div>
-            </div>
+          <div class="text-end mb-4">
+            <button class="btn btn-link text-primary" (click)="limparSacola()">
+              Limpar sacola
+            </button>
+          </div>
         </div>
-
-        <!-------------------------------------->
-        <div class="col-lg-4">
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h5 class="mb-4">Resumo do Pedido</h5>
-
-                    <div class="order-summary-card">
-                        <h6 class="mb-3">Resumo do pedido</h6>
-
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Valor dos produtos</span>
-                            <span>R$ </span>
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between mb-2">
-                            <strong>Total</strong>
-                            <strong>R$</strong>
-                        </div>
-
-                        <div class="payment-methods mt-4">
-                            <h6>Formas de pagamento</h6>
-
-                            <div class="d-flex flex-column gap-3">
-
-                                <!-- Cartão -->
-                                <label class="d-flex align-items-center p-2 border rounded payment-option">
-                                    <input type="radio" name="pagamento" [(ngModel)]="pagamentoSelecionado"
-                                        value="cartao" class="me-2">
-                                    <i class="bi bi-credit-card" style="font-size: 2rem; color:#6f42c1;"></i>
-                                    <span class="ms-2">Cartão de Crédito/Débito</span>
-                                </label>
-                                <!-- Mostrar detalhes da forma selecionada -->
-                                @if (pagamentoSelecionado == 'cartao') {
-                                <div class="mt-3">
-                                    <h6>Dados do Cartão</h6>
-                                    <input type="text" class="form-control mb-2" placeholder="Número do Cartão">
-                                    <input type="text" class="form-control mb-2" placeholder="Validade (MM/AA)">
-                                    <input type="text" class="form-control mb-2" placeholder="CVV">
-                                </div>
-                                }
-
-
-                                <!-- Pix -->
-                                <label class="d-flex align-items-center p-2 border rounded payment-option">
-                                    <input type="radio" name="pagamento" [(ngModel)]="pagamentoSelecionado" value="pix"
-                                        class="me-2">
-                                    <i class="bi bi-qr-code" style="font-size: 1.5rem; color:#28a745;"></i>
-                                    <span class="ms-2">Pix</span>
-                                </label>
-
-                                @if (pagamentoSelecionado == 'pix') {
-                                <div class="mt-3">
-                                    <h6>Pagamento via Pix</h6>
-                                    <p>O QR Code será gerado após a finalização do pedido.</p>
-                                </div>
-                                }
-
-
-                                <!-- Boleto -->
-                                <label class="d-flex align-items-center p-2 border rounded payment-option">
-                                    <input type="radio" name="pagamento" [(ngModel)]="pagamentoSelecionado"
-                                        value="boleto" class="me-2">
-                                    <i class="bi bi-receipt" style="font-size: 1.5rem; color:#28a745;"></i>
-                                    <span class="ms-2">Boleto Bancário</span>
-                                </label>
-                            </div>
-
-                            @if (pagamentoSelecionado == 'boleto'){
-                            <div class="mt-3">
-                                <h6>Boleto Bancário</h6>
-                                <p>O boleto será enviado por e-mail após a confirmação.
-                                <p>
-                            </div>
-                            }
-
-                            <div class="d-grid gap-2 mt-4">
-                                <button class="btn btn-purple btn-lg">Finalizar Compra</button>
-                                <button class="btn btn-outline-primary btn-lg custom-border">
-                                    <strong>Continuar Comprando </strong>
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <!-- Resumo do pedido -->
+    <div class="col-lg-4">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h5 class="mb-4">Resumo do Pedido</h5>
+
+          <div class="order-summary-card">
+            <h6 class="mb-3">Resumo do pedido</h6>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Valor dos produtos</span>
+              <span>R$ {{ total | number:'1.2-2' }}</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mb-2">
+              <strong>Total</strong>
+              <strong>R$ {{ total | number:'1.2-2' }}</strong>
+            </div>
+
+            <!-- Formas de pagamento -->
+            <div class="payment-methods mt-4">
+              <h6>Formas de pagamento</h6>
+
+              <div class="d-flex flex-column gap-3">
+
+                <!-- Cartão -->
+                <label class="d-flex align-items-center p-2 border rounded payment-option">
+                  <input type="radio" name="pagamento" [(ngModel)]="pagamentoSelecionado"
+                         value="cartao" class="me-2">
+                  <i class="bi bi-credit-card" style="font-size: 2rem; color:#6f42c1;"></i>
+                  <span class="ms-2">Cartão de Crédito/Débito</span>
+                </label>
+                @if (pagamentoSelecionado == 'cartao') {
+                  <div class="mt-3">
+                    <h6>Dados do Cartão</h6>
+                    <input type="text" class="form-control mb-2" placeholder="Número do Cartão">
+                    <input type="text" class="form-control mb-2" placeholder="Validade (MM/AA)">
+                    <input type="text" class="form-control mb-2" placeholder="CVV">
+                  </div>
+                }
+
+                <!-- Pix -->
+                <label class="d-flex align-items-center p-2 border rounded payment-option">
+                  <input type="radio" name="pagamento" [(ngModel)]="pagamentoSelecionado" value="pix"
+                         class="me-2">
+                  <i class="bi bi-qr-code" style="font-size: 1.5rem; color:#28a745;"></i>
+                  <span class="ms-2">Pix</span>
+                </label>
+                @if (pagamentoSelecionado == 'pix') {
+                  <div class="mt-3">
+                    <h6>Pagamento via Pix</h6>
+                    <p>O QR Code será gerado após a finalização do pedido.</p>
+                  </div>
+                }
+
+                <!-- Boleto -->
+                <label class="d-flex align-items-center p-2 border rounded payment-option">
+                  <input type="radio" name="pagamento" [(ngModel)]="pagamentoSelecionado"
+                         value="boleto" class="me-2">
+                  <i class="bi bi-receipt" style="font-size: 1.5rem; color:#28a745;"></i>
+                  <span class="ms-2">Boleto Bancário</span>
+                </label>
+              </div>
+
+              @if (pagamentoSelecionado == 'boleto'){
+                <div class="mt-3">
+                  <h6>Boleto Bancário</h6>
+                  <p>O boleto será enviado por e-mail após a confirmação.</p>
+                </div>
+              }
+
+              <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-purple btn-lg">Finalizar Compra</button>
+                <button class="btn btn-outline-primary btn-lg custom-border">
+                  <strong>Continuar Comprando</strong>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div class="text-center mt-3 mb-3">
-    <p style="font-size: 0.85rem; color: gray;">
-        Os valores e a disponibilidade dos itens podem variar ao longo do tempo.
-        Colocar produtos na sacola não garante reserva, portanto finalize a sua compra o quanto antes.
-    </p>
-
+  <p style="font-size: 0.85rem; color: gray;">
+    Os valores e a disponibilidade dos itens podem variar ao longo do tempo.
+    Colocar produtos na sacola não garante reserva, portanto finalize a sua compra o quanto antes.
+  </p>
 </div>

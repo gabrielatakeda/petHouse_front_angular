@@ -129,7 +129,7 @@ export class CategoriaProdutosComponent implements OnInit {
 
       if (!pedidoParaSalvar) {
         pedidoParaSalvar = {
-          cliente: this.usuarioLogado,   // ← objeto completo do usuário
+          cliente: this.usuarioLogado, 
           dataPedido: new Date(),
           total: 0,
           statusPedido: 'PENDENTE',
@@ -137,11 +137,9 @@ export class CategoriaProdutosComponent implements OnInit {
         };
       }
 
-      // adiciona o produto
       pedidoParaSalvar.produtos.push(produto);
       pedidoParaSalvar.total += produto.precoVenda ?? 0;
 
-      // SALVA (aqui estava o erro: você estava usando pedidoPendente)
       this.pedidoService.save(pedidoParaSalvar).subscribe({
         next: () => {
           Swal.fire({

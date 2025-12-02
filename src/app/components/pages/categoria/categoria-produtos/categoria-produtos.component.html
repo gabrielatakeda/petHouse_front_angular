@@ -8,22 +8,18 @@
     {{ produtos.length }} produtos encontrados
   </p>
 
-  <!-- Loading -->
-  <div class="loading" *ngIf="loading">
+    <div class="loading" *ngIf="loading">
     <p>Carregando produtos...</p>
   </div>
 
-  <!-- Erro -->
-  <div class="erro" *ngIf="error">
+    <div class="erro" *ngIf="error">
     <p>Categoria não encontrada.</p>
   </div>
 
-  <!-- Lista de produtos -->
-  <div class="grid-produtos" *ngIf="!loading && !error && produtos.length > 0">
+    <div class="grid-produtos" *ngIf="!loading && !error && produtos.length > 0">
+    @for (p of produtos; track p.id) {
     <div 
       class="produto-card" 
-      *ngFor="let p of produtos" 
-      (click)="irParaProduto(p.id)"
     >
       <img [src]="p.urlFoto" [alt]="p.nome" class="imagem">
       
@@ -39,15 +35,16 @@
       </div>
 
       <button 
-          class="btn-add" 
-          (click)="$event.stopPropagation(); adicionarAoCarrinho(p)">
-          +
+          class="btn-add circular-btn" 
+          [routerLink]="['/produtoDetails', p.id]"
+      >
+        <i class="bi bi-plus fs-4 text-light"></i>
       </button>
     </div>
+    }
   </div>
 
-  <!-- Sem produtos -->
-  <div class="vazio" *ngIf="!loading && !error && produtos.length === 0">
+    <div class="vazio" *ngIf="!loading && !error && produtos.length === 0">
     <p>Nenhum produto encontrado nesta categoria.</p>
   </div>
 </div>
